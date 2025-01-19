@@ -12,7 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         /* Theme Variables */
-        :root {
+       :root {
             /* Tokyo Night theme */
             --bg-primary: #1a1b26;
             --bg-secondary: #24283b;
@@ -385,6 +385,132 @@
                 display: none;
             }
         }
+        .terminal-toggle {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--accent-primary);
+            color: var(--bg-primary);
+            border: none;
+            padding: 12px 24px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-family: 'Fira Code', monospace;
+            font-weight: 500;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            display: none;
+        }
+
+        .terminal-toggle:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+        }
+
+        .terminal-toggle.visible {
+            display: block;
+            animation: slideUp 0.3s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(100px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        /* Speed Control */
+        .speed-control {
+            position: absolute;
+            top: 8px;
+            right: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .speed-label {
+            color: var(--text-secondary);
+            font-size: 12px;
+        }
+
+        .speed-slider {
+            width: 100px;
+            height: 4px;
+            -webkit-appearance: none;
+            background: var(--bg-secondary);
+            border-radius: 2px;
+            outline: none;
+        }
+
+        .speed-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 12px;
+            height: 12px;
+            background: var(--accent-primary);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .speed-slider::-webkit-slider-thumb:hover {
+            transform: scale(1.2);
+        }
+
+        /* Background Animation */
+        .background-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            opacity: 0.5;
+        }
+
+        .particle {
+            position: absolute;
+            background: var(--text-secondary);
+            border-radius: 50%;
+            animation: float 20s infinite linear;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+            }
+            100% {
+                transform: translateY(-100vh) rotate(360deg);
+            }
+        }
+
+        /* Responsive enhancements */
+        @media (max-width: 768px) {
+            .container-terminal {
+                width: 100%;
+                height: 100%;
+                border-radius: 0;
+                margin: 0;
+            }
+
+            .speed-control {
+                top: 4px;
+                right: 8px;
+            }
+
+            .terminal-toggle {
+                bottom: 16px;
+                right: 16px;
+                padding: 8px 16px;
+                font-size: 14px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -401,8 +527,9 @@
                 </svg>
                 <span>mahdi@portfolio ~ </span>
             </div>
-            <div class="terminal-info">
-                <span id="time"></span>
+            <div class="speed-control">
+                <span class="speed-label">Speed:</span>
+                <input type="range" class="speed-slider" id="speedControl" min="10" max="100" value="50">
             </div>
         </div>
         <div class="body-terminal">
@@ -826,12 +953,78 @@ Type 'help' to see available commands or try these quick links:
         this.output.appendChild(suggestions);
     }
 }
+class ParticleSystem {
+            constructor() {
+                this.container = document.getElementById('particleContainer');
+                this.particles = [];
+                this.init();
+            }
 
-// Initialize the terminal when the DOM is loaded
-document.addEventListener('DOMContentLoaded', () => {
-    const terminal = new TerminalUI();
-    terminal.initTerminal();
-});
+            init() {
+                for (let i = 0; i < 50; i++) {
+                    this.createParticle();
+                }
+            }
+
+            createParticle() {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                
+                // Random properties
+                const size = Math.random() * 4 + 1;
+                const left = Math.random() * 100;
+                const delay = Math.random() * 20;
+                
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                particle.style.left = `${left}%`;
+                particle.style.animationDelay = `-${delay}s`;
+                
+                this.container.appendChild(particle);
+                this.particles.push(particle);
+            }
+        }
+
+        // Enhance TerminalUI class
+        class EnhancedTerminalUI extends TerminalUI {
+            constructor() {
+                super();
+                this.speedControl = document.getElementById('speedControl');
+                this.terminalToggle = document.getElementById('terminalToggle');
+                this.terminalContainer = document.querySelector('.container-terminal');
+                this.initializeEnhancements();
+            }
+
+            initializeEnhancements() {
+                // Speed control
+                this.speedControl.addEventListener('input', (e) => {
+                    config.typingSpeed = 110 - e.target.value; // Inverse relationship
+                });
+
+                // Terminal toggle
+                document.querySelector('.exit').addEventListener('click', () => {
+                    this.terminalContainer.style.display = 'none';
+                    this.terminalToggle.classList.add('visible');
+                });
+
+                this.terminalToggle.addEventListener('click', () => {
+                    this.terminalContainer.style.display = 'flex';
+                    this.terminalToggle.classList.remove('visible');
+                    this.input.focus();
+                });
+
+                // Initialize particle system
+                new ParticleSystem();
+            }
+        }
+
+        // Initialize enhanced terminal
+        document.addEventListener('DOMContentLoaded', () => {
+            const terminal = new EnhancedTerminalUI();
+            terminal.initTerminal();
+        });
+
+
     </script>
 </body>
 </html>
