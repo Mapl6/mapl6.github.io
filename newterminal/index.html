@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mahdi's Terminal</title>
+    <style>
+      body {
+        background-color: #121212;
+        color: #ffffff;
+        margin: 0;
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        overflow: hidden;
+      }
+      .container-terminal {
+        width: 90%;
+        max-width: 700px;
+        height: 80%;
+        background-color: #1e1e1e;
+        border-radius: 12px;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+      }
+      .topbar-terminal {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background-color: #333333;
+        padding: 5px 15px;
+        height: 36px;
+        border-radius: 12px 12px 0 0;
+      }
+      .btns-terminal {
+        display: flex;
+        gap: 8px;
+      }
+      .btns-terminal div {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+      }
+      .exit {
+        background-color: #fe5f57;
+      }
+      .minimize {
+        background-color: #febc2e;
+      }
+      .fullscreen {
+        background-color: #28c840;
+      }
+      .title-topbar-terminal {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 14px;
+        color: #cccccc;
+      }
+      .title-topbar-terminal img {
+        width: 16px;
+        height: 16px;
+      }
+      .body-terminal {
+        flex-grow: 1;
+        padding: 15px;
+        font-family: "Courier New", monospace;
+        font-size: 16px;
+        color: #e0e0e0;
+        line-height: 1.5;
+        white-space: pre-wrap;
+        overflow-y: auto;
+      }
+      #typewriter {
+        margin: 0;
+      }
+      #typewriter:after {
+        content: "|";
+        animation: blink 0.7s linear infinite;
+      }
+      @keyframes blink {
+        0% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+      .highlight {
+        color: #7aa2f7;
+      }
+      .var-highlight {
+        color: #9d7cd8;
+      }
+      .string-highlight {
+        color: #7aa2f7;
+      }
+      .number-highlight {
+        color: #ff9e64;
+      }
+      .function-highlight {
+        color: #f7768e;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container-terminal">
+      <div class="topbar-terminal">
+        <div class="btns-terminal">
+          <div class="exit"></div>
+          <div class="minimize"></div>
+          <div class="fullscreen"></div>
+        </div>
+        <div class="title-topbar-terminal">
+          <img
+            src="https://via.placeholder.com/16"
+            alt="Folder Icon"
+            id="terminal-icon"
+          />
+          <span>Mahdi's Terminal</span>
+        </div>
+      </div>
+      <div class="body-terminal">
+        <pre id="typewriter">
+<span class="var-highlight">const</span> I = {
+  name: <span class="string-highlight">'Mahdi Amoozadeh'</span>,
+  age: <span class="number-highlight">25</span>,
+  am: <span class="string-highlight">'a Front-End Developer'</span>,
+  studied: <span class="string-highlight">'Computer Science'</span>,
+  workwith: [<span class="string-highlight">'HTML'</span>, <span class="string-highlight">'CSS'</span>, <span class="string-highlight">'React'</span>, <span class="string-highlight">'Next.js'</span>, <span class="string-highlight">'Tailwind CSS'</span>, <span class="string-highlight">'Git'</span>],
+  hobbies: [<span class="string-highlight">'Reading Books'</span>, <span class="string-highlight">'Gaming'</span>, <span class="string-highlight">'Programming'</span>],
+};
+
+<span class="function-highlight">const</span> introduce = () => {
+  console.log(`Hello, I'm ${I.name}, a ${I.age}-year-old ${I.am}.`);
+};
+introduce();
+        </pre>
+      </div>
+    </div>
+    <script>
+      function setupTypewriter(t) {
+        const HTML = t.innerHTML;
+        t.innerHTML = "";
+        let cursorPosition = 0;
+        const typeSpeed = () => Math.random() * 100 + 50;
+
+        function type() {
+          if (cursorPosition < HTML.length) {
+            t.innerHTML += HTML[cursorPosition++];
+            t.scrollTop = t.scrollHeight; // Auto-scroll to the bottom
+            setTimeout(type, typeSpeed());
+          }
+        }
+
+        type();
+      }
+
+      setupTypewriter(document.getElementById("typewriter"));
+    </script>
+  </body>
+</html>
