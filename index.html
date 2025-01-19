@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Terminal</title>
+    <style>
+      .container-terminal {
+        width: 600px;
+        height: 400px;
+        background-color: #1d1e1e;
+        border-radius: 12px;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        margin: 50px auto;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      }
+      .topbar-terminal {
+        width: 100%;
+        height: 28px;
+        display: flex;
+        justify-content: space-between;
+        background-color: #383a41;
+        border-radius: 12px 12px 0 0;
+      }
+      .btns-terminal {
+        width: 33%;
+        height: 100%;
+        display: flex;
+        gap: 10px;
+        justify-content: flex-start;
+        align-items: center;
+        padding: 0 10px;
+      }
+      .exit,
+      .minimize,
+      .fullscreen {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+      }
+      .exit {
+        background-color: #fe5f57;
+      }
+      .minimize {
+        background-color: #febc2e;
+      }
+      .fullscreen {
+        background-color: #28c840;
+      }
+      .title-topbar-terminal {
+        width: 33%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        color: #b4b5bd;
+        align-self: center;
+        font-size: 14px;
+      }
+      .temp {
+        width: 33%;
+      }
+      .var-highlight {
+        color: #9d7cd8;
+      }
+      .string-highlight {
+        color: #7aa2f7;
+      }
+      .number-highlight {
+        color: #ff9e64;
+      }
+      .function-highlight {
+        color: #f7768e;
+      }
+      .body-terminal {
+        padding: 10px;
+        overflow-y: auto;
+        flex-grow: 1;
+        font-family: "Courier New", monospace;
+        color: white;
+        position: relative;
+        text-align: left;
+      }
+      #typewriter {
+        font-size: 1em;
+        margin: 0;
+        white-space: pre-wrap;
+      }
+      #typewriter:after {
+        content: "|";
+        animation: blink 500ms linear infinite alternate;
+      }
+      @keyframes blink {
+        0% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container-terminal">
+      <div class="topbar-terminal">
+        <div class="btns-terminal">
+          <div class="exit"></div>
+          <div class="minimize"></div>
+          <div class="fullscreen"></div>
+        </div>
+        <div class="title-topbar-terminal">
+          <img src="./macos-folder.png" width="16px" height="16px" />
+          <span style="display: flex; justify-content: center; align-items: center;">Mahdi Terminal</span>
+        </div>
+        <div class="temp"></div>
+      </div>
+      <div class="body-terminal">
+        <pre id="typewriter"><span class="var-highlight">const</span> I = {
+  name: <span class="string-highlight">'Mahdi Amoozadeh'</span>,
+  age: <span class="number-highlight">25</span>,
+  am: <span class="string-highlight">'a Front-End Developer'</span>,
+  studied: <span class="string-highlight">'Computer Science'</span>,
+  workwith: [<span class="string-highlight">'HTML'</span>,
+              <span class="string-highlight">'CSS'</span>,
+              <span class="string-highlight">'React'</span>,
+              <span class="string-highlight">'Next.js'</span>,
+              <span class="string-highlight">'Tailwind CSS'</span>,
+              <span class="string-highlight">'Git'</span>],
+  hobbies: [<span class="string-highlight">'Reading Books'</span>,
+            <span class="string-highlight">'Gaming'</span>,
+            <span class="string-highlight">'Programming'</span>],
+};
+
+<span class="function-highlight">const</span> introduce = () => {
+  <span class="var-highlight">let</span> lovesList = "";
+  <span class="var-highlight">let</span> hobbiesList = "";
+
+  I.hobbies.forEach((hobby) => {
+    hobbiesList += `- ${hobby}\n`;
+  });
+
+  <span class="var-highlight">let</span> introduction = `Hello, my name is ${I.name}! I am ${I.age} years old and I work as ${I.am}. 
+  I studied ${I.studied} and work with ${I.workwith.length} technologies: ${I.workwith.join(", ")}. 
+  In my free time, I enjoy:\n${hobbiesList}`;
+
+  console.log(introduction);
+};
+
+introduce();
+        </pre>
+      </div>
+    </div>
+    <script>
+      function setupTypewriter(t) {
+        var HTML = t.innerHTML;
+        t.innerHTML = "";
+        var cursorPosition = 0,
+          tag = "",
+          writingTag = false,
+          tagOpen = false,
+          typeSpeed = 50,
+          minTypeSpeed = 200,
+          maxTypeSpeed = 220,
+          tempTypeSpeed = 0,
+          mistakeMode = false,
+          mistakeFixDelay = 500,
+          mistakeChance = 0.1,
+          mistakeLetter = "",
+          mistakePosition = -1;
+
+        var type = function () {
+          if (writingTag) {
+            tag += HTML[cursorPosition];
+          }
+
+          if (mistakeMode && mistakePosition === -1) {
+            mistakePosition = cursorPosition;
+            mistakeLetter = String.fromCharCode(
+              Math.floor(Math.random() * 26) + 97
+            );
+            t.innerHTML += mistakeLetter;
+            setTimeout(type, mistakeFixDelay);
+            return;
+          }
+
+          if (mistakeMode && cursorPosition === mistakePosition) {
+            t.innerHTML = t.innerHTML.slice(0, -1);
+            mistakeMode = false;
+            mistakePosition = -1;
+          }
+
+          if (HTML[cursorPosition] === "<") {
+            tempTypeSpeed = 0;
+            if (tagOpen) {
+              tagOpen = false;
+              writingTag = true;
+            } else {
+              tag = "";
+              tagOpen = true;
+              writingTag = true;
+              tag += HTML[cursorPosition];
+            }
+          }
+
+          if (!writingTag && tagOpen) {
+            tag.innerHTML += HTML[cursorPosition];
+          }
+
+          if (!writingTag && !tagOpen) {
+            if (!mistakeMode && Math.random() < mistakeChance && cursorPosition > 10) {
+              mistakeMode = true;
+            }
+            t.innerHTML += HTML[cursorPosition];
+            t.scrollTop = t.scrollHeight;
+          }
+
+          if (writingTag && HTML[cursorPosition] === ">") {
+            tempTypeSpeed = Math.random() * (maxTypeSpeed - minTypeSpeed) + minTypeSpeed;
+            writingTag = false;
+            if (tagOpen) {
+              var newSpan = document.createElement("span");
+              newSpan.innerHTML = tag;
+              t.appendChild(newSpan);
+              tag = newSpan.firstChild;
+            }
+          }
+
+          cursorPosition += 1;
+
+          if (cursorPosition < HTML.length) {
+            tempTypeSpeed = Math.random() * (maxTypeSpeed - minTypeSpeed) + minTypeSpeed;
+            setTimeout(type, tempTypeSpeed);
+          }
+        };
+
+        return {
+          type: type,
+        };
+      }
+
+      var typer = document.getElementById("typewriter");
+      var typewriter = setupTypewriter(typer);
+      typewriter.type();
+    </script>
+  </body>
+</html>
