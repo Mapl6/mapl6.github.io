@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Mahdi Amoozadeh | Terminal Portfolio</title>
+    <title>Mahdi Amoozadeh | Interactive Terminal Portfolio</title>
     <style>
         * {
             margin: 0;
@@ -17,12 +17,13 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            padding: 20px;
         }
 
         .container-terminal {
-            width: min(95vw, 700px);
-            height: min(90vh, 500px);
+            width: min(95vw, 800px);
+            height: min(90vh, 600px);
             background-color: #1a1b26;
             border-radius: 12px;
             display: flex;
@@ -87,7 +88,7 @@
             padding: 16px;
             overflow-y: auto;
             flex-grow: 1;
-            font-family: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+            font-family: 'JetBrains Mono', 'Fira Code', monospace;
             color: #a9b1d6;
             line-height: 1.5;
         }
@@ -105,14 +106,58 @@
             border-radius: 4px;
         }
 
-        #typewriter {
+        #output {
             font-size: 14px;
             margin: 0;
             white-space: pre-wrap;
         }
 
-        #typewriter:after {
-            content: "█";
+        .command-input {
+            background: transparent;
+            border: none;
+            color: #a9b1d6;
+            font-family: inherit;
+            font-size: 14px;
+            outline: none;
+            width: 100%;
+            padding: 4px 0;
+        }
+
+        .prompt {
+            color: #7aa2f7;
+            font-weight: bold;
+        }
+
+        .success { color: #9ece6a; }
+        .error { color: #f7768e; }
+        .warning { color: #e0af68; }
+        .info { color: #7aa2f7; }
+
+        .menu-item {
+            cursor: pointer;
+            padding: 4px 0;
+            transition: color 0.2s;
+        }
+
+        .menu-item:hover {
+            color: #7aa2f7;
+        }
+
+        .project-card {
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 12px;
+            margin: 8px 0;
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .ascii-art {
+            color: #7aa2f7;
+            font-family: monospace;
+            white-space: pre;
+        }
+
+        .typing-cursor {
             animation: cursor 1s step-start infinite;
         }
 
@@ -120,23 +165,14 @@
             50% { opacity: 0; }
         }
 
-        .var-highlight { color: #bb9af7; }
-        .string-highlight { color: #9ece6a; }
-        .number-highlight { color: #ff9e64; }
-        .function-highlight { color: #f7768e; }
-        
-        .terminal-prompt {
-            color: #7aa2f7;
-            font-weight: bold;
-        }
-
         @media (max-width: 600px) {
             .container-terminal {
                 height: 100vh;
+                width: 100vw;
                 border-radius: 0;
             }
             
-            #typewriter {
+            #output {
                 font-size: 12px;
             }
         }
@@ -151,125 +187,213 @@
                 <div class="btn fullscreen"></div>
             </div>
             <div class="title-topbar-terminal">
-                <span>~/mahdi/portfolio</span>
+                <span>mahdi@portfolio:~$</span>
             </div>
             <div style="width: 80px;"></div>
         </div>
         <div class="body-terminal">
-            <pre id="typewriter"><span class="terminal-prompt">visitor@mahdi-portfolio:~$</span> cat about.js
-
-<span class="var-highlight">const</span> developer = {
-    name: <span class="string-highlight">'Mahdi Amoozadeh'</span>,
-    role: <span class="string-highlight">'Frontend Developer'</span>,
-    location: <span class="string-highlight">'Earth'</span>,
-    age: <span class="number-highlight">25</span>,
-    education: <span class="string-highlight">'Computer Science'</span>,
-    skills: {
-        languages: [<span class="string-highlight">'JavaScript'</span>, <span class="string-highlight">'TypeScript'</span>, <span class="string-highlight">'HTML'</span>, <span class="string-highlight">'CSS'</span>],
-        frameworks: [<span class="string-highlight">'React'</span>, <span class="string-highlight">'Next.js'</span>],
-        styling: [<span class="string-highlight">'Tailwind CSS'</span>, <span class="string-highlight">'Styled Components'</span>],
-        tools: [<span class="string-highlight">'Git'</span>, <span class="string-highlight">'VS Code'</span>, <span class="string-highlight">'Docker'</span>],
-    },
-    interests: [
-        <span class="string-highlight">'Clean Code'</span>,
-        <span class="string-highlight">'UI/UX Design'</span>,
-        <span class="string-highlight">'Web Performance'</span>
-    ],
-    hobbies: [
-        <span class="string-highlight">'Reading Books'</span>,
-        <span class="string-highlight">'Gaming'</span>,
-        <span class="string-highlight">'Programming'</span>
-    ],
-};
-
-<span class="function-highlight">const</span> introduceMyself = () => {
-    <span class="var-highlight">const</span> greeting = `👋 Hi! I'm ${developer.name}, a passionate ${developer.role}.
-    
-🚀 I specialize in building modern web applications using:
-${developer.skills.frameworks.map(tech => `   • ${tech}`).join('\n')}
-
-💻 My technical toolkit includes:
-${Object.entries(developer.skills)
-    .flatMap(([category, items]) => items)
-    .map(skill => `   • ${skill}`)
-    .join('\n')}
-
-🎯 Currently focusing on:
-${developer.interests.map(interest => `   • ${interest}`).join('\n')}
-
-🌟 When I'm not coding, you can find me:
-${developer.hobbies.map(hobby => `   • ${hobby}`).join('\n')}
-
-📫 Let's connect and build something amazing together!`;
-
-    console.log(greeting);
-};
-
-introduceMyself();</pre>
+            <div id="output"></div>
+            <div style="display: flex; align-items: center; gap: 8px;">
+                <span class="prompt">visitor@mahdi-portfolio:~$</span>
+                <input type="text" class="command-input" autofocus spellcheck="false">
+            </div>
         </div>
     </div>
     <script>
-        function setupTypewriter(t) {
-            const HTML = t.innerHTML;
-            t.innerHTML = "";
-            let cursorPosition = 0;
-            let tag = "";
-            let writingTag = false;
-            let tagOpen = false;
-            
-            const typeSpeed = {
-                min: 10,
-                max: 20
-            };
+        const commands = {
+            help: {
+                description: 'Show available commands',
+                execute: () => `
+Available commands:
+    help        - Show this help message
+    about       - Display information about me
+    skills      - List my technical skills
+    projects    - View my portfolio projects
+    experience  - Show my work experience
+    education   - Show my educational background
+    contact     - Display contact information
+    clear       - Clear the terminal
+    theme       - Change terminal theme (dark/light)
+                `
+            },
+            about: {
+                description: 'Display information about me',
+                execute: () => `
+${ascii.logo}
 
-            function type() {
-                if (writingTag) {
-                    tag += HTML[cursorPosition];
+👋 Hi! I'm Mahdi Amoozadeh
+🚀 Frontend Developer | UI/UX Enthusiast | Problem Solver
+
+I'm passionate about creating beautiful and functional web experiences.
+With a background in Computer Science and ${getExperience()} years of development experience,
+I specialize in building modern web applications using cutting-edge technologies.
+
+Type 'skills' to see my technical expertise
+Type 'projects' to view my portfolio
+Type 'contact' to get in touch
+                `
+            },
+            skills: {
+                description: 'List technical skills',
+                execute: () => `
+🔧 Technical Skills:
+
+Frontend:
+    ├── HTML5, CSS3, JavaScript (ES6+)
+    ├── TypeScript
+    ├── React.js, Next.js
+    └── Tailwind CSS, Styled Components
+
+Backend & Tools:
+    ├── Node.js
+    ├── Git, GitHub
+    ├── Docker
+    └── RESTful APIs
+
+Design & Other:
+    ├── Responsive Design
+    ├── UI/UX Principles
+    ├── Performance Optimization
+    └── Cross-browser Compatibility
+                `
+            },
+            projects: {
+                description: 'View portfolio projects',
+                execute: () => `
+📂 Featured Projects:
+
+1. Project Name One
+   ├── Tech: React, Next.js, Tailwind CSS
+   ├── Description: A full-stack web application for...
+   └── Link: https://project1.com
+
+2. Project Name Two
+   ├── Tech: TypeScript, React, Node.js
+   ├── Description: Real-time collaboration platform...
+   └── Link: https://project2.com
+
+3. Project Name Three
+   ├── Tech: React, Redux, Firebase
+   ├── Description: Modern e-commerce solution...
+   └── Link: https://project3.com
+
+Type 'project <number>' for more details about specific project
+                `
+            },
+            contact: {
+                description: 'Display contact information',
+                execute: () => `
+📫 Contact Information:
+
+Email:    hello@mahdi.dev
+GitHub:   github.com/mahdi
+LinkedIn: linkedin.com/in/mahdi
+Twitter:  @mahdi_dev
+
+Feel free to reach out! I'm always open to interesting projects and opportunities.
+                `
+            },
+            clear: {
+                description: 'Clear the terminal',
+                execute: () => {
+                    output.innerHTML = '';
+                    return '';
                 }
-
-                if (HTML[cursorPosition] === "<") {
-                    writingTag = true;
-                    tagOpen = !tagOpen;
-                    tag = "<";
-                }
-
-                if (!writingTag && !tagOpen) {
-                    t.innerHTML += HTML[cursorPosition];
-                }
-
-                if (writingTag && HTML[cursorPosition] === ">") {
-                    writingTag = false;
-                    if (tagOpen) {
-                        const newSpan = document.createElement("span");
-                        newSpan.innerHTML = tag;
-                        t.appendChild(newSpan);
-                    }
-                }
-
-                cursorPosition++;
-                
-                if (cursorPosition < HTML.length) {
-                    const delay = Math.random() * (typeSpeed.max - typeSpeed.min) + typeSpeed.min;
-                    setTimeout(type, delay);
-                }
-
-                t.scrollTop = t.scrollHeight;
             }
+        };
 
-            return { type };
+        const ascii = {
+            logo: `
+ ███╗   ███╗ █████╗ ██╗  ██╗██████╗ ██╗
+ ████╗ ████║██╔══██╗██║  ██║██╔══██╗██║
+ ██╔████╔██║███████║███████║██║  ██║██║
+ ██║╚██╔╝██║██╔══██║██╔══██║██║  ██║██║
+ ██║ ╚═╝ ██║██║  ██║██║  ██║██████╔╝██║
+ ╚═╝     ╚═╝╚═╝  ╚═╝╚═╝  ╚═╝╚═════╝ ╚═╝
+            `
+        };
+
+        const output = document.getElementById('output');
+        const input = document.querySelector('.command-input');
+        let commandHistory = [];
+        let historyIndex = -1;
+
+        function getExperience() {
+            const startYear = 2021;
+            const currentYear = new Date().getFullYear();
+            return currentYear - startYear;
         }
 
-        const typer = document.getElementById("typewriter");
-        const typewriter = setupTypewriter(typer);
-        typewriter.type();
+        function executeCommand(cmd) {
+            const args = cmd.trim().toLowerCase().split(' ');
+            const command = args[0];
 
-        // Add button functionality
+            if (!command) return;
+
+            if (commands[command]) {
+                return commands[command].execute(args.slice(1));
+            } else {
+                return `Command not found: ${command}\nType 'help' for available commands`;
+            }
+        }
+
+        function addToOutput(content, classes = '') {
+            const div = document.createElement('div');
+            div.className = classes;
+            div.textContent = content;
+            output.appendChild(div);
+            output.scrollTop = output.scrollHeight;
+        }
+
+        input.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                const cmd = input.value;
+                addToOutput(`visitor@mahdi-portfolio:~$ ${cmd}`);
+                const result = executeCommand(cmd);
+                if (result) addToOutput(result);
+                
+                commandHistory.push(cmd);
+                historyIndex = commandHistory.length;
+                input.value = '';
+            } else if (e.key === 'ArrowUp') {
+                e.preventDefault();
+                if (historyIndex > 0) {
+                    historyIndex--;
+                    input.value = commandHistory[historyIndex];
+                }
+            } else if (e.key === 'ArrowDown') {
+                e.preventDefault();
+                if (historyIndex < commandHistory.length - 1) {
+                    historyIndex++;
+                    input.value = commandHistory[historyIndex];
+                } else {
+                    historyIndex = commandHistory.length;
+                    input.value = '';
+                }
+            }
+        });
+
+        // Initial welcome message
+        addToOutput(`Welcome to Mahdi's Terminal Portfolio! 🚀
+Type 'help' to see available commands.
+`);
+
+        // Button functionality
         document.querySelector('.exit').addEventListener('click', () => {
             document.querySelector('.container-terminal').style.display = 'none';
         });
 
         document.querySelector('.fullscreen').addEventListener('click', () => {
-            document.documentElement.requestFullscreen();
+            if (!document.fullscreenElement) {
+                document.documentElement.requestFullscreen();
+            } else {
+                document.exitFullscreen();
+            }
+        });
+
+        // Focus input on click anywhere in terminal
+        document.querySelector('.container-terminal').addEventListener('click', () => {
+            input.focus();
         });
     </script>
 </body>
