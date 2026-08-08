@@ -1,357 +1,201 @@
 \documentclass[a4paper,11pt]{article}
 
-% Package imports
-\usepackage{latexsym}
-\usepackage{xcolor}
-\usepackage{float}
-\usepackage{ragged2e}
-\usepackage[empty]{fullpage}
-\usepackage{wrapfig}
-\usepackage{lipsum}
-\usepackage{tabularx}
-\usepackage{titlesec}
+% Packages
+\usepackage[T1]{fontenc}
+\usepackage{cfr-lm}
 \usepackage{geometry}
-\usepackage{marvosym}
-\usepackage{verbatim}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
 \usepackage{enumitem}
 \usepackage{fancyhdr}
-\usepackage{multicol}
+\usepackage{tabularx}
 \usepackage{graphicx}
-\usepackage{cfr-lm}
-\usepackage[T1]{fontenc}
 \usepackage{fontawesome5}
 \usepackage[dvipsnames]{xcolor}
-% Color definitions
-\definecolor{darkblue}{RGB}{0,0,139}
+\usepackage[hidelinks]{hyperref}
 
-% Page layout
-\setlength{\multicolsep}{0pt} 
+% Colors
+\definecolor{darkblue}{RGB}{0,0,139}
+\definecolor{mygray}{gray}{0.45}
+
+% Page
 \pagestyle{fancy}
-\fancyhf{} % clear all header and footer fields
-\fancyfoot{}
+\fancyhf{}
 \renewcommand{\headrulewidth}{0pt}
 \renewcommand{\footrulewidth}{0pt}
-\geometry{left=1.4cm, top=0.8cm, right=1.2cm, bottom=1cm}
-\setlength{\footskip}{5pt} % Addressing fancyhdr warning
-\definecolor{mygray}{gray}{0.4}
-% Hyperlink setup (moved after fancyhdr to address warning)
-\usepackage[hidelinks]{hyperref}
+\geometry{left=1.4cm, top=0.9cm, right=1.4cm, bottom=1cm}
+\setlength{\footskip}{5pt}
+
 \hypersetup{
-    colorlinks=true,
-    linkcolor=darkblue,
-    filecolor=darkblue,
-    urlcolor=darkblue,
+  colorlinks=true,
+  linkcolor=darkblue,
+  filecolor=darkblue,
+  urlcolor=darkblue,
 }
 
-% Custom box settings
-\usepackage[most]{tcolorbox}
-\tcbset{
-    frame code={},
-    center title,
-    left=0pt,
-    right=0pt,
-    top=0pt,
-    bottom=0pt,
-    colback=gray!20,
-    colframe=white,
-    width=\dimexpr\textwidth\relax,
-    enlarge left by=-2mm,
-    boxsep=4pt,
-    arc=0pt,outer arc=0pt,
-}
-
-% URL style
 \urlstyle{same}
-
-% Text alignment
 \raggedright
 \setlength{\tabcolsep}{0in}
+\setlength{\parskip}{0pt}
 
-% Section formatting
+% Section titles
 \titleformat{\section}{
-  \vspace{-4pt}\scshape\raggedright\large
-}{}{0em}{}[\color{black}\titlerule \vspace{-7pt}]
+  \vspace{6pt}\scshape\raggedright\large\bfseries
+}{}{0em}{}[\vspace{1pt}{\color{black}\titlerule}\vspace{5pt}]
+\titlespacing*{\section}{0pt}{2pt}{0pt}
 
-% Custom commands
-\newcommand{\resumeItem}[2]{
-  \item{
-    \textbf{#1}{\hspace{0.5mm}#2 \vspace{-0.5mm}}
-  }
+% Resume helpers
+\newcommand{\resumeSubheading}[4]{%
+  \vspace{1.5mm}\item
+  \begin{tabular*}{0.98\textwidth}[t]{l@{\extracolsep{\fill}}r}
+    \textbf{#1} & \textit{\footnotesize #4} \\
+    \textit{\footnotesize #3} & \footnotesize #2 \\
+  \end{tabular*}%
+  \vspace{-1.5mm}
 }
 
-\newcommand{\resumePOR}[3]{
-\vspace{0.5mm}\item
-    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
-        \textbf{#1}\hspace{0.3mm}#2 & \textit{\small{#3}} 
-    \end{tabular*}
-    \vspace{-2mm}
+\newcommand{\resumeSubItem}[2]{%
+  \item \textbf{#1}{\hspace{0.5mm}#2}%
 }
 
-\newcommand{\resumeSubheading}[4]{
-\vspace{0.5mm}\item
-    \begin{tabular*}{0.98\textwidth}[t]{l@{\extracolsep{\fill}}r}
-        \textbf{#1} & \textit{\footnotesize{#4}} \\
-        \textit{\footnotesize{#3}} &  \footnotesize{#2}\\
-    \end{tabular*}
-    \vspace{-2.4mm}
+\newcommand{\resumePOR}[3]{%
+  \vspace{0.5mm}\item
+  \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+    \textbf{#1}\hspace{0.3mm}#2 & \textit{\small #3}
+  \end{tabular*}%
+  \vspace{-1mm}
 }
-
-\newcommand{\resumeProject}[4]{
-\vspace{0.5mm}\item
-    \begin{tabular*}{0.98\textwidth}[t]{l@{\extracolsep{\fill}}r}
-        \textbf{#1} & \textit{\footnotesize{#3}} \\
-        \footnotesize{\textit{#2}} & \footnotesize{#4}
-    \end{tabular*}
-    \vspace{-2.4mm}
-}
-
-\newcommand{\resumeSubItem}[2]{\resumeItem{#1}{#2}\vspace{4pt}}
 
 \renewcommand{\labelitemi}{$\vcenter{\hbox{\tiny$\bullet$}}$}
 \renewcommand{\labelitemii}{$\vcenter{\hbox{\tiny$\circ$}}$}
 
-\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=*,labelsep=1mm]}
-\newcommand{\resumeHeadingSkillStart}{\begin{itemize}[leftmargin=*,itemsep=1.7mm, rightmargin=2ex]}
-\newcommand{\resumeItemListStart}{\begin{itemize}[leftmargin=*,labelsep=1mm,itemsep=0.5mm]}
-
-\newcommand{\resumeSubHeadingListEnd}{\end{itemize}\vspace{2mm}}
-\newcommand{\resumeHeadingSkillEnd}{\end{itemize}\vspace{-2mm}}
-\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-2mm}}
-\newcommand{\cvsection}[1]{%
-\vspace{2mm}
-\begin{tcolorbox}
-    \textbf{\large #1}
-\end{tcolorbox}
-    \vspace{-4mm}
+\newcommand{\resumeSubHeadingListStart}{%
+  \begin{itemize}[leftmargin=*, labelsep=1mm, itemsep=3mm, topsep=1mm, parsep=0pt]%
 }
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}\vspace{1mm}}
 
-\newcolumntype{L}{>{\raggedright\arraybackslash}X}%
-\newcolumntype{R}{>{\raggedleft\arraybackslash}X}%
-\newcolumntype{C}{>{\centering\arraybackslash}X}%
+\newcommand{\resumeItemListStart}{%
+  \begin{itemize}[leftmargin=*, labelsep=1mm, itemsep=0.8mm, topsep=1.5mm, parsep=0pt]%
+}
+\newcommand{\resumeItemListEnd}{\end{itemize}}
 
-% Commands for icon sizing and positioning
+\newcommand{\resumeHeadingSkillStart}{%
+  \begin{itemize}[leftmargin=*, itemsep=1.2mm, topsep=1mm, parsep=0pt, rightmargin=1ex]%
+}
+\newcommand{\resumeHeadingSkillEnd}{\end{itemize}}
+
 \newcommand{\socialicon}[1]{\raisebox{-0.05em}{\resizebox{!}{1em}{#1}}}
-\newcommand{\ieeeicon}[1]{\raisebox{-0.3em}{\resizebox{!}{1.3em}{#1}}}
-
-% Font options
-\newcommand{\headerfonti}{\fontfamily{phv}\selectfont} % Helvetica-like (similar to Arial/Calibri)
-\newcommand{\headerfontii}{\fontfamily{ptm}\selectfont} % Times-like (similar to Times New Roman)
-\newcommand{\headerfontiii}{\fontfamily{ppl}\selectfont} % Palatino (elegant serif)
-\newcommand{\headerfontiv}{\fontfamily{pbk}\selectfont} % Bookman (readable serif)
-\newcommand{\headerfontv}{\fontfamily{pag}\selectfont} % Avant Garde-like (similar to Trebuchet MS)
-\newcommand{\headerfontvi}{\fontfamily{cmss}\selectfont} % Computer Modern Sans Serif
-\newcommand{\headerfontvii}{\fontfamily{qhv}\selectfont} % Quasi-Helvetica (another Arial/Calibri alternative)
-\newcommand{\headerfontviii}{\fontfamily{qpl}\selectfont} % Quasi-Palatino (another elegant serif option)
-\newcommand{\headerfontix}{\fontfamily{qtm}\selectfont} % Quasi-Times (another Times New Roman alternative)
-\newcommand{\headerfontx}{\fontfamily{bch}\selectfont} % Charter (clean serif font)
 
 \begin{document}
-\headerfontiii
+\fontfamily{ppl}\selectfont
 
-% Header
+% ---------- Header ----------
 \begin{center}
-    {\Huge\textbf{Mahdi Amoozadeh}}
-\end{center}
-\begin{center}
-{\textbf{\textcolor{mygray}{Front-End Developer}}}
-
-\end{center}
-\begin{center}
-    \small{
-    +98-9125090894 | \href{mailto:mahdi.am6@gmail.com}{mahdi.am6@gmail.com} 
-    }
-\end{center}
-\vspace{-6mm}
-
-\begin{center}
-    \small{
-    \socialicon{\faLinkedin} \href{https://ir.linkedin.com/in/mahdi-amoozadeh-445a58b4}{Mahdi Amoozadeh} | 
-    \socialicon{\faGithub} \href{https://github.com/Mapl6}{Mapl6} 
-    }
-\end{center}
-\vspace{-6mm}
-\begin{center}
-    \small{Tehran , Iran}
+  {\Huge\textbf{Mahdi Amoozadeh}}\\[2pt]
+  {\large\textbf{\textcolor{mygray}{Front-End Developer}}}\\[4pt]
+  {\small
+    +98-9125090894 \;|\;
+    \href{mailto:mahdi.am6@gmail.com}{mahdi.am6@gmail.com}
+  }\\[2pt]
+  {\small
+    \socialicon{\faLinkedin}\;
+    \href{https://ir.linkedin.com/in/mahdi-amoozadeh-445a58b4}{LinkedIn}
+    \;|\;
+    \socialicon{\faGithub}\;
+    \href{https://github.com/Mapl6}{GitHub}
+    \;|\;
+    Tehran, Iran
+  }
 \end{center}
 
-\vspace{-4mm}
+\vspace{2mm}
 
-\section{\textbf{ABOUT ME}}
-\vspace{1mm}
-\small{
-As a Frontend Developer with over two years of experience building responsive, user-friendly web applications. I started coding as a hobby in 2016, and in 2022, I began focusing on JavaScript and frontend development.
+% ---------- About ----------
+\section{About}
+{\small\setlength{\parskip}{5pt}\linespread{1.2}\selectfont
+Frontend Developer with 3+ years of experience building production web applications with React, Next.js, TypeScript, and Tailwind CSS.
+Experienced in developing reusable UI systems, integrating REST APIs, managing application state with Redux and Zustand, and building responsive, maintainable interfaces.
 
-Since then, I’ve worked on many freelance projects. I care a lot about clean UI, good performance, and simple user experiences.
+Currently working at Tavana, contributing to production applications in a collaborative development environment with a focus on performance, usability, and scalable frontend architecture.
+\par}
 
-Right now, I’m working at Tavana, where I’ve grown as both a developer and a teammate—going deeper into the React ecosystem and getting better at using Next.js, Tailwind, and team workflows.
-}
-
-\vspace{6mm}
-\section{\textbf{Experience}}
-\vspace{-0.4mm}
+% ---------- Experience ----------
+\section{Experience}
 \resumeSubHeadingListStart
 
 \resumeSubheading
-    {{Tavana [\href{https://tavanastore.ir/}{\faIcon{globe}}]}}{Tehran, Iran}
-    {Frontend Developer}{November 2024 – Present}
-    \vspace{2mm}
-    \resumeItemListStart
-        \item Got deeper experience with Next.js and modern frontend tools.
-        \item Helped build and improve fast, scalable components for an online store.
-                \item Improved my teamwork skills and learned to work better in a team environment.
-    \resumeItemListEnd
-    \vspace{2mm}
+  {Tavana [\href{https://tavanastore.ir/}{\faIcon{globe}}]}{Tehran, Iran}
+  {Frontend Developer}{November 2024 -- Present}
+  \resumeItemListStart
+    \item Developed a multi-vendor e-commerce platform (Tavana Store) with admin and seller dashboards using Next.js 14, Tailwind CSS, and i18n.
+    \item Refactored the storefront for better performance, maintainability, and overall user experience.
+    \item Implemented internationalization (i18n) to support multiple languages and improve accessibility for global users.
+    \item Built responsive, mobile-friendly UI components and sliders with Swiper.js and Tailwind CSS.
+    \item Collaborated with the team to deliver scalable frontend features in a production environment.
+  \resumeItemListEnd
 
 \resumeSubheading
-  {Tavana Store (E-commerce Platform):}{} 
-  {Tools: Next.js 14, Tailwind CSS, i18n }{Tavana}
-  \item Developed a multi-vendor e-commerce platform with comprehensive admin and seller dashboards.
-  \item Refactored the  website  for better performance, maintainability, and overall user experience.
-  \item Implemented internationalization (i18n) to support multiple languages and improve accessibility for global users.
-  \item Integrated Swiper.js and Tailwind CSS to build responsive, mobile-friendly sliders and elevate UI/UX design.
-
-
-
-    \vspace{10mm}
-
-  \resumeSubheading
-      {{Bluprint [\href{https://bluprint.ir/}{\faIcon{globe}}]}}{Tehran, Iran}
-      {Frontend Developer}{March 2024 - November 2024}
-      \resumeItemListStart
-      \vspace{6mm}
-During my time at this company, I faced challenges like learning \textbf{React Native}, \textbf{Redux}, and \textbf{Zustand}, and successfully completed \textbf{five projects}, with three currently active. Key projects include:
-      \resumeItemListEnd 
-      \vspace{2mm}
-\resumeSubheading  {Pax Cast:}{}
-{tools:}{Bluprint} 
-  \item  A platform for medical imaging centers where patients can view images and reports, and centers can manage their services easily.
-
-\resumeSubheading {Marvel Quiz:} {}
-{tools:}{Bluprint} 
-
-  \item A quiz platform where users can browse and buy exams, upload PDFs, add questions, and review answers. Exams can have multiple booklets with online answer sheets.
-
-
-\resumeSubheading {One Coach:} {}
-{tools:}{Bluprint} 
-
-  \item A web app for coaches and trainees. Coaches can manage training sessions, and trainees can view exercises, watch videos, and mark sessions complete.
-
-
-\resumeSubheading {VPN Client:} {}
-{tools:}{Bluprint} 
-
-  \item A mobile app for secure VPN connections using manual settings or QR codes.
-
-
-\resumeSubheading {Trust Pilot (Iranian Version):}{}
-{tools:}{Bluprint} 
-\item A platform to find, review, and rate businesses, and read others’ reviews.
-
- \vspace{6mm}
-These projects helped me improve my technical skills .
-
-
-\vspace{6mm}
-
-\section{\textbf{Freelance Projects}}
-\vspace{-0.4mm}
-
+  {Bluprint [\href{https://bluprint.ir/}{\faIcon{globe}}]}{Tehran, Iran}
+  {Frontend Developer}{March 2024 -- November 2024}
+  \resumeItemListStart
+    \item Developed and maintained web applications using React, Redux, Zustand, and modern frontend technologies.
+    \item Built responsive and reusable UI components for multiple production projects.
+    \item Integrated frontend applications with backend REST APIs and implemented data-driven interfaces.
+    \item Collaborated with the development team to deliver features and resolve frontend issues across multiple projects.
+    \item Contributed to three active production projects, including:
+      \begin{itemize}[leftmargin=*, labelsep=1mm, itemsep=0.6mm, topsep=1mm, parsep=0pt]
+        \item \textbf{Pax Cast} --- Medical imaging platform that enables patients to access medical images and reports while allowing imaging centers to manage their services.
+        \item \textbf{Marvel Quiz} --- Online examination platform where users can browse and purchase exams, manage questions and PDF materials, and complete multi-booklet exams with online answer sheets.
+        \item \textbf{One Coach} --- Training management platform for coaches and trainees, including exercise management, instructional videos, training sessions, and progress tracking.
+      \end{itemize}
+  \resumeItemListEnd
 
 \resumeSubheading
-     {Parsian Refinery [\href{http://parsianrefinery.com}{\faIcon{globe}}]}{2024}
-     {Tools: Next.js, Framer Motion, Tailwind CSS, Swiper.js}
-     {}
-
- \resumeSubheading
-  {Vitrine [\href{https://vitrin.semnan.ac.ir}{\faIcon{globe}}]}{2022}
-  {Tools: React.js, Swiper.js}
-{}
-\resumeSubheading
-    {Satyar Sanat Novin Oxin [\href{https://ssnoc.com/}{\faIcon{globe}}]}{2023}
-    {Tools: TypeScript, Next.js, Tailwind CSS, Framer Motion, i18next}
-    {}
- \resumeSubheading
-  {Invoice Generator (Hesabemoon) [\href{https://hesabemoonv2.vercel.app/home}{\faIcon{globe}}]}{2022}
-  {Tools: Next.js, Framer Motion}
-{}
- \resumeSubheading
-  {Print House [\href{https://print-house.vercel.app}{\faIcon{globe}}]}{2023}
-  {Tools: Next.js, Framer Motion, Swiper.js}
-  {}
- \resumeSubheading
-  {Phishing Detector Chrome Extension}{2023}
-  {Tools: HTML, CSS}
-  {}
-\resumeItemListStart
-  \item Developed a Chrome extension to assess phishing risk on opened websites
-  \item Implemented visual indicators and alerts to warn users of potential threats
-  \item Designed the extension with HTML and CSS for a user-friendly interface
-\resumeItemListEnd
-
- \resumeSubheading
-  {DNS Dashboard}{2023}
-  {Tools: react, pure CSS}
-  {}
-\resumeItemListStart
-  \item Developed a comprehensive dashboard to monitor and manage DNS settings
-  \item Created interactive features for managing DNS records, enhancing user control
-  \item Utilized a clean, intuitive layout for efficient data visualization
-\resumeItemListEnd
+  {Freelance}{Remote}
+  {Frontend Developer}{2022 -- 2024}
+  \resumeItemListStart
+    \item Developed responsive web applications for multiple clients using React, Next.js, and TypeScript.
+    \item Built reusable UI components and integrated REST APIs.
+    \item Developed admin dashboards and data-driven interfaces.
+    \item Collaborated directly with clients to translate requirements into production-ready web applications.
+  \resumeItemListEnd
 
 \resumeSubHeadingListEnd
-\section{\textbf{Education}}
-\vspace{-0.4mm}
-\begin{itemize}[left=0mm, label={}]
-    \item \textbf{Semnan University}, Semnan, Iran \\
-    Bachelor’s Degree in Computer Science \hfill 2017 – 2022
-    \vspace{2mm}
-    \item \textbf{Azad University}, Tehran, Iran \\
-    Master’s Degree in Software Engineering \hfill 2023 – Current
-\end{itemize}
 
-\section{\textbf{Skills}}
-\vspace{-0.4mm}
+% ---------- Education ----------
+\section{Education}
+\resumeSubHeadingListStart
+\resumeSubheading
+  {Azad University}{Tehran, Iran}
+  {Master's Degree in Software Engineering}{2023 -- Current}
+\resumeSubheading
+  {Semnan University}{Semnan, Iran}
+  {Bachelor's Degree in Computer Science}{2017 -- 2022}
+\resumeSubHeadingListEnd
+
+% ---------- Skills ----------
+\section{Skills}
 \resumeHeadingSkillStart
-
-\resumeSubItem{Fundamentals:}
-  {HTML, CSS, JavaScript, Responsive Design}
-\resumeSubItem{Frontend Frameworks:}
-  {Next.js,React.js}
-\resumeSubItem{State Management:}
-  {Zustand,Redux, Redux Toolkit, Redux DevTools}
-\resumeSubItem{CSS Frameworks:}
-  {Tailwind CSS}
-\resumeSubItem{Version Control:}
-  {Git, GitHub, GitLab}
-\resumeSubItem{Other Tools \& Libraries:}
-  {REST API, NextUI, Material UI, i18next, Framer Motion,Swiper js,React Hook Form}
-
+\resumeSubItem{Fundamentals:}{HTML, CSS, JavaScript, Responsive Design}
+\resumeSubItem{Frontend Frameworks:}{Next.js, React.js}
+\resumeSubItem{State Management:}{Zustand, Redux, Redux Toolkit, Redux DevTools}
+\resumeSubItem{CSS Frameworks:}{Tailwind CSS}
+\resumeSubItem{Version Control:}{Git, GitHub, GitLab}
+\resumeSubItem{Other Tools \& Libraries:}{REST API, NextUI, Material UI, i18next, Framer Motion, Swiper.js, React Hook Form}
 \resumeHeadingSkillEnd
 
-\section{\textbf{Certifications}}
-\vspace{-0.2mm}
+% ---------- Certifications ----------
+\section{Certifications}
 \resumeSubHeadingListStart
 \resumePOR
-    {Quera Front-End Bootcamp}
-    {}
-{{[\href{https://quera.org/media/public/quera_certificate/0669e232806f46ea83cdae4217677549.jpg}{\faIcon{globe}}]}}
+  {Quera Front-End Bootcamp}
+  {}
+  {[\href{https://quera.org/media/public/quera_certificate/0669e232806f46ea83cdae4217677549.jpg}{\faIcon{globe}}]}
 \resumeSubHeadingListEnd
 
+% ---------- Languages ----------
+\section{Languages}
+\textbf{Persian} --- Native \\[1pt]
+\textbf{English} --- Intermediate (B1--B2)
 
-
-\section{\textbf{Languages}}
-\vspace{-0.4mm}
-
-\textbf{Mother Tongue:} Persian \\
-\begin{itemize}
-  \item \textbf{English:} Independent User \begin{itemize}
-      \item Listening: B1
-      \item Reading: B2
-      \item Writing: B1
-      \item Spoken Production: B1
-      \item Spoken Interaction: B1 \end{itemize}
-\end{itemize}
-
-\vspace{-4mm}
-\end{document}chat
+\end{document}
