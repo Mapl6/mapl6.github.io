@@ -1,0 +1,36 @@
+name: Build CV PDF
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "cv/**/*.tex"
+      - ".github/workflows/build-cv.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Compile LaTeX
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: mahdicv.tex
+          working_directory: cv
+          # fontawesome5, tcolorbox, cfr-lm need a full TeX Live
+          scheme: full
+
+      - name: Place PDF in repo root
+        run: cp cv/mahdicv.pdf mahdicv.pdf
+
+      - name: Commit PDF
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore: rebuild CV PDF"
+          file_pattern: mahdicv.pdf
