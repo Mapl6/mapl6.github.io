@@ -2,7 +2,9 @@
 
 % Packages
 \usepackage[T1]{fontenc}
-\usepackage{cfr-lm}
+\usepackage[scaled=.92]{tgheros}
+\renewcommand{\familydefault}{\sfdefault}
+\usepackage{microtype}
 \usepackage{geometry}
 \usepackage[empty]{fullpage}
 \usepackage{titlesec}
@@ -40,7 +42,7 @@
 
 % Section titles
 \titleformat{\section}{
-  \vspace{6pt}\scshape\raggedright\large\bfseries
+  \vspace{6pt}\raggedright\large\bfseries
 }{}{0em}{}[\vspace{1pt}{\color{black}\titlerule}\vspace{5pt}]
 \titlespacing*{\section}{0pt}{2pt}{0pt}
 
@@ -90,7 +92,6 @@
 \input{cv-content}
 
 \begin{document}
-\fontfamily{ppl}\selectfont
 
 % ---------- Header ----------
 \begin{center}
