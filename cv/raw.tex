@@ -1,9 +1,8 @@
-\documentclass[a4paper,11pt]{article}
+\documentclass[a4paper,10pt]{article}
 
 % Packages
 \usepackage[T1]{fontenc}
-\usepackage[scale=.95]{tgheros}
-\renewcommand{\familydefault}{\sfdefault}
+\usepackage[sfdefault]{inter}
 \usepackage{microtype}
 \usepackage{geometry}
 \usepackage[empty]{fullpage}
@@ -13,7 +12,7 @@
 \usepackage{tabularx}
 \usepackage{graphicx}
 \usepackage{dashrule}
-\usepackage{tikz}
+\usepackage{fontawesome}
 \usepackage[dvipsnames]{xcolor}
 \usepackage[hidelinks]{hyperref}
 
@@ -21,9 +20,21 @@
 \definecolor{titleblue}{HTML}{3C6DF0}
 \definecolor{darkblue}{HTML}{3C6DF0}
 \definecolor{bodygray}{HTML}{3E3E3E}
-\definecolor{headinggray}{HTML}{3E3E3E}
-\definecolor{metagray}{HTML}{8A8A8A}
+\definecolor{headingnavy}{HTML}{19273C}
+\definecolor{metagray}{HTML}{3E3E3E}
 \definecolor{linegray}{HTML}{D4D4D4}
+
+% PDF type sizes (Enhancv)
+\newcommand{\namefont}{\intermedium\fontsize{24.1pt}{28pt}\selectfont}
+\newcommand{\rolefont}{\intermedium\fontsize{12.05pt}{15pt}\selectfont}
+\newcommand{\sectionfont}{\intermedium\fontsize{12.69pt}{16pt}\selectfont}
+\newcommand{\jobtitlefont}{\intermedium\fontsize{10.78pt}{14pt}\selectfont}
+\newcommand{\companyfont}{\intersemibold\fontsize{9.51pt}{12pt}\selectfont}
+\newcommand{\bodyfont}{\fontsize{8.25pt}{11.2pt}\selectfont}
+\newcommand{\contactfont}{\bfseries\fontsize{7.61pt}{10pt}\selectfont}
+\newcommand{\metafont}{\fontsize{7.61pt}{10pt}\selectfont}
+\newcommand{\skillcatfont}{\intermedium\fontsize{9.51pt}{12pt}\selectfont}
+\newcommand{\skilltagfont}{\bfseries\fontsize{8.88pt}{12pt}\selectfont}
 
 % Page
 \pagestyle{fancy}
@@ -48,48 +59,14 @@
 
 % Section titles
 \titleformat{\section}{
-  \vspace{8pt}\raggedright\large\bfseries\color{headinggray}
-}{}{0em}{\MakeUppercase}[\vspace{3pt}{\color{headinggray}\titlerule[1.2pt]}\vspace{6pt}]
+  \vspace{8pt}\raggedright\sectionfont\color{headingnavy}
+}{}{0em}{\MakeUppercase}[\vspace{3pt}{\color{headingnavy}\titlerule[1.2pt]}\vspace{6pt}]
 \titlespacing*{\section}{0pt}{4pt}{0pt}
 
 \newcommand{\headergap}{\hspace{0.4em}}
-
-% Line icons (header = blue, metadata = gray)
-\newcommand{\iconphone}[1][titleblue]{%
-  \begin{tikzpicture}[baseline=-0.08em, x=0.078em, y=0.078em]
-    \draw[#1, line width=0.7pt, rounded corners=1.15pt]
-      (1.0,1.4) -- (2.6,3.2) -- (3.7,2.2) -- (7.2,5.7) -- (6.2,6.8) -- (8.0,8.4);
-  \end{tikzpicture}%
-}
-\newcommand{\iconmail}[1][titleblue]{%
-  \begin{tikzpicture}[baseline=-0.08em, x=0.088em, y=0.088em]
-    \draw[#1, line width=0.65pt, rounded corners=0.4pt] (0.3,1.2) rectangle (10.0,8.4);
-    \draw[#1, line width=0.65pt] (0.3,8.4) -- (5.15,4.5) -- (10.0,8.4);
-  \end{tikzpicture}%
-}
-\newcommand{\iconlinkedin}[1][titleblue]{%
-  \begin{tikzpicture}[baseline=-0.08em, x=0.088em, y=0.088em]
-    \draw[#1, line width=0.7pt, rounded corners=1.15pt] (0.25,0.25) rectangle (9.35,9.35);
-    \node[#1, inner sep=0, font=\bfseries\fontsize{3.9pt}{3.9pt}\selectfont] at (4.8,4.55) {in};
-  \end{tikzpicture}%
-}
-\newcommand{\iconcal}{%
-  \begin{tikzpicture}[baseline=-0.12em, x=0.092em, y=0.092em]
-    \draw[metagray, line width=0.65pt, rounded corners=0.35pt]
-      (0.5,0.2) rectangle (9.6,8.0);
-    \draw[metagray, line width=0.65pt] (0.5,5.9) -- (9.6,5.9);
-    \draw[metagray, line width=0.7pt] (2.6,9.4) -- (2.6,5.2);
-    \draw[metagray, line width=0.7pt] (7.5,9.4) -- (7.5,5.2);
-  \end{tikzpicture}%
-}
-\newcommand{\iconpin}[1][metagray]{%
-  \begin{tikzpicture}[baseline=-0.12em, x=0.092em, y=0.092em]
-    \draw[#1, line width=0.65pt, rounded corners=0.2pt]
-      (4.6,9.0) .. controls (1.4,9.0) and (1.15,5.5) .. (4.6,0.2)
-      .. controls (8.05,5.5) and (7.8,9.0) .. (4.6,9.0);
-    \draw[#1, line width=0.65pt] (4.6,7.35) circle (1.15);
-  \end{tikzpicture}%
-}
+\newcommand{\headericon}[1]{\textcolor{titleblue}{\raisebox{-0.08em}{\fontsize{7.2pt}{7.2pt}\selectfont #1}}}
+\newcommand{\phoneicon}{\textcolor{titleblue}{\raisebox{-0.05em}{\fontsize{6pt}{6pt}\selectfont\faPhone}}}
+\newcommand{\metaicon}[1]{\textcolor{metagray}{\raisebox{-0.08em}{\fontsize{7pt}{7pt}\selectfont #1}}}
 
 \newcommand{\jobsep}{%
   \par\vspace{2.8mm}%
@@ -99,23 +76,23 @@
 
 \newcommand{\resumeSubheading}[4]{%
   \item[]
-  {\normalsize\textbf{\color{headinggray}#3}}\\[2pt]
+  {\jobtitlefont\color{headingnavy}#3}\\[2pt]
   \begin{tabular*}{\textwidth}{@{}l@{\extracolsep{\fill}}r@{}}
-    \textbf{\textcolor{titleblue}{#1}} &
-    {\footnotesize\textcolor{metagray}{%
-      \iconcal\,#4
+    {\companyfont\textcolor{titleblue}{#1}} &
+    {\metafont\textcolor{metagray}{%
+      \metaicon{\faCalendar}\,#4
       \hspace{1.15em}%
-      \iconpin\,#2}}
+      \metaicon{\faMapMarker}\,#2}}
   \end{tabular*}%
 }
 
 \newcommand{\resumeSubItem}[2]{%
-  {\normalsize\textbf{\textcolor{titleblue}{#1}}}\\[3.5pt]
-  {\normalsize\color{bodygray}#2}%
+  {\skillcatfont\textcolor{titleblue}{#1}}\\[3.5pt]
+  {\skilltagfont\color{bodygray}#2}%
 }
 
 \newcommand{\skillsep}{\hspace{1.15em}}
-\newcommand{\skilltag}[1]{\textbf{\color{headinggray}\underline{#1}}}
+\newcommand{\skilltag}[1]{\underline{#1}}
 
 \newcommand{\resumePOR}[3]{%
   \item[]
@@ -136,18 +113,19 @@
 \newcommand{\resumeItemListEnd}{\end{itemize}}
 
 \begin{document}
+\bodyfont
 
 % ---------- Header ----------
-\noindent{\fontsize{26}{30}\selectfont\textbf{\color{headinggray}Mahdi Amoozadeh}}\\[3pt]
-{\large\textbf{\textcolor{titleblue}{Front-End Developer}}}\\[8pt]
-{\small\color{bodygray}
-  \iconphone\headergap +98-9125090894
+\noindent{\namefont\color{headingnavy}Mahdi Amoozadeh}\\[3pt]
+{\rolefont\textcolor{titleblue}{Front-End Developer}}\\[8pt]
+{\contactfont\color{bodygray}
+  \phoneicon\headergap +98-9125090894
   \hspace{1.25em}%
-  \iconmail\headergap \href{mailto:mahdi.am6@gmail.com}{\textcolor{bodygray}{mahdi.am6@gmail.com}}
+  \headericon{\faEnvelope}\headergap \href{mailto:mahdi.am6@gmail.com}{\textcolor{bodygray}{mahdi.am6@gmail.com}}
   \hspace{1.25em}%
-  \iconlinkedin\headergap \href{https://ir.linkedin.com/in/mahdi-amoozadeh-445a58b4}{\textcolor{bodygray}{LinkedIn}}
+  \headericon{\faLinkedin}\headergap \href{https://ir.linkedin.com/in/mahdi-amoozadeh-445a58b4}{\textcolor{bodygray}{LinkedIn}}
   \hspace{1.25em}%
-  \iconpin[titleblue]\headergap Tehran, Iran
+  \headericon{\faMapMarker}\headergap Tehran, Iran
 }
 
 \vspace{3mm}
