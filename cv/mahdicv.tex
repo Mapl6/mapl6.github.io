@@ -14,7 +14,6 @@
 \usepackage{graphicx}
 \usepackage{dashrule}
 \usepackage{tikz}
-\usepackage{fontawesome5}
 \usepackage[dvipsnames]{xcolor}
 \usepackage[hidelinks]{hyperref}
 
@@ -53,12 +52,27 @@
 }{}{0em}{\MakeUppercase}[\vspace{3pt}{\color{headinggray}\titlerule[1.2pt]}\vspace{6pt}]
 \titlespacing*{\section}{0pt}{4pt}{0pt}
 
-% Header icons (blue), contact text is body gray
-\newcommand{\cvicon}[1]{\textcolor{titleblue}{\raisebox{-0.1em}{\resizebox{!}{0.78em}{#1}}}}
-\newcommand{\cviconphone}[1]{\textcolor{titleblue}{\raisebox{-0.08em}{\resizebox{!}{0.62em}{#1}}}}
 \newcommand{\headergap}{\hspace{0.4em}}
 
-% Body metadata icons (gray line icons)
+% Line icons (header = blue, metadata = gray)
+\newcommand{\iconphone}[1][titleblue]{%
+  \begin{tikzpicture}[baseline=-0.08em, x=0.078em, y=0.078em]
+    \draw[#1, line width=0.7pt, rounded corners=1.15pt]
+      (1.0,1.4) -- (2.6,3.2) -- (3.7,2.2) -- (7.2,5.7) -- (6.2,6.8) -- (8.0,8.4);
+  \end{tikzpicture}%
+}
+\newcommand{\iconmail}[1][titleblue]{%
+  \begin{tikzpicture}[baseline=-0.08em, x=0.088em, y=0.088em]
+    \draw[#1, line width=0.65pt, rounded corners=0.4pt] (0.3,1.2) rectangle (10.0,8.4);
+    \draw[#1, line width=0.65pt] (0.3,8.4) -- (5.15,4.5) -- (10.0,8.4);
+  \end{tikzpicture}%
+}
+\newcommand{\iconlinkedin}[1][titleblue]{%
+  \begin{tikzpicture}[baseline=-0.08em, x=0.088em, y=0.088em]
+    \draw[#1, line width=0.7pt, rounded corners=1.15pt] (0.25,0.25) rectangle (9.35,9.35);
+    \node[#1, inner sep=0, font=\bfseries\fontsize{3.9pt}{3.9pt}\selectfont] at (4.8,4.55) {in};
+  \end{tikzpicture}%
+}
 \newcommand{\iconcal}{%
   \begin{tikzpicture}[baseline=-0.12em, x=0.092em, y=0.092em]
     \draw[metagray, line width=0.65pt, rounded corners=0.35pt]
@@ -68,12 +82,12 @@
     \draw[metagray, line width=0.7pt] (7.5,9.4) -- (7.5,5.2);
   \end{tikzpicture}%
 }
-\newcommand{\iconpin}{%
+\newcommand{\iconpin}[1][metagray]{%
   \begin{tikzpicture}[baseline=-0.12em, x=0.092em, y=0.092em]
-    \draw[metagray, line width=0.65pt, rounded corners=0.2pt]
+    \draw[#1, line width=0.65pt, rounded corners=0.2pt]
       (4.6,9.0) .. controls (1.4,9.0) and (1.15,5.5) .. (4.6,0.2)
       .. controls (8.05,5.5) and (7.8,9.0) .. (4.6,9.0);
-    \draw[metagray, line width=0.65pt] (4.6,7.35) circle (1.15);
+    \draw[#1, line width=0.65pt] (4.6,7.35) circle (1.15);
   \end{tikzpicture}%
 }
 
@@ -130,13 +144,13 @@
 \noindent{\fontsize{26}{30}\selectfont\textbf{\color{headinggray}\cvName}}\\[3pt]
 {\large\textbf{\textcolor{titleblue}{\cvRole}}}\\[8pt]
 {\small\color{bodygray}
-  \cviconphone{\faPhone}\headergap \cvPhone
+  \iconphone\headergap \cvPhone
   \hspace{1.25em}%
-  \cvicon{\faEnvelope}\headergap \href{mailto:\cvEmail}{\textcolor{bodygray}{\cvEmail}}
+  \iconmail\headergap \href{mailto:\cvEmail}{\textcolor{bodygray}{\cvEmail}}
   \hspace{1.25em}%
-  \cvicon{\faLinkedinIn}\headergap \href{\cvLinkedInUrl}{\textcolor{bodygray}{\cvLinkedInLabel}}
+  \iconlinkedin\headergap \href{\cvLinkedInUrl}{\textcolor{bodygray}{\cvLinkedInLabel}}
   \hspace{1.25em}%
-  \cvicon{\faMapMarkerAlt}\headergap \cvLocation
+  \iconpin[titleblue]\headergap \cvLocation
 }
 
 \vspace{3mm}
