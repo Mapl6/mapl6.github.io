@@ -2,7 +2,7 @@
 
 % Packages
 \usepackage[T1]{fontenc}
-\usepackage[scale=.92]{tgheros}
+\usepackage[scale=.95]{tgheros}
 \renewcommand{\familydefault}{\sfdefault}
 \usepackage{microtype}
 \usepackage{geometry}
@@ -12,81 +12,114 @@
 \usepackage{fancyhdr}
 \usepackage{tabularx}
 \usepackage{graphicx}
+\usepackage{dashrule}
+\usepackage{tikz}
 \usepackage{fontawesome5}
 \usepackage[dvipsnames]{xcolor}
 \usepackage[hidelinks]{hyperref}
 
-% Colors
-\definecolor{darkblue}{RGB}{0,0,139}
-\definecolor{mygray}{gray}{0.45}
+% Colors from resume PDF
+\definecolor{titleblue}{HTML}{3C6DF0}
+\definecolor{darkblue}{HTML}{3C6DF0}
+\definecolor{bodygray}{HTML}{3E3E3E}
+\definecolor{headinggray}{HTML}{3E3E3E}
+\definecolor{metagray}{HTML}{8A8A8A}
+\definecolor{linegray}{HTML}{D4D4D4}
 
 % Page
 \pagestyle{fancy}
 \fancyhf{}
 \renewcommand{\headrulewidth}{0pt}
 \renewcommand{\footrulewidth}{0pt}
-\geometry{left=1.4cm, top=0.9cm, right=1.4cm, bottom=1cm}
+\geometry{left=1.6cm, top=1.2cm, right=1.6cm, bottom=1.2cm}
 \setlength{\footskip}{5pt}
 
 \hypersetup{
   colorlinks=true,
-  linkcolor=darkblue,
-  filecolor=darkblue,
-  urlcolor=darkblue,
+  linkcolor=titleblue,
+  filecolor=titleblue,
+  urlcolor=titleblue,
 }
 
 \urlstyle{same}
 \raggedright
 \setlength{\tabcolsep}{0in}
 \setlength{\parskip}{0pt}
+\color{bodygray}
 
 % Section titles
 \titleformat{\section}{
-  \vspace{6pt}\raggedright\large\bfseries
-}{}{0em}{}[\vspace{1pt}{\color{black}\titlerule}\vspace{5pt}]
-\titlespacing*{\section}{0pt}{2pt}{0pt}
+  \vspace{8pt}\raggedright\large\bfseries\color{headinggray}
+}{}{0em}{\MakeUppercase}[\vspace{3pt}{\color{headinggray}\titlerule[1.2pt]}\vspace{6pt}]
+\titlespacing*{\section}{0pt}{4pt}{0pt}
 
-% Resume helpers
+% Header icons (blue), contact text is body gray
+\newcommand{\cvicon}[1]{\textcolor{titleblue}{\raisebox{-0.1em}{\resizebox{!}{0.78em}{#1}}}}
+\newcommand{\cviconphone}[1]{\textcolor{titleblue}{\raisebox{-0.08em}{\resizebox{!}{0.62em}{#1}}}}
+\newcommand{\headergap}{\hspace{0.4em}}
+
+% Body metadata icons (gray line icons)
+\newcommand{\iconcal}{%
+  \begin{tikzpicture}[baseline=-0.12em, x=0.092em, y=0.092em]
+    \draw[metagray, line width=0.65pt, rounded corners=0.35pt]
+      (0.5,0.2) rectangle (9.6,8.0);
+    \draw[metagray, line width=0.65pt] (0.5,5.9) -- (9.6,5.9);
+    \draw[metagray, line width=0.7pt] (2.6,9.4) -- (2.6,5.2);
+    \draw[metagray, line width=0.7pt] (7.5,9.4) -- (7.5,5.2);
+  \end{tikzpicture}%
+}
+\newcommand{\iconpin}{%
+  \begin{tikzpicture}[baseline=-0.12em, x=0.092em, y=0.092em]
+    \draw[metagray, line width=0.65pt, rounded corners=0.2pt]
+      (4.6,9.0) .. controls (1.4,9.0) and (1.15,5.5) .. (4.6,0.2)
+      .. controls (8.05,5.5) and (7.8,9.0) .. (4.6,9.0);
+    \draw[metagray, line width=0.65pt] (4.6,7.35) circle (1.15);
+  \end{tikzpicture}%
+}
+
+\newcommand{\jobsep}{%
+  \par\vspace{2.8mm}%
+  \noindent\textcolor{linegray}{\hdashrule{\textwidth}{0.4pt}{1.4pt 1.6pt}}%
+  \par\vspace{2.8mm}%
+}
+
 \newcommand{\resumeSubheading}[4]{%
-  \vspace{1.5mm}\item
-  \begin{tabular*}{0.98\textwidth}[t]{l@{\extracolsep{\fill}}r}
-    \textbf{#1} & \textit{\footnotesize #4} \\
-    \textit{\footnotesize #3} & \footnotesize #2 \\
+  \item[]
+  {\normalsize\textbf{\color{headinggray}#3}}\\[2pt]
+  \begin{tabular*}{\textwidth}{@{}l@{\extracolsep{\fill}}r@{}}
+    \textbf{\textcolor{titleblue}{#1}} &
+    {\footnotesize\textcolor{metagray}{%
+      \iconcal\,#4
+      \hspace{1.15em}%
+      \iconpin\,#2}}
   \end{tabular*}%
-  \vspace{-1.5mm}
 }
 
 \newcommand{\resumeSubItem}[2]{%
-  \item \textbf{#1}{\hspace{0.5mm}#2}%
+  {\normalsize\textbf{\textcolor{titleblue}{#1}}}\\[3.5pt]
+  {\normalsize\color{bodygray}#2}%
 }
+
+\newcommand{\skillsep}{\hspace{1.15em}}
+\newcommand{\skilltag}[1]{\textbf{\color{headinggray}\underline{#1}}}
 
 \newcommand{\resumePOR}[3]{%
-  \vspace{0.5mm}\item
-  \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
-    \textbf{#1}\hspace{0.3mm}#2 & \textit{\small #3}
-  \end{tabular*}%
-  \vspace{-1mm}
+  \item[]
+  \textbf{#1}\hspace{0.3mm}#2\hfill\textit{\small #3}%
 }
 
-\renewcommand{\labelitemi}{$\vcenter{\hbox{\tiny$\bullet$}}$}
-\renewcommand{\labelitemii}{$\vcenter{\hbox{\tiny$\circ$}}$}
+\renewcommand{\labelitemi}{\color{bodygray}\textbullet}
+\renewcommand{\labelitemii}{\color{bodygray}\textbullet}
 
 \newcommand{\resumeSubHeadingListStart}{%
-  \begin{itemize}[leftmargin=*, labelsep=1mm, itemsep=3mm, topsep=1mm, parsep=0pt]%
+  \begin{itemize}[leftmargin=0pt, label={}, itemsep=0pt, topsep=0pt, parsep=0pt]%
 }
-\newcommand{\resumeSubHeadingListEnd}{\end{itemize}\vspace{1mm}}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
 
 \newcommand{\resumeItemListStart}{%
-  \begin{itemize}[leftmargin=*, labelsep=1mm, itemsep=0.8mm, topsep=1.5mm, parsep=0pt]%
+  \begin{itemize}[leftmargin=1.4em, labelsep=0.6em, itemsep=1.1mm, topsep=2.2mm, parsep=0pt]%
 }
 \newcommand{\resumeItemListEnd}{\end{itemize}}
-
-\newcommand{\resumeHeadingSkillStart}{%
-  \begin{itemize}[leftmargin=*, itemsep=1.2mm, topsep=1mm, parsep=0pt, rightmargin=1ex]%
-}
-\newcommand{\resumeHeadingSkillEnd}{\end{itemize}}
-
-\newcommand{\socialicon}[1]{\raisebox{-0.05em}{\resizebox{!}{1em}{#1}}}
 
 % Load editable content (edit cv-content.tex instead of this file)
 \input{cv-content}
@@ -94,49 +127,48 @@
 \begin{document}
 
 % ---------- Header ----------
-\begin{center}
-  {\Huge\textbf{\cvName}}\\[2pt]
-  {\large\textbf{\textcolor{mygray}{\cvRole}}}\\[4pt]
-  {\small
-    \cvPhone{} \;|\;
-    \href{mailto:\cvEmail}{\cvEmail}
-  }\\[2pt]
-  {\small
-    \socialicon{\faLinkedin}\;
-    \href{\cvLinkedInUrl}{\cvLinkedInLabel}
-    \;|\;
-    \socialicon{\faGithub}\;
-    \href{\cvGithubUrl}{\cvGithubLabel}
-    \;|\;
-    \cvLocation
-  }
-\end{center}
+\noindent{\fontsize{26}{30}\selectfont\textbf{\color{headinggray}\cvName}}\\[3pt]
+{\large\textbf{\textcolor{titleblue}{\cvRole}}}\\[8pt]
+{\small\color{bodygray}
+  \cviconphone{\faPhone}\headergap \cvPhone
+  \hspace{1.25em}%
+  \cvicon{\faEnvelope}\headergap \href{mailto:\cvEmail}{\textcolor{bodygray}{\cvEmail}}
+  \hspace{1.25em}%
+  \cvicon{\faLinkedinIn}\headergap \href{\cvLinkedInUrl}{\textcolor{bodygray}{\cvLinkedInLabel}}
+  \hspace{1.25em}%
+  \cvicon{\faMapMarkerAlt}\headergap \cvLocation
+}
 
-\vspace{2mm}
+\vspace{3mm}
 
-% ---------- About ----------
-\section{About}
-{\small\setlength{\parskip}{5pt}\linespread{1.2}\selectfont
+% ---------- Summary ----------
+\section{Summary}
+\setlength{\parskip}{6pt}
+\color{bodygray}
 \cvAbout
-\par}
+\setlength{\parskip}{0pt}
 
 % ---------- Experience ----------
 \section{Experience}
 \resumeSubHeadingListStart
 
 \resumeSubheading
-  {\cvTavanaName{} [\href{\cvTavanaUrl}{\faIcon{globe}}]}{\cvTavanaLocation}
+  {\href{\cvTavanaUrl}{\cvTavanaName}}{\cvTavanaLocation}
   {\cvTavanaTitle}{\cvTavanaDates}
   \resumeItemListStart
     \cvTavanaBullets
   \resumeItemListEnd
 
+\jobsep
+
 \resumeSubheading
-  {\cvBluprintName{} [\href{\cvBluprintUrl}{\faIcon{globe}}]}{\cvBluprintLocation}
+  {\href{\cvBluprintUrl}{\cvBluprintName}}{\cvBluprintLocation}
   {\cvBluprintTitle}{\cvBluprintDates}
   \resumeItemListStart
     \cvBluprintBullets
   \resumeItemListEnd
+
+\jobsep
 
 \resumeSubheading
   {\cvFreelanceCompany}{\cvFreelanceLocation}
@@ -153,6 +185,7 @@
 \resumeSubheading
   {\cvEduOneSchool}{\cvEduOneLocation}
   {\cvEduOneDegree}{\cvEduOneDates}
+\jobsep
 \resumeSubheading
   {\cvEduTwoSchool}{\cvEduTwoLocation}
   {\cvEduTwoDegree}{\cvEduTwoDates}
@@ -160,27 +193,30 @@
 
 % ---------- Skills ----------
 \section{Skills}
-\resumeHeadingSkillStart
-\resumeSubItem{Fundamentals:}{\cvSkillFundamentals}
-\resumeSubItem{Frontend Frameworks:}{\cvSkillFrameworks}
-\resumeSubItem{State Management:}{\cvSkillState}
-\resumeSubItem{CSS Frameworks:}{\cvSkillCss}
-\resumeSubItem{Version Control:}{\cvSkillVersionControl}
-\resumeSubItem{Other Tools \& Libraries:}{\cvSkillOther}
-\resumeHeadingSkillEnd
+\resumeSubItem{Fundamentals}{\cvSkillFundamentals}
+\jobsep
+\resumeSubItem{Frontend Frameworks}{\cvSkillFrameworks}
+\jobsep
+\resumeSubItem{State Management}{\cvSkillState}
+\jobsep
+\resumeSubItem{CSS Frameworks}{\cvSkillCss}
+\jobsep
+\resumeSubItem{Version Control}{\cvSkillVersionControl}
+\jobsep
+\resumeSubItem{Other Tools \& Libraries}{\cvSkillOther}
 
 % ---------- Certifications ----------
 \section{Certifications}
 \resumeSubHeadingListStart
 \resumePOR
-  {\cvCertName}
+  {\href{\cvCertUrl}{\cvCertName}}
   {}
-  {[\href{\cvCertUrl}{\faIcon{globe}}]}
+  {}
 \resumeSubHeadingListEnd
 
 % ---------- Languages ----------
 \section{Languages}
-\textbf{\cvMotherTongue} --- \cvMotherTongueLevel \\[1pt]
+\textbf{\cvMotherTongue} --- \cvMotherTongueLevel \\[2pt]
 \textbf{English} --- \cvEnglishLevel{} (\cvEnglishRange)
 
 \end{document}
