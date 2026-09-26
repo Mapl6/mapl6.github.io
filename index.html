@@ -1,819 +1,776 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Mahdi Amoozadeh - Frontend Developer Portfolio | Interactive Terminal Portfolio showcasing web development skills and projects" />
-    <meta name="keywords" content="Mahdi Amoozadeh, Frontend Developer, Web Developer, Portfolio, React, JavaScript, Terminal Portfolio" />
+    <title>Mahdi Amoozadeh | Frontend Developer</title>
+    <meta name="description" content="Mahdi Amoozadeh — Frontend Developer in Tehran building production web apps with React, Next.js and TypeScript. Interactive terminal portfolio." />
+    <meta name="keywords" content="Mahdi Amoozadeh, Frontend Developer, React, Next.js, TypeScript, Tailwind CSS, Portfolio, Tehran" />
     <meta name="author" content="Mahdi Amoozadeh" />
-    <title>Mahdi Amoozadeh | Interactive Terminal Portfolio</title>
+    <meta name="theme-color" content="#1a1b26" />
+    <link rel="canonical" href="https://mapl6.github.io/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Mahdi Amoozadeh | Frontend Developer" />
+    <meta property="og:description" content="Frontend Developer building production web apps with React, Next.js and TypeScript." />
+    <meta property="og:url" content="https://mapl6.github.io/" />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%231a1b26'/><text x='50' y='68' font-size='52' text-anchor='middle' fill='%237aa2f7' font-family='monospace'>&gt;_</text></svg>" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
-        /* Theme Variables */
-        :root {
-            /* Tokyo Night theme */
+        /* ---------- Theme tokens (Tokyo Night / Tokyo Night Day) ---------- */
+        :root, [data-theme="dark"] {
+            --page-bg: linear-gradient(135deg, #1a1c2c, #13141c);
             --bg-primary: #1a1b26;
             --bg-secondary: #24283b;
+            --border: rgba(255, 255, 255, 0.08);
             --text-primary: #a9b1d6;
+            --text-muted: #565f89;
+            --text-strong: #c0caf5;
             --text-secondary: #7aa2f7;
-            --accent-primary: #bb9af7;
-            --accent-secondary: #9ece6a;
-            --error: #f7768e;
-            --warning: #e0af68;
+            --accent: #bb9af7;
             --success: #9ece6a;
-            --info: #7dcfff;
-            --terminal-shadow: rgba(0, 0, 0, 0.4);
-        }
-
-        /* Light theme */
-        [data-theme="light"] {
-            --bg-primary: #ffffff;
-            --bg-secondary: #f0f0f0;
-            --text-primary: #24283b;
-            --text-secondary: #2ac3de;
-            --accent-primary: #bb9af7;
-            --accent-secondary: #9ece6a;
-            --error: #f7768e;
             --warning: #e0af68;
-            --success: #73daca;
-            --info: #2ac3de;
-            --terminal-shadow: rgba(0, 0, 0, 0.1);
+            --error: #f7768e;
+            --info: #7dcfff;
+            --shadow: rgba(0, 0, 0, 0.45);
         }
 
-        /* Reset and Base Styles */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        [data-theme="light"] {
+            --page-bg: linear-gradient(135deg, #e6e7ed, #d5d6db);
+            --bg-primary: #f5f6fa;
+            --bg-secondary: #e1e2e7;
+            --border: rgba(0, 0, 0, 0.1);
+            --text-primary: #343b58;
+            --text-muted: #6c6e75;
+            --text-strong: #1a1b26;
+            --text-secondary: #2e5aa8;
+            --accent: #7847bd;
+            --success: #33635c;
+            --warning: #8f5e15;
+            --error: #b1374e;
+            --info: #0f4b6e;
+            --shadow: rgba(0, 0, 0, 0.15);
         }
 
-        html {
-            font-size: 16px;
-            scroll-behavior: smooth;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            background: linear-gradient(135deg, #1a1c2c, #161821);
+            background: var(--page-bg);
             min-height: 100vh;
+            min-height: 100dvh;
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
-            font-family: 'Fira Code', monospace;
+            font-family: 'Fira Code', ui-monospace, monospace;
             padding: 20px;
             color: var(--text-primary);
-            transition: background-color 0.3s ease;
         }
 
-        /* Terminal Container */
-        .container-terminal {
-            width: min(95vw, 900px);
-            height: min(90vh, 700px);
-            background-color: var(--bg-primary);
+        /* ---------- Terminal window ---------- */
+        .terminal {
+            width: min(95vw, 960px);
+            height: min(90vh, 720px);
+            background: var(--bg-primary);
+            border: 1px solid var(--border);
             border-radius: 12px;
+            box-shadow: 0 12px 40px var(--shadow);
             display: flex;
             flex-direction: column;
             overflow: hidden;
-            box-shadow: 0 8px 32px var(--terminal-shadow);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            animation: slideIn 0.5s ease-out;
-            position: relative;
-            transition: all 0.3s ease;
+            animation: slideIn 0.4s ease-out;
+            transition: width 0.25s ease, height 0.25s ease, border-radius 0.25s ease;
         }
+        .terminal.maximized { width: 100vw; height: 100vh; height: 100dvh; border-radius: 0; }
+        .terminal.minimized { height: 42px; }
+        .terminal.closed { display: none; }
 
-        /* Animations */
         @keyframes slideIn {
-            from {
-                transform: translateY(20px);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
+            from { transform: translateY(16px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
         }
 
-        @keyframes blink {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0; }
-        }
-
-        /* Terminal Top Bar */
-        .topbar-terminal {
-            width: 100%;
-            height: 40px;
-            display: flex;
-            justify-content: space-between;
-            background-color: var(--bg-secondary);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 0 16px;
+        .topbar {
+            flex: none;
+            height: 42px;
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
             align-items: center;
-            transition: background-color 0.3s ease;
-        }
-
-        /* Terminal Control Buttons */
-        .btns-terminal {
-            display: flex;
-            gap: 8px;
-        }
-
-        .btn {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            transition: all 0.2s ease;
-            cursor: pointer;
-            position: relative;
-        }
-
-        .btn:hover {
-            transform: scale(1.2);
-            filter: brightness(1.1);
-        }
-
-        .btn::after {
-            content: '';
-            position: absolute;
-            top: -4px;
-            left: -4px;
-            right: -4px;
-            bottom: -4px;
-            border-radius: 50%;
-            background: inherit;
-            opacity: 0.3;
-            transform: scale(0);
-            transition: transform 0.2s ease;
-        }
-
-        .btn:hover::after {
-            transform: scale(1);
-        }
-
-        .exit { background-color: #ff5f57; }
-        .minimize { background-color: #febc2e; }
-        .fullscreen { background-color: #28c841; }
-
-        /* Terminal Title Bar */
-        .title-topbar-terminal {
-            color: var(--text-primary);
-            font-size: 14px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            transition: color 0.3s ease;
-        }
-
-        .title-topbar-terminal svg {
-            width: 16px;
-            height: 16px;
-            fill: var(--text-secondary);
-            transition: fill 0.3s ease;
-        }
-
-        /* Terminal Body */
-        .body-terminal {
-            flex-grow: 1;
-            overflow-y: auto;
-            padding: 16px;
-            position: relative;
-            scroll-behavior: smooth;
-            transition: background-color 0.3s ease;
-        }
-
-        /* Scrollbar Styling */
-        .body-terminal::-webkit-scrollbar {
-            width: 8px;
-        }
-
-        .body-terminal::-webkit-scrollbar-track {
-            background: var(--bg-primary);
-        }
-
-        .body-terminal::-webkit-scrollbar-thumb {
+            padding: 0 14px;
             background: var(--bg-secondary);
-            border-radius: 4px;
+            border-bottom: 1px solid var(--border);
+            font-size: 13px;
+            user-select: none;
         }
-
-        .body-terminal::-webkit-scrollbar-thumb:hover {
-            background: var(--text-secondary);
+        .window-btns { display: flex; gap: 8px; }
+        .window-btn {
+            width: 13px; height: 13px;
+            border: none; border-radius: 50%;
+            cursor: pointer;
+            transition: transform 0.15s ease, filter 0.15s ease;
         }
+        .window-btn:hover, .window-btn:focus-visible { transform: scale(1.2); filter: brightness(1.1); }
+        .window-btn.close { background: #ff5f57; }
+        .window-btn.min { background: #febc2e; }
+        .window-btn.max { background: #28c841; }
+        .title { display: flex; align-items: center; gap: 8px; color: var(--text-primary); }
+        .title svg { width: 15px; height: 15px; fill: var(--text-secondary); }
+        .topbar-right { display: flex; justify-content: flex-end; align-items: center; gap: 12px; color: var(--text-muted); }
+        .icon-btn {
+            background: none; border: none; cursor: pointer;
+            color: var(--text-muted); font: inherit; font-size: 14px;
+            padding: 2px 4px; border-radius: 4px;
+        }
+        .icon-btn:hover, .icon-btn:focus-visible { color: var(--text-secondary); background: var(--bg-primary); }
 
-        /* Terminal Output */
-        #output {
+        /* ---------- Body ---------- */
+        .screen {
+            flex: 1;
+            min-height: 0;
+            overflow-y: auto;
+            padding: 16px 18px 8px;
             font-size: 14px;
             line-height: 1.6;
-            margin-bottom: 16px;
-            white-space: pre-wrap;
-            word-wrap: break-word;
+            cursor: text;
+        }
+        .screen::-webkit-scrollbar { width: 8px; }
+        .screen::-webkit-scrollbar-thumb { background: var(--bg-secondary); border-radius: 4px; }
+        .screen::-webkit-scrollbar-thumb:hover { background: var(--text-muted); }
+
+        .line { white-space: pre-wrap; word-break: break-word; min-height: 1.6em; }
+        .ascii {
+            color: var(--text-secondary);
+            white-space: pre;
+            line-height: 1.15;
+            font-size: clamp(7px, 1.9vw, 14px);
+            overflow-x: auto;
         }
 
-        /* Terminal Input Line */
-        .input-line {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            position: sticky;
-            bottom: 0;
-            background-color: var(--bg-primary);
-            padding: 8px 0;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            transition: background-color 0.3s ease;
-        }
+        .prompt { color: var(--success); font-weight: 500; }
+        .prompt .path { color: var(--text-secondary); }
+        .echo { color: var(--text-strong); }
 
+        .input-line { display: flex; align-items: center; gap: 8px; }
+        .input-line .prompt { flex: none; }
         .command-input {
-            background: transparent;
-            border: none;
-            color: var(--text-primary);
-            font-family: inherit;
-            font-size: 14px;
-            outline: none;
-            flex-grow: 1;
+            flex: 1; min-width: 0;
+            background: transparent; border: none; outline: none;
+            color: var(--text-strong);
+            font: inherit;
             caret-color: var(--text-secondary);
-            transition: color 0.3s ease;
         }
+        .command-input::placeholder { color: var(--text-muted); }
 
-        .prompt {
-            color: var(--text-secondary);
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
-
-        /* Command Suggestions */
-        .command-suggestions {
+        .quickbar {
+            flex: none;
             display: flex;
-            flex-wrap: wrap;
             gap: 8px;
-            margin-top: 8px;
+            padding: 10px 18px;
+            border-top: 1px solid var(--border);
+            overflow-x: auto;
+            scrollbar-width: none;
         }
-
-        .suggestion {
-            background-color: var(--bg-secondary);
+        .quickbar::-webkit-scrollbar { display: none; }
+        .chip {
+            flex: none;
+            background: var(--bg-secondary);
             color: var(--text-secondary);
-            padding: 4px 12px;
-            border-radius: 4px;
-            font-size: 12px;
-            cursor: pointer;
-            transition: all 0.2s ease;
             border: 1px solid transparent;
+            border-radius: 6px;
+            padding: 4px 12px;
+            font: inherit; font-size: 12px;
+            cursor: pointer;
+            transition: background 0.15s ease, color 0.15s ease, transform 0.15s ease;
         }
+        .chip:hover, .chip:focus-visible { background: var(--text-secondary); color: var(--bg-primary); transform: translateY(-1px); }
+        .chip.primary { border-color: var(--text-secondary); }
 
-        .suggestion:hover {
-            background-color: var(--text-secondary);
-            color: var(--bg-primary);
-            transform: translateY(-1px);
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-
-        /* Project Cards */
-        .project-card {
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
-            padding: 16px;
-            margin: 12px 0;
-            background: rgba(255, 255, 255, 0.05);
-            transition: all 0.3s ease;
-        }
-
-        .project-card:hover {
-            transform: translateX(8px);
-            border-color: var(--text-secondary);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        }
-
-        /* Terminal Text Styles */
+        /* ---------- Output styles ---------- */
+        .muted { color: var(--text-muted); }
+        .strong { color: var(--text-strong); font-weight: 600; }
+        .accent { color: var(--accent); }
+        .heading { color: var(--accent); font-weight: 600; }
         .success { color: var(--success); }
-        .error { color: var(--error); }
         .warning { color: var(--warning); }
+        .error { color: var(--error); }
         .info { color: var(--info); }
 
-        /* Links */
         .link {
             color: var(--text-secondary);
             text-decoration: none;
-            border-bottom: 1px dashed var(--text-secondary);
-            transition: all 0.2s ease;
+            border-bottom: 1px dashed currentColor;
         }
-
-        .link:hover {
-            color: var(--accent-primary);
-            border-bottom-color: var(--accent-primary);
+        .link:hover, .link:focus-visible { color: var(--accent); }
+        .cmd {
+            background: none; border: none; padding: 0;
+            font: inherit; color: var(--warning);
+            cursor: pointer;
+            border-bottom: 1px dotted currentColor;
         }
+        .cmd:hover, .cmd:focus-visible { color: var(--accent); }
 
-        /* ASCII Art */
-        .ascii-art {
+        .reopen {
+            display: none;
+            background: var(--bg-secondary);
             color: var(--text-secondary);
-            font-family: monospace;
-            white-space: pre;
-            line-height: 1.2;
-            margin: 16px 0;
-            transition: color 0.3s ease;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 10px 18px;
+            font: inherit;
+            cursor: pointer;
+        }
+        .reopen.visible { display: inline-block; }
+
+        .sr-only {
+            position: absolute; width: 1px; height: 1px;
+            overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap;
         }
 
-        /* Loading Animation */
-        .loading {
-            display: inline-block;
-            position: relative;
-            width: 16px;
-            height: 16px;
-        }
-
-        .loading::after {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            border: 2px solid var(--text-secondary);
-            border-radius: 50%;
-            border-right-color: transparent;
-            animation: spin 0.8s linear infinite;
-        }
-
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-
-        /* Responsive Design */
         @media (max-width: 768px) {
-            .container-terminal {
-                width: 100vw;
-                height: 100vh;
-                border-radius: 0;
-            }
-
-            body {
-                padding: 0;
-            }
-
-            .command-suggestions {
-                flex-wrap: nowrap;
-                overflow-x: auto;
-                padding-bottom: 8px;
-            }
-
-            .suggestion {
-                white-space: nowrap;
-            }
+            body { padding: 0; }
+            .terminal { width: 100vw; height: 100vh; height: 100dvh; border-radius: 0; border: none; }
+            .screen { font-size: 13px; padding: 12px 12px 6px; }
+            .quickbar { padding: 8px 12px; }
+            .clock { display: none; }
+            .title span { display: none; }
         }
 
-        @media (max-width: 480px) {
-            html {
-                font-size: 14px;
-            }
-
-            .body-terminal {
-                padding: 12px;
-            }
-
-            .project-card {
-                padding: 12px;
-            }
-        }
-
-        /* Print Styles */
-        @media print {
-            body {
-                background: none;
-            }
-
-            .container-terminal {
-                box-shadow: none;
-                border: 1px solid #ccc;
-            }
-
-            .btns-terminal {
-                display: none;
-            }
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after { animation: none !important; transition: none !important; }
         }
     </style>
 </head>
 <body>
-    <div class="container-terminal">
-        <div class="topbar-terminal">
-            <div class="btns-terminal">
-                <div class="btn exit" title="Close"></div>
-                <div class="btn minimize" title="Minimize"></div>
-                <div class="btn fullscreen" title="Fullscreen"></div>
+    <main class="terminal" id="terminal" aria-label="Interactive terminal portfolio">
+        <div class="topbar">
+            <div class="window-btns">
+                <button class="window-btn close" id="btn-close" title="Close" aria-label="Close terminal"></button>
+                <button class="window-btn min" id="btn-min" title="Minimize" aria-label="Minimize terminal"></button>
+                <button class="window-btn max" id="btn-max" title="Maximize" aria-label="Maximize terminal"></button>
             </div>
-            <div class="title-topbar-terminal">
-                <svg viewBox="0 0 24 24">
-                    <path d="M20,19V7H4V19H20M20,3A2,2 0 0,1 22,5V19A2,2 0 0,1 20,21H4A2,2 0 0,1 2,19V5C2,3.89 2.9,3 4,3H20M13,17V15H18V17H13M9.58,13L5.57,9H8.4L11.7,12.3C12.09,12.69 12.09,13.33 11.7,13.72L8.42,17H5.59L9.58,13Z"/>
-                </svg>
-                <span>mahdi@portfolio ~ </span>
+            <div class="title">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20,19V7H4V19H20M20,3A2,2 0 0,1 22,5V19A2,2 0 0,1 20,21H4A2,2 0 0,1 2,19V5C2,3.89 2.9,3 4,3H20M13,17V15H18V17H13M9.58,13L5.57,9H8.4L11.7,12.3C12.09,12.69 12.09,13.33 11.7,13.72L8.42,17H5.59L9.58,13Z"/></svg>
+                <span>visitor@mahdi: ~</span>
             </div>
-            <div class="terminal-info">
-                <span id="time"></span>
+            <div class="topbar-right">
+                <span class="clock" id="clock" aria-hidden="true"></span>
+                <button class="icon-btn" id="btn-theme" title="Toggle theme" aria-label="Toggle light or dark theme">◐</button>
             </div>
         </div>
-        <div class="body-terminal">
-            <div id="output"></div>
+
+        <div class="screen" id="screen">
+            <div id="output" role="log" aria-live="polite"></div>
             <div class="input-line">
-                <span class="prompt">visitor@mahdi-portfolio:~$</span>
-                <input type="text" class="command-input" autofocus spellcheck="false" placeholder="Type 'help' to get started...">
+                <label for="cmd" class="prompt">visitor@mahdi<span class="path">:~$</span></label>
+                <input id="cmd" class="command-input" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="type 'help' or tap a command below" />
             </div>
         </div>
-    </div>
-    <!-- <div class="">Made with Burger , coffee and Love</div> -->
+
+        <nav class="quickbar" id="quickbar" aria-label="Quick commands"></nav>
+    </main>
+
+    <button class="reopen" id="reopen">&gt;_ reopen terminal</button>
+
+    <noscript>
+        <p>Mahdi Amoozadeh — Frontend Developer. <a href="./mahdicv.pdf">Download CV</a> ·
+        <a href="https://github.com/Mapl6">GitHub</a> · <a href="mailto:mahdi.am6@gmail.com">Email</a></p>
+    </noscript>
+
     <script>
-       // Terminal Configuration
-const config = {
+// ================= Data (keep in sync with cv/cv-content.tex) =================
+const profile = {
     name: 'Mahdi Amoozadeh',
     title: 'Frontend Developer',
-    github: 'github.com/mapl6',
-    linkedin: 'linkedin.com/in/mahdiamoozadeh',
+    experience: '3+',
+    location: 'Tehran, Iran',
     email: 'mahdi.am6@gmail.com',
-    location: 'Tehran',
-    typingSpeed: 100,
-    startYear: 2021
+    github: 'https://github.com/Mapl6',
+    linkedin: 'https://ir.linkedin.com/in/mahdi-amoozadeh-445a58b4',
+    cv: './mahdicv.pdf',
+    repo: 'https://github.com/Mapl6/mapl6.github.io',
 };
 
-// ASCII Art
-const ascii = {
-    logo: `
+const skills = [
+    ['Languages', ['TypeScript', 'JavaScript (ES6+)', 'HTML5', 'CSS3']],
+    ['Frameworks', ['React', 'Next.js (App Router)', 'SSR / SSG / ISR']],
+    ['State & Data', ['React Query (TanStack)', 'Redux Toolkit', 'Redux', 'Zustand', 'REST APIs']],
+    ['Styling & UI', ['Tailwind CSS', 'Material UI', 'HeroUI (NextUI)', 'Framer Motion', 'Responsive Design', 'Design Systems']],
+    ['Libraries', ['React Hook Form', 'Zod', 'Storybook', 'i18next', 'Swiper.js']],
+    ['Tooling & Workflow', ['Git', 'GitHub', 'GitLab', 'CI/CD', 'Sentry', 'Figma', 'Code Review', 'Agile']],
+];
+
+const jobs = [
+    {
+        company: 'Tavana', url: 'https://tavanastore.ir/', role: 'Frontend Developer',
+        dates: 'Nov 2024 — Present', location: 'Tehran, Iran',
+        points: [
+            'Develop and maintain a production platform serving 20,000+ daily users (Next.js, React, TypeScript, Tailwind CSS)',
+            'Build components for the internal UI library and design system, documented in Storybook',
+            'Manage server state with React Query and client state with Redux Toolkit and Zustand',
+            'Improve Core Web Vitals with SSR/SSG in Next.js',
+            'Integrated Sentry for error monitoring of production issues',
+            'Ship features end to end with backend and design teams; code reviews and CI/CD deployments',
+        ],
+    },
+    {
+        company: 'Bluprint', url: 'https://bluprint.ir/', role: 'Frontend Developer',
+        dates: 'Mar 2024 — Nov 2024', location: 'Tehran, Iran',
+        points: [
+            'Delivered features across three production projects — Pax Cast, Marvel Quiz and One Coach',
+            'Built a shared library of responsive components reused across projects',
+            'Integrated REST APIs with React, Redux and Zustand for data-driven interfaces',
+        ],
+    },
+    {
+        company: 'Freelance', role: 'Frontend Developer',
+        dates: '2022 — 2024', location: 'Remote',
+        points: [
+            'Built web applications and admin dashboards for clients with React, Next.js and TypeScript',
+            'Worked directly with clients from requirements to delivery',
+        ],
+    },
+];
+
+const projects = [
+    {
+        name: 'Tavana Platform', url: 'https://tavanastore.ir/', role: 'Frontend Developer @ Tavana',
+        stack: 'Next.js · TypeScript · Tailwind CSS · React Query · Storybook · Sentry',
+        summary: 'Production web platform serving 20,000+ daily users.',
+        details: [
+            'Internal UI component library and design system',
+            'Server-state caching and async data flows with React Query',
+            'SSR/SSG for performance and SEO',
+            'Error monitoring with Sentry',
+        ],
+    },
+    {
+        name: 'Pax Cast', role: 'Frontend Developer @ Bluprint',
+        stack: 'React · Redux · Zustand · REST APIs',
+        summary: 'Medical imaging platform for patients and imaging centers.',
+        details: [
+            'Patients access their medical images and reports online',
+            'Imaging centers manage their services from a dashboard',
+        ],
+    },
+    {
+        name: 'Marvel Quiz', role: 'Frontend Developer @ Bluprint',
+        stack: 'React · Redux · Zustand · REST APIs',
+        summary: 'Online exam platform with multi-booklet exams.',
+        details: [
+            'Browse and purchase exams',
+            'Manage questions and PDF materials',
+            'Take multi-booklet exams with online answer sheets',
+        ],
+    },
+    {
+        name: 'One Coach', role: 'Frontend Developer @ Bluprint',
+        stack: 'React · Redux · Zustand · REST APIs',
+        summary: 'Training management platform for coaches and trainees.',
+        details: [
+            'Exercise management and instructional videos',
+            'Training sessions and progress tracking',
+        ],
+    },
+    {
+        name: 'Terminal Portfolio', url: 'https://github.com/Mapl6/mapl6.github.io', role: 'Personal project',
+        stack: 'Vanilla JavaScript · CSS · LaTeX · GitHub Actions',
+        summary: 'This site — plus a LaTeX CV rebuilt to PDF by GitHub Actions on every push.',
+        details: [
+            'Command history, tab completion and clickable commands',
+            'Light / dark theme that remembers your choice',
+        ],
+    },
+];
+
+const education = [
+    { degree: "Master's Degree in Software Engineering", school: 'Azad University', dates: '2023 — Present' },
+    { degree: "Bachelor's Degree in Computer Science", school: 'Semnan University', dates: '2017 — 2022' },
+];
+
+const banner = String.raw`
  ███╗   ███╗ █████╗ ██╗  ██╗██████╗ ██╗
  ████╗ ████║██╔══██╗██║  ██║██╔══██╗██║
  ██╔████╔██║███████║███████║██║  ██║██║
  ██║╚██╔╝██║██╔══██║██╔══██║██║  ██║██║
- ██║ ╚═╝ ██║██║  ██║██████╔╝██████╔╝██║
- ╚═╝     ╚═╝╚═╝  ╚═╝╚═╝  ╚═╝╚═════╝ ╚═╝
-    `
+ ██║ ╚═╝ ██║██║  ██║██║  ██║██████╔╝██║
+ ╚═╝     ╚═╝╚═╝  ╚═╝╚═╝  ╚═╝╚═════╝ ╚═╝`;
+
+// ================= Helpers =================
+const $ = (sel) => document.querySelector(sel);
+const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+const span = (cls, text) => `<span class="${cls}">${esc(text)}</span>`;
+const link = (href, text = href.replace(/^(https?:\/\/|mailto:)/, '').replace(/\/$/, '')) =>
+    `<a class="link" href="${esc(href)}" ${href.startsWith('mailto:') ? '' : 'target="_blank" rel="noopener"'}>${esc(text)}</a>`;
+const cmd = (name, label = name) => `<button class="cmd" data-cmd="${esc(name)}">${esc(label)}</button>`;
+const tree = (items, indent = '  ') => items.map((item, i) => `${indent}${span('muted', i === items.length - 1 ? '└──' : '├──')} ${item}`);
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+const storage = {
+    get(key) { try { return localStorage.getItem(key); } catch { return null; } },
+    set(key, value) { try { localStorage.setItem(key, value); } catch { /* storage unavailable */ } },
 };
 
-// Terminal State Management
-class TerminalState {
-    constructor() {
-        this.commandHistory = [];
-        this.historyIndex = -1;
-        this.typewriterTimeouts = [];
-    }
-
-    addCommand(command) {
-        this.commandHistory.push(command);
-        this.historyIndex = this.commandHistory.length;
-    }
-
-    getPreviousCommand() {
-        if (this.historyIndex > 0) {
-            this.historyIndex--;
-            return this.commandHistory[this.historyIndex];
-        }
-        return null;
-    }
-
-    getNextCommand() {
-        if (this.historyIndex < this.commandHistory.length - 1) {
-            this.historyIndex++;
-            return this.commandHistory[this.historyIndex];
-        }
-        this.historyIndex = this.commandHistory.length;
-        return '';
-    }
-
-    clearTypewriterTimeouts() {
-        this.typewriterTimeouts.forEach(timeout => clearTimeout(timeout));
-        this.typewriterTimeouts = [];
-    }
+function editDistance(a, b) {
+    const dp = Array.from({ length: a.length + 1 }, (_, i) => [i, ...Array(b.length).fill(0)]);
+    for (let j = 1; j <= b.length; j++) dp[0][j] = j;
+    for (let i = 1; i <= a.length; i++)
+        for (let j = 1; j <= b.length; j++)
+            dp[i][j] = Math.min(dp[i - 1][j] + 1, dp[i][j - 1] + 1, dp[i - 1][j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1));
+    return dp[a.length][b.length];
 }
 
-// Terminal Commands
-class TerminalCommands {
-    constructor(terminalUI) {
-        this.ui = terminalUI;
-    }
+// ================= Theme =================
+const theme = {
+    init() {
+        const saved = storage.get('theme');
+        const preferred = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+        this.apply(saved || preferred);
+    },
+    apply(name) {
+        document.documentElement.dataset.theme = name;
+        document.querySelector('meta[name="theme-color"]').content = name === 'light' ? '#f5f6fa' : '#1a1b26';
+    },
+    set(name) {
+        this.apply(name);
+        storage.set('theme', name);
+    },
+    current() { return document.documentElement.dataset.theme; },
+};
 
-    getExperience() {
-        const currentYear = new Date().getFullYear();
-        return currentYear - config.startYear;
-    }
-
-    help() {
-        return `
-Available commands:
-    help        - Show this help message
-    about       - Display information about me
-    skills      - List my technical skills
-    projects    - View my portfolio projects
-    experience  - Show my work experience
-    education   - Show my educational background
-    contact     - Display contact information
-    theme       - Toggle light/dark theme
-    clear       - Clear the terminal
-    social      - Display social media links
-    resume      - Download my resume
-        `;
-    }
-
-    about() {
-        return `
-${ascii.logo}
-
-👋 Hi! I'm ${config.name}
-🚀 ${config.title}  | Problem Solver
-
-I'm passionate about creating beautiful and functional web experiences.
-With a background in Computer Science and ${this.getExperience()} years of development experience,
-I specialize in building modern web applications using cutting-edge technologies.
-
-🌟 Key Highlights:
-• ${this.getExperience()} years of professional web development experience
-• Strong focus on user experience and clean code
-• Passionate about modern web technologies and best practices
-        `;
-    }
-
-    skills() {
-        return `
-🔧 Technical Skills:
-
-Frontend Development:
-    ├── HTML5 & CSS3
-    ├── JavaScript (ES6+) & TypeScript
-    ├── React.js & Next.js
-    ├── Vue.js & Nuxt.js
-    ├── Tailwind CSS & Styled Components
-    └── Responsive & Mobile-First Design
-
-
-Tools & Practices:
-    ├── Git & GitHub
-    ├── Docker & Kubernetes
-    ├── CI/CD (GitHub Actions, Jenkins)
-    ├── Jest & Testing Library
-    └── Agile & Scrum Methodologies
-
-UI/UX & Design:
-    ├── Figma & Adobe XD
-    ├── User Experience Design
-    ├── Wireframing & Prototyping
-    └── Design Systems
-        `;
-    }
-
-    projects() {
-        return `
-📂 Featured Projects:
-
-1. E-Commerce Platform
-   ├── Tech: Next.js, TypeScript, Tailwind CSS, Stripe
-   ├── Description: Full-featured e-commerce platform with real-time inventory,
-   │   payment processing, and admin dashboard
-   ├── Role: Lead Frontend Developer
-   ├── Features: Real-time inventory, payment processing, admin dashboard
-   └── Link: https://project1.com
-
-2. Task Management App
-   ├── Tech: React, Redux Toolkit, Node.js, MongoDB
-   ├── Description: Collaborative task management platform with real-time updates
-   │   and team collaboration features
-   ├── Role: Full Stack Developer
-   ├── Features: Real-time updates, team collaboration, file sharing
-   └── Link: https://project2.com
-
-3. AI-Powered Analytics Dashboard
-   ├── Tech: Vue.js, D3.js, Python, TensorFlow
-   ├── Description: Data visualization platform with AI-powered insights
-   │   and predictive analytics
-   ├── Role: Frontend Developer & ML Engineer
-   ├── Features: Interactive charts, predictive models, custom dashboards
-   └── Link: https://project3.com
-
-Type 'project <number>' for more details about specific project
-        `;
-    }
-
-    experience() {
-        return `
-💼 Professional Experience:
-
-
-Freelance Developer
-2021 - 2025
-    ├── Developed custom websites for clients
-    ├── Created e-commerce solutions
-    └── Provided technical consulting
-        `;
-    }
-
-    education() {
-        return `
-🎓 Education:
-
-Bachelor of Science in Computer Science
-Semnan University  | 2017 - 2021
-    ├── GPA: 3.8/4.0
-    ├── Major: Computer Science
-    ├── Minor: UI/UX Design
-    └── Relevant Coursework:
-        ├── Advanced Web Development
-        ├── Software Engineering
-        ├── User Interface Design
-        └── Database Systems
-
-Certifications:
-    ├── Quera front-end bootcamp
-
-        `;
-    }
-
-    contact() {
-        return `
-📫 Contact Information:
-
-Email:    ${config.email}
-GitHub:   ${config.github}
-LinkedIn: ${config.linkedin}
-Location: ${config.location}
-
-Feel free to reach out! I'm always open to discussing new opportunities,
-collaborations, or just chatting about technology.
-
-Type 'social' to view all social media links
-        `;
-    }
-
-    social() {
-        return `
-🌐 Social Media & Professional Profiles:
-
-GitHub:   ${config.github}
-LinkedIn: ${config.linkedin}
-// Twitter:  @mahdi_dev
-// Dev.to:   dev.to/mahdi
-// Medium:   medium.com/@mahdi
-        `;
-    }
-
-    clear() {
-        this.ui.clearOutput();
-        return '';
-    }
-
-    theme() {
-        const html = document.documentElement;
-        const currentTheme = html.getAttribute('data-theme');
-        const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-        html.setAttribute('data-theme', newTheme);
-        return `Theme switched to ${newTheme} mode`;
-    }
-
-    resume() {
-        return `
-📄 Generating resume download link...
-
-Resume downloaded successfully! Opening in new tab...
-Note: This is a simulated download. In production, replace with actual resume link.
-        `;
-    }
-}
-
-// Terminal UI Class
-class TerminalUI {
-    constructor() {
-        this.output = document.getElementById('output');
-        this.input = document.querySelector('.command-input');
-        this.timeDisplay = document.getElementById('time');
-        this.state = new TerminalState();
-        this.commands = new TerminalCommands(this);
-        this.initializeEventListeners();
-    }
-
-    async typeWriter(text, element, speed = config.typingSpeed) {
-        this.state.clearTypewriterTimeouts();
-        for (let i = 0; i < text.length; i++) {
-            await new Promise(resolve => {
-                const timeout = setTimeout(() => {
-                    element.textContent += text.charAt(i);
-                    resolve();
-                }, speed);
-                this.state.typewriterTimeouts.push(timeout);
+// ================= Commands =================
+// Each command returns an array of HTML lines (or nothing).
+const commands = {
+    help: {
+        desc: 'Show available commands',
+        run() {
+            const rows = Object.entries(commands)
+                .filter(([, c]) => !c.hidden)
+                .map(([name, c]) => `  ${cmd(name)}${' '.repeat(Math.max(1, 14 - name.length))}${span('muted', c.desc)}`);
+            return [
+                span('heading', 'Available commands'), '',
+                ...rows, '',
+                span('muted', 'Tips: Tab autocompletes · ↑/↓ browse history · Ctrl+L clears · click any highlighted command'),
+            ];
+        },
+    },
+    about: {
+        desc: 'Who I am',
+        run() {
+            return [
+                `<div class="ascii" aria-hidden="true">${esc(banner)}</div>`,
+                `👋 Hi, I'm ${span('strong', profile.name)} — ${span('accent', profile.title)} based in ${esc(profile.location)}.`,
+                '',
+                `I build production web applications with ${span('info', 'React')}, ${span('info', 'Next.js')}, ${span('info', 'TypeScript')} and ${span('info', 'Tailwind CSS')}.`,
+                `${profile.experience} years of experience — from internal design systems to a platform serving ${span('success', '20,000+ daily users')}.`,
+                '',
+                span('heading', 'What I care about'),
+                ...tree([
+                    'Reusable, well-documented UI components',
+                    'Fast pages — Core Web Vitals, SSR/SSG, smart caching',
+                    'Clean, typed, maintainable code',
+                ]),
+                '',
+                `Next: ${cmd('experience')} · ${cmd('projects')} · ${cmd('skills')} · ${cmd('resume')}`,
+            ];
+        },
+    },
+    experience: {
+        desc: 'Work history',
+        run() {
+            const lines = [span('heading', '💼 Experience'), ''];
+            jobs.forEach((job) => {
+                const company = job.url ? link(job.url, job.company) : span('strong', job.company);
+                lines.push(`${span('strong', job.role)} @ ${company}`);
+                lines.push(span('muted', `${job.dates} · ${job.location}`));
+                lines.push(...tree(job.points.map(esc)), '');
             });
+            return lines;
+        },
+    },
+    projects: {
+        desc: 'Selected projects',
+        run() {
+            const lines = [span('heading', '📂 Projects'), ''];
+            projects.forEach((p, i) => {
+                lines.push(`${span('accent', `[${i + 1}]`)} ${span('strong', p.name)} ${span('muted', '— ' + p.role)}`);
+                lines.push(`    ${esc(p.summary)}`);
+                lines.push(`    ${span('info', p.stack)}`, '');
+            });
+            lines.push(span('muted', 'Details: ') + projects.map((_, i) => cmd(`project ${i + 1}`)).join(span('muted', ' · ')));
+            return lines;
+        },
+    },
+    project: {
+        desc: 'Project details — e.g. project 1',
+        args: () => projects.map((_, i) => String(i + 1)),
+        run([n]) {
+            const p = projects[Number(n) - 1];
+            if (!p) return [span('error', `Usage: project <1-${projects.length}>`), `Try ${cmd('projects')} to see the list.`];
+            return [
+                `${span('strong', p.name)} ${span('muted', '— ' + p.role)}`,
+                esc(p.summary), '',
+                `${span('muted', 'Stack:')} ${span('info', p.stack)}`,
+                ...tree(p.details.map(esc)),
+                ...(p.url ? ['', `${span('muted', 'Link:')} ${link(p.url)}`] : []),
+            ];
+        },
+    },
+    skills: {
+        desc: 'Technical skills',
+        run() {
+            const lines = [span('heading', '🔧 Skills'), ''];
+            skills.forEach(([group, items]) => {
+                lines.push(span('accent', group));
+                lines.push(...tree(items.map((s) => span('strong', s))), '');
+            });
+            return lines;
+        },
+    },
+    education: {
+        desc: 'Degrees and certifications',
+        run() {
+            return [
+                span('heading', '🎓 Education'), '',
+                ...education.flatMap((e) => [`${span('strong', e.degree)}`, span('muted', `${e.school} · ${e.dates}`), '']),
+                span('heading', '📜 Certifications'),
+                ...tree([link('https://quera.org/media/public/quera_certificate/0669e232806f46ea83cdae4217677549.jpg', 'Quera Front-End Bootcamp')]),
+            ];
+        },
+    },
+    contact: {
+        desc: 'How to reach me',
+        run() {
+            return [
+                span('heading', '📫 Contact'), '',
+                `  Email      ${link('mailto:' + profile.email, profile.email)}`,
+                `  LinkedIn   ${link(profile.linkedin, 'mahdi-amoozadeh')}`,
+                `  GitHub     ${link(profile.github)}`,
+                `  Location   ${esc(profile.location)}`,
+                '',
+                `I'm open to new opportunities — the fastest way to reach me is email.`,
+            ];
+        },
+    },
+    resume: {
+        desc: 'Download my CV (PDF)',
+        run() {
+            window.open(profile.cv, '_blank', 'noopener');
+            return [
+                span('success', '✓ Opening CV in a new tab…'),
+                `If nothing opened, ${link(profile.cv, 'click here to download mahdicv.pdf')}.`,
+            ];
+        },
+    },
+    open: {
+        desc: 'Open a link — github | linkedin | email | cv',
+        args: () => ['github', 'linkedin', 'email', 'cv'],
+        run([target]) {
+            const targets = { github: profile.github, linkedin: profile.linkedin, email: 'mailto:' + profile.email, cv: profile.cv };
+            const url = targets[target];
+            if (!url) return [span('error', 'Usage: open <github|linkedin|email|cv>')];
+            if (url.startsWith('mailto:')) window.location.href = url;
+            else window.open(url, '_blank', 'noopener');
+            return [span('success', `✓ Opening ${target}…`)];
+        },
+    },
+    theme: {
+        desc: 'Switch theme — theme [light|dark]',
+        args: () => ['light', 'dark'],
+        run([name]) {
+            const next = name === 'light' || name === 'dark' ? name : (theme.current() === 'light' ? 'dark' : 'light');
+            theme.set(next);
+            return [span('success', `✓ Theme set to ${next}`)];
+        },
+    },
+    history: {
+        desc: 'Commands you have run',
+        run() {
+            if (!state.history.length) return [span('muted', 'No commands yet.')];
+            return state.history.map((c, i) => `${span('muted', String(i + 1).padStart(3))}  ${esc(c)}`);
+        },
+    },
+    clear: {
+        desc: 'Clear the screen',
+        run() { clearScreen(); },
+    },
+    // Hidden extras
+    whoami: { hidden: true, run: () => [`${esc(profile.name)} — ${esc(profile.title)}`] },
+    cv: { hidden: true, run: () => commands.resume.run([]) },
+    ls: { hidden: true, run: () => [['about', 'experience', 'projects', 'skills', 'education', 'contact'].map((c) => cmd(c, c + '.txt')).join('  ') + '  ' + link(profile.cv, 'mahdicv.pdf')] },
+    date: { hidden: true, run: () => [esc(new Date().toString())] },
+    echo: { hidden: true, run: (args) => [esc(args.join(' '))] },
+    sudo: { hidden: true, run: () => [span('error', 'visitor is not in the sudoers file. This incident will be reported. 😄')] },
+    banner: { hidden: true, run: () => [`<div class="ascii" aria-hidden="true">${esc(banner)}</div>`] },
+};
+
+// ================= Terminal =================
+const output = $('#output');
+const screen = $('#screen');
+const input = $('#cmd');
+const state = { history: [], historyIndex: 0, printing: false, skip: false, queue: Promise.resolve() };
+
+function scrollToBottom() { screen.scrollTop = screen.scrollHeight; }
+
+// Queued so it runs after any output still being printed
+function clearScreen() { state.queue = state.queue.then(() => { output.innerHTML = ''; }); }
+
+function print(lines, { delay = 18 } = {}) {
+    state.queue = state.queue.then(async () => {
+        state.printing = true;
+        for (const html of lines) {
+            const div = document.createElement('div');
+            div.className = 'line';
+            div.innerHTML = html;
+            output.appendChild(div);
+            scrollToBottom();
+            if (delay && !state.skip && !reducedMotion) await sleep(delay);
         }
-        element.classList.remove('typing');
-        this.input.focus();
+        state.printing = false;
+        state.skip = false;
+    });
+    return state.queue;
+}
+
+function suggest(name) {
+    let best = null, bestScore = 3;
+    for (const candidate of Object.keys(commands)) {
+        const score = editDistance(name, candidate);
+        if (score < bestScore) { best = candidate; bestScore = score; }
     }
+    return best;
+}
 
-    addToOutput(content, className = '') {
-        const div = document.createElement('div');
-        div.className = className;
-        
-        if (typeof content === 'string') {
-            this.typeWriter(content, div);
-        } else {
-            div.appendChild(content);
-        }
-        
-        this.output.appendChild(div);
-        div.scrollIntoView({ behavior: 'smooth' });
+function run(raw) {
+    const text = raw.trim();
+    print([`<span class="prompt">visitor@mahdi<span class="path">:~$</span></span> <span class="echo">${esc(text)}</span>`], { delay: 0 });
+    if (!text) return;
+
+    state.history.push(text);
+    state.historyIndex = state.history.length;
+
+    const [name, ...args] = text.split(/\s+/);
+    const command = commands[name.toLowerCase()];
+    if (command) {
+        const result = command.run(args.map((a) => a.toLowerCase()));
+        if (result && result.length) print([...result, '']);
+        return;
     }
+    const guess = suggest(name.toLowerCase());
+    print([
+        span('error', `command not found: ${name}`),
+        guess ? `Did you mean ${cmd(guess)}? Type ${cmd('help')} for all commands.` : `Type ${cmd('help')} for all commands.`,
+        '',
+    ], { delay: 0 });
+}
 
-    clearOutput() {
-        this.output.innerHTML = '';
+function complete() {
+    const value = input.value.replace(/^\s+/, '');
+    const parts = value.split(/\s+/);
+    let options, prefix;
+    if (parts.length === 1) {
+        prefix = parts[0].toLowerCase();
+        options = Object.keys(commands).filter((c) => !commands[c].hidden && c.startsWith(prefix)).map((c) => c + ' ');
+    } else {
+        const command = commands[parts[0].toLowerCase()];
+        prefix = parts[parts.length - 1].toLowerCase();
+        const base = parts.slice(0, -1).join(' ') + ' ';
+        options = command && command.args ? command.args().filter((a) => a.startsWith(prefix)).map((a) => base + a) : [];
     }
-
-    executeCommand(cmd) {
-        const args = cmd.trim().toLowerCase().split(' ');
-        const command = args[0];
-
-        if (!command) return;
-
-        if (this.commands[command]) {
-            return this.commands[command]();
-        }
-        return `Command not found: ${command}\nType 'help' for available commands`;
-    }
-
-    updateTime() {
-        const now = new Date();
-        this.timeDisplay.textContent = now.toLocaleTimeString();
-    }
-
-    initializeEventListeners() {
-        // Command input handling
-        this.input.addEventListener('keydown', (e) => this.handleKeydown(e));
-
-        // Terminal controls
-        document.querySelector('.exit').addEventListener('click', () => {
-            document.querySelector('.container-terminal').style.display = 'none';
-        });
-
-        document.querySelector('.minimize').addEventListener('click', () => {
-            const terminal = document.querySelector('.container-terminal');
-            terminal.style.transform = 'scale(0.1)';
-            setTimeout(() => {
-                terminal.style.transform = 'scale(1)';
-            }, 1000);
-        });
-
-        document.querySelector('.fullscreen').addEventListener('click', () => {
-            if (!document.fullscreenElement) {
-                document.documentElement.requestFullscreen();
-            } else {
-                document.exitFullscreen();
-            }
-        });
-
-        // Auto-focus input on terminal click
-        document.querySelector('.container-terminal').addEventListener('click', () => {
-            this.input.focus();
-        });
-    }
-
-    handleKeydown(e) {
-        if (e.key === 'Enter') {
-            const cmd = this.input.value;
-            this.addToOutput(`visitor@mahdi-portfolio:~$ ${cmd}`);
-            const result = this.executeCommand(cmd);
-            if (result) this.addToOutput(result);
-            
-            this.state.addCommand(cmd);
-            this.input.value = '';
-        } else if (e.key === 'ArrowUp') {
-            e.preventDefault();
-            const previousCommand = this.state.getPreviousCommand();
-            if (previousCommand !== null) {
-                this.input.value = previousCommand;
-            }
-        } else if (e.key === 'ArrowDown') {
-            e.preventDefault();
-            this.input.value = this.state.getNextCommand();
-        }
-    }
-
-    initTerminal() {
-        setInterval(() => this.updateTime(), 1000);
-        this.updateTime();
-        
-        const welcomeMessage = `
-Welcome to Mahdi's Terminal Portfolio! 🚀
-
-Type 'help' to see available commands or try these quick links:
-        `;
-        
-        this.addToOutput(welcomeMessage);
-        
-        // Add command suggestions
-        const suggestions = document.createElement('div');
-        suggestions.className = 'command-suggestions';
-        ['about', 'projects', 'skills', 'contact'].forEach(cmd => {
-            const suggestion = document.createElement('span');
-            suggestion.className = 'suggestion';
-            suggestion.textContent = cmd;
-            suggestion.onclick = () => {
-                this.input.value = cmd;
-                this.input.focus();
-            };
-            suggestions.appendChild(suggestion);
-        });
-        this.output.appendChild(suggestions);
+    if (options.length === 1) {
+        input.value = options[0];
+    } else if (options.length > 1) {
+        print([span('muted', options.map((o) => o.trim().split(' ').pop()).join('   '))], { delay: 0 });
     }
 }
 
-// Initialize the terminal when the DOM is loaded
-document.addEventListener('DOMContentLoaded', () => {
-    const terminal = new TerminalUI();
-    terminal.initTerminal();
+input.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+        if (state.printing) state.skip = true;
+        run(input.value);
+        input.value = '';
+    } else if (e.key === 'Tab') {
+        e.preventDefault();
+        complete();
+    } else if (e.key === 'ArrowUp') {
+        e.preventDefault();
+        if (state.historyIndex > 0) input.value = state.history[--state.historyIndex];
+    } else if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        state.historyIndex = Math.min(state.historyIndex + 1, state.history.length);
+        input.value = state.history[state.historyIndex] || '';
+    } else if (e.key === 'l' && e.ctrlKey) {
+        e.preventDefault();
+        clearScreen();
+    } else if (e.key === 'c' && e.ctrlKey && !window.getSelection().toString()) {
+        print([`<span class="prompt">visitor@mahdi<span class="path">:~$</span></span> <span class="echo">${esc(input.value)}</span>^C`], { delay: 0 });
+        input.value = '';
+    } else if (state.printing) {
+        state.skip = true;
+    }
 });
+
+// Clickable commands inside output
+output.addEventListener('click', (e) => {
+    const button = e.target.closest('[data-cmd]');
+    if (!button) return;
+    if (state.printing) state.skip = true;
+    run(button.dataset.cmd);
+    input.focus({ preventScroll: true });
+});
+
+// Click anywhere on the screen focuses the prompt (unless selecting text or clicking a link)
+screen.addEventListener('mouseup', (e) => {
+    if (e.target.closest('a, button') || window.getSelection().toString()) return;
+    input.focus({ preventScroll: true });
+});
+
+// Quick command bar
+const quick = ['about', 'experience', 'projects', 'skills', 'contact', 'resume', 'help'];
+const quickbar = $('#quickbar');
+quick.forEach((name) => {
+    const chip = document.createElement('button');
+    chip.className = 'chip' + (name === 'resume' ? ' primary' : '');
+    chip.textContent = name === 'resume' ? '↓ resume' : name;
+    chip.addEventListener('click', () => {
+        if (state.printing) state.skip = true;
+        run(name);
+    });
+    quickbar.appendChild(chip);
+});
+
+// Window controls
+const terminal = $('#terminal');
+const reopen = $('#reopen');
+$('#btn-close').addEventListener('click', () => {
+    terminal.classList.add('closed');
+    reopen.classList.add('visible');
+    reopen.focus();
+});
+reopen.addEventListener('click', () => {
+    terminal.classList.remove('closed', 'minimized');
+    reopen.classList.remove('visible');
+    input.focus();
+});
+$('#btn-min').addEventListener('click', () => terminal.classList.toggle('minimized'));
+$('#btn-max').addEventListener('click', () => terminal.classList.toggle('maximized'));
+$('#btn-theme').addEventListener('click', () => run('theme'));
+
+// Clock
+const clock = $('#clock');
+const tick = () => { clock.textContent = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }); };
+tick();
+setInterval(tick, 30000);
+
+// Boot
+theme.init();
+print([
+    `<div class="ascii" aria-hidden="true">${esc(banner)}</div>`,
+    `Welcome! I'm ${span('strong', profile.name)}, a ${span('accent', profile.title)}.`,
+    `Type ${cmd('help')} to see all commands, or start with ${cmd('about')}, ${cmd('projects')} or ${cmd('resume')}.`,
+    '',
+], { delay: 40 });
+if (window.matchMedia('(pointer: fine)').matches) input.focus();
     </script>
 </body>
 </html>
