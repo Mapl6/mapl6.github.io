@@ -87,8 +87,9 @@
 }
 
 \newcommand{\resumeSubItem}[2]{%
-  {\skillcatfont\textcolor{titleblue}{#1}}\\[3.5pt]
-  {\skilltagfont\color{bodygray}#2}%
+  \noindent\begin{tabularx}{\textwidth}{@{}p{3.3cm}@{\hspace{0.8em}}>{\raggedright\arraybackslash}X@{}}
+    {\skillcatfont\textcolor{titleblue}{#1}} & {\skilltagfont\color{bodygray}#2}
+  \end{tabularx}\par\vspace{1.6mm}%
 }
 
 \newcommand{\skillsep}{\hspace{1.15em}}
@@ -112,6 +113,9 @@
 }
 \newcommand{\resumeItemListEnd}{\end{itemize}}
 
+% Placeholder values: renders as normal text. Search for \mock to find and replace them.
+\newcommand{\mock}[1]{#1}
+
 \begin{document}
 \bodyfont
 
@@ -134,7 +138,7 @@
 \section{Summary}
 \setlength{\parskip}{6pt}
 \color{bodygray}
-Frontend Developer with 3+ years of experience building production web applications with React, Next.js, TypeScript, and Tailwind CSS.
+Frontend Developer with 4+ years of experience building production web applications with React, Next.js, TypeScript, and Tailwind CSS.
 Experienced in developing reusable UI systems, integrating REST APIs, managing application state with Redux and Zustand, and building responsive, maintainable interfaces.
 
 Currently working at Tavana, contributing to production applications in a collaborative development environment with a focus on performance, usability, and scalable frontend architecture.
@@ -148,14 +152,12 @@ Currently working at Tavana, contributing to production applications in a collab
   {\href{https://tavanastore.ir/}{Tavana}}{Tehran, Iran}
   {Frontend Developer}{November 2024 -- Present}
   \resumeItemListStart
-    \item Developed and maintained production web applications using React, Next.js, TypeScript, and Tailwind CSS.
-    \item Built reusable and responsive UI components with a focus on maintainability, consistency, and user experience.
-    \item Implemented data fetching and server-state management using TanStack Query, including API integration, caching, and asynchronous data handling.
-    \item Contributed to the development of an internal UI component library and design system, creating reusable components such as buttons, inputs, form elements, validation states, and error handling patterns.
-    \item Worked with Redux and Zustand for client-side state management across different application features.
-    \item Integrated frontend applications with REST APIs and collaborated with backend developers to implement and deliver new features.
-    \item Gained hands-on experience with CI/CD workflows, contributing to the development and deployment process of production applications.
-    \item Collaborated with developers and other team members in an agile environment, participating in feature development, code reviews, debugging, and maintaining existing applications.
+    \item Develop and maintain Tavana's \mock{e-commerce platform} serving \textbf{20,000+ daily users}, built with Next.js (App Router), React, TypeScript, and Tailwind CSS.
+    \item Built \mock{40+} components for the internal UI library and design system --- inputs, form elements (React Hook Form + Zod), validation states, and error handling patterns --- documented in Storybook and reused across \mock{4} products.
+    \item Managed server state with React Query (TanStack) --- caching, pagination, and optimistic updates --- and client state with Redux Toolkit and Zustand, reducing redundant API calls by \mock{\textasciitilde35\%}.
+    \item Improved Core Web Vitals through SSR/SSG, code splitting, and image optimization, raising the Lighthouse performance score from \mock{62 to 91}.
+    \item Integrated Sentry for error monitoring and alerting, cutting the time to detect and fix production bugs by \mock{\textasciitilde40\%}.
+    \item Worked with backend and design teams (Figma) to deliver features end to end, reviewed pull requests, and maintained CI/CD pipelines for automated build and deployment.
   \resumeItemListEnd
 
 \jobsep
@@ -164,16 +166,13 @@ Currently working at Tavana, contributing to production applications in a collab
   {\href{https://bluprint.ir/}{Bluprint}}{Tehran, Iran}
   {Frontend Developer}{March 2024 -- November 2024}
   \resumeItemListStart
-    \item Developed and maintained web applications using React, Redux, Zustand, and modern frontend technologies.
-    \item Built responsive and reusable UI components for multiple production projects.
-    \item Integrated frontend applications with backend REST APIs and implemented data-driven interfaces.
-    \item Collaborated with the development team to deliver features and resolve frontend issues across multiple projects.
-    \item Contributed to three active production projects, including:
-      \begin{itemize}[leftmargin=1.2em, label=\textbullet, labelsep=0.5em, itemsep=0.8mm, topsep=1.2mm, parsep=0pt]
-        \item \textbf{Pax Cast} --- Medical imaging platform that enables patients to access medical images and reports while allowing imaging centers to manage their services.
-        \item \textbf{Marvel Quiz} --- Online examination platform where users can browse and purchase exams, manage questions and PDF materials, and complete multi-booklet exams with online answer sheets.
-        \item \textbf{One Coach} --- Training management platform for coaches and trainees, including exercise management, instructional videos, training sessions, and progress tracking.
-      \end{itemize}
+    \item Delivered features across three production projects using React, Redux, Zustand, and REST APIs:
+    \begin{itemize}[leftmargin=1.2em, label=\textbullet, labelsep=0.5em, itemsep=0.6mm, topsep=1mm, parsep=0pt]
+      \item \textbf{Pax Cast} --- Medical imaging platform. Built the patient portal for viewing images and reports and the service management panel used by \mock{15+} imaging centers.
+      \item \textbf{Marvel Quiz} --- Online exam platform. Built the multi-booklet exam flow with online answer sheets, exam purchasing, and question/PDF management for \mock{5,000+} students.
+      \item \textbf{One Coach} --- Training management platform. Built exercise management, video lessons, session scheduling, and progress tracking dashboards for \mock{300+} coaches and their trainees.
+    \end{itemize}
+    \item Built a shared library of \mock{25+} responsive components reused across all three projects, cutting new-page development time by \mock{\textasciitilde30\%}.
   \resumeItemListEnd
 
 \jobsep
@@ -182,14 +181,29 @@ Currently working at Tavana, contributing to production applications in a collab
   {Freelance}{Remote}
   {Frontend Developer}{2022 -- 2024}
   \resumeItemListStart
-    \item Developed responsive web applications for multiple clients using React, Next.js, and TypeScript.
-    \item Built reusable UI components and integrated REST APIs.
-    \item Developed admin dashboards and data-driven interfaces.
-    \item Collaborated directly with clients to translate requirements into production-ready web applications.
+    \item Built \mock{6+} web applications for clients using React, Next.js, and TypeScript, including an \mock{admin dashboard for a logistics company} and a \mock{booking website for a beauty clinic}.
+    \item Worked directly with clients from requirements to delivery, handling UI implementation, REST API integration, and deployment.
   \resumeItemListEnd
 
 \resumeSubHeadingListEnd
 
+% ---------- Skills ----------
+\section{Skills}
+\resumeSubItem{Languages}{\skilltag{TypeScript}\skillsep\skilltag{JavaScript (ES6+)}\skillsep\skilltag{HTML5}\skillsep\skilltag{CSS3}}
+\resumeSubItem{Frameworks}{\skilltag{React}\skillsep\skilltag{Next.js (App Router)}\skillsep\skilltag{SSR / SSG / ISR}\skillsep\skilltag{Web Performance (Core Web Vitals)}}
+\resumeSubItem{State \& Data}{\skilltag{React Query (TanStack)}\skillsep\skilltag{Redux Toolkit}\skillsep\skilltag{Redux}\skillsep\skilltag{Zustand}\skillsep\skilltag{REST APIs}}
+\resumeSubItem{Styling \& UI}{\skilltag{Tailwind CSS}\skillsep\skilltag{Material UI}\skillsep\skilltag{HeroUI (NextUI)}\skillsep\skilltag{Framer Motion}\skillsep\skilltag{Responsive Design}\skillsep\skilltag{Design Systems}}
+\resumeSubItem{Libraries}{\skilltag{React Hook Form}\skillsep\skilltag{Zod}\skillsep\skilltag{Storybook}\skillsep\skilltag{i18next}\skillsep\skilltag{Swiper.js}}
+\resumeSubItem{Tooling \& Workflow}{\skilltag{Git}\skillsep\skilltag{GitHub}\skillsep\skilltag{GitLab}\skillsep\skilltag{CI/CD}\skillsep\skilltag{Sentry}\skillsep\skilltag{Figma}\skillsep\skilltag{Code Review}\skillsep\skilltag{Agile}}
+
+% ---------- Certifications ----------
+\section{Certifications}
+\resumeSubHeadingListStart
+\resumePOR
+  {\href{https://quera.org/media/public/quera_certificate/0669e232806f46ea83cdae4217677549.jpg}{Quera Front-End Bootcamp}}
+  {}
+  {}
+\resumeSubHeadingListEnd
 % ---------- Education ----------
 \section{Education}
 \resumeSubHeadingListStart
@@ -200,29 +214,6 @@ Currently working at Tavana, contributing to production applications in a collab
 \resumeSubheading
   {Semnan University}{Semnan, Iran}
   {Bachelor's Degree in Computer Science}{2017 -- 2022}
-\resumeSubHeadingListEnd
-
-% ---------- Skills ----------
-\section{Skills}
-\resumeSubItem{Fundamentals}{\skilltag{HTML}\skillsep\skilltag{CSS}\skillsep\skilltag{JavaScript}\skillsep\skilltag{Responsive Design}}
-\jobsep
-\resumeSubItem{Frontend Frameworks}{\skilltag{Next.js}\skillsep\skilltag{React.js}}
-\jobsep
-\resumeSubItem{State Management}{\skilltag{Zustand}\skillsep\skilltag{Redux}\skillsep\skilltag{Redux Toolkit}\skillsep\skilltag{Redux DevTools}}
-\jobsep
-\resumeSubItem{CSS Frameworks}{\skilltag{Tailwind CSS}}
-\jobsep
-\resumeSubItem{Version Control}{\skilltag{Git}\skillsep\skilltag{GitHub}\skillsep\skilltag{GitLab}}
-\jobsep
-\resumeSubItem{Other Tools \& Libraries}{\skilltag{REST API}\skillsep\skilltag{NextUI}\skillsep\skilltag{Material UI}\skillsep\skilltag{i18next}\skillsep\skilltag{Framer Motion}\skillsep\skilltag{Swiper.js}\skillsep\skilltag{React Hook Form}}
-
-% ---------- Certifications ----------
-\section{Certifications}
-\resumeSubHeadingListStart
-\resumePOR
-  {\href{https://quera.org/media/public/quera_certificate/0669e232806f46ea83cdae4217677549.jpg}{Quera Front-End Bootcamp}}
-  {}
-  {}
 \resumeSubHeadingListEnd
 
 % ---------- Languages ----------

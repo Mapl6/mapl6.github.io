@@ -87,8 +87,9 @@
 }
 
 \newcommand{\resumeSubItem}[2]{%
-  {\skillcatfont\textcolor{titleblue}{#1}}\\[3.5pt]
-  {\skilltagfont\color{bodygray}#2}%
+  \noindent\begin{tabularx}{\textwidth}{@{}p{3.3cm}@{\hspace{0.8em}}>{\raggedright\arraybackslash}X@{}}
+    {\skillcatfont\textcolor{titleblue}{#1}} & {\skilltagfont\color{bodygray}#2}
+  \end{tabularx}\par\vspace{1.6mm}%
 }
 
 \newcommand{\skillsep}{\hspace{1.15em}}
@@ -185,17 +186,12 @@
 
 % ---------- Skills ----------
 \section{Skills}
-\resumeSubItem{Fundamentals}{\cvSkillFundamentals}
-\jobsep
-\resumeSubItem{Frontend Frameworks}{\cvSkillFrameworks}
-\jobsep
-\resumeSubItem{State Management}{\cvSkillState}
-\jobsep
-\resumeSubItem{CSS Frameworks}{\cvSkillCss}
-\jobsep
-\resumeSubItem{Version Control}{\cvSkillVersionControl}
-\jobsep
-\resumeSubItem{Other Tools \& Libraries}{\cvSkillOther}
+\resumeSubItem{Languages}{\cvSkillLang}
+\resumeSubItem{Frameworks}{\cvSkillFrameworks}
+\resumeSubItem{State \& Data}{\cvSkillState}
+\resumeSubItem{Styling \& UI}{\cvSkillUi}
+\resumeSubItem{Libraries}{\cvSkillLibs}
+\resumeSubItem{Tooling \& Workflow}{\cvSkillTooling}
 
 % ---------- Certifications ----------
 \section{Certifications}

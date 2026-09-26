@@ -1,33 +1,48 @@
-Hi ![](https://user-images.githubusercontent.com/18350557/176309783-0785949b-9127-417c-8b55-ab5a4333674e.gif)My name is Mahdi
-=============================================================================================================================
+# Hi, I'm Mahdi <img src="https://user-images.githubusercontent.com/18350557/176309783-0785949b-9127-417c-8b55-ab5a4333674e.gif" width="28" alt="waving hand" />
 
-Front-End developer
--------------------
+**Frontend Developer** · React · Next.js · TypeScript
 
-* 🌍  I'm based in Tehran
-* ✉️  You can contact me at [Mahdi.am6@gmail.com](mailto:Mahdi.am6@gmail.com)
-* 🧠  I'm learning Three.js
+I build fast, responsive and maintainable web apps. I have 3+ years of experience shipping production products, from design systems to platforms serving 20,000+ daily users.
 
-### Skills
+- 🌍 Based in Tehran, Iran
+- 🧠 Currently learning **NestJS**
+- 📄 [Download my CV (PDF)](./mahdicv.pdf) · 🖥️ [Interactive portfolio](https://mapl6.github.io)
+- ✉️ [mahdi.am6@gmail.com](mailto:mahdi.am6@gmail.com)
 
+## 🛠️ Tech Stack
 
 <p align="left">
-<a href="https://www.typescriptlang.org/" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/typescript-colored.svg" width="36" height="36" alt="TypeScript" /></a><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/javascript-colored.svg" width="36" height="36" alt="JavaScript" /></a><a href="https://code.visualstudio.com/" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/visualstudiocode.svg" width="36" height="36" alt="VS Code" /></a><a href="https://neovim.io/" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/neovim.svg" width="36" height="36" alt="Neovim" /></a><a href="https://developer.mozilla.org/en-US/docs/Glossary/HTML5" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/html5-colored.svg" width="36" height="36" alt="HTML5" /></a><a href="https://reactjs.org/" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/react-colored.svg" width="36" height="36" alt="React" /></a><a href="https://nextjs.org/docs" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/nextjs-colored.svg" width="36" height="36" alt="NextJs" /></a><a href="https://www.w3.org/TR/CSS/#css" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/css3-colored.svg" width="36" height="36" alt="CSS3" /></a><a href="https://tailwindcss.com/" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/tailwindcss-colored.svg" width="36" height="36" alt="TailwindCSS" /></a><a href="https://mui.com/" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/materialui-colored.svg" width="36" height="36" alt="Material UI" /></a><a href="https://redux.js.org/" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/redux-colored.svg" width="36" height="36" alt="Redux" /></a><a href="https://webpack.js.org/" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/webpack-colored.svg" width="36" height="36" alt="Webpack" /></a><a href="https://babeljs.io/" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/babel-colored.svg" width="36" height="36" alt="Babel" /></a><a href="https://www.figma.com/" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/figma-colored.svg" width="36" height="36" alt="Figma" /></a><a href="https://www.adobe.com/uk/products/xd.html" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/xd-colored.svg" width="36" height="36" alt="XD" /></a><a href="https://apple.com" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/macos-colored.svg" width="36" height="36" alt="MacOS" /></a>
+  <img src="https://skillicons.dev/icons?i=ts,js,html,css,react,nextjs,tailwind,redux,materialui,figma,git,github,gitlab,webpack,vscode&perline=15" alt="Tech stack icons" />
 </p>
 
+| Area | Tools |
+| --- | --- |
+| **Core** | TypeScript, JavaScript (ES6+), HTML5, CSS3 |
+| **Frameworks** | React, Next.js (App Router, SSR / SSG / ISR) |
+| **State & Data** | React Query (TanStack), Redux Toolkit, Zustand, REST APIs |
+| **Styling & UI** | Tailwind CSS, Material UI, HeroUI (NextUI), Framer Motion, Storybook |
+| **Forms & i18n** | React Hook Form, Zod, i18next |
+| **Tooling** | Git, GitHub, GitLab, CI/CD, Sentry, Figma |
 
-### Socials
+## 🤝 Connect
 
-<p align="left"> <a href="https://www.github.com/mapl6" target="_blank" rel="noreferrer"> <picture> <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/socials/github-dark.svg" /> <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/socials/github.svg" /> <img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/socials/github.svg" width="32" height="32" /> </picture> </a></p>
+<p align="left">
+  <a href="https://ir.linkedin.com/in/mahdi-amoozadeh-445a58b4"><img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" /></a>
+  <a href="https://github.com/Mapl6"><img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub" /></a>
+  <a href="mailto:mahdi.am6@gmail.com"><img src="https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white" alt="Email" /></a>
+</p>
 
-### Badges
+## 📊 GitHub Stats
 
-<b>My GitHub Stats</b>
+<p align="left">
+  <img height="165" src="https://github-readme-stats.vercel.app/api?username=mapl6&show_icons=true&count_private=true&title_color=0891b2&text_color=ffffff&icon_color=0891b2&bg_color=1c1917&hide_border=true" alt="GitHub stats" />
+  <img height="165" src="https://github-readme-stats.vercel.app/api/top-langs/?username=mapl6&layout=compact&langs_count=8&title_color=0891b2&text_color=ffffff&bg_color=1c1917&hide_border=true" alt="Top languages" />
+</p>
 
-<a href="http://www.github.com/mapl6"><img src="https://github-readme-stats.vercel.app/api?username=mapl6&show_icons=true&hide=&count_private=true&title_color=0891b2&text_color=ffffff&icon_color=0891b2&bg_color=1c1917&hide_border=true&show_icons=true" alt="mapl6's GitHub stats" /></a>
+<p align="left">
+  <img src="https://streak-stats.demolab.com/?user=mapl6&stroke=ffffff&background=1c1917&ring=0891b2&fire=0891b2&currStreakNum=ffffff&currStreakLabel=0891b2&sideNums=ffffff&sideLabels=ffffff&dates=ffffff&hide_border=true" alt="GitHub streak" />
+</p>
 
-<a href="http://www.github.com/mapl6"><img src="https://github-readme-streak-stats.herokuapp.com/?user=mapl6&stroke=ffffff&background=1c1917&ring=0891b2&fire=0891b2&currStreakNum=ffffff&currStreakLabel=0891b2&sideNums=ffffff&sideLabels=ffffff&dates=ffffff&hide_border=true" /></a>
+---
 
-<a href="http://www.github.com/mapl6"><img src="https://github-readme-activity-graph.cyclic.app/graph?username=mapl6&bg_color=1c1917&color=ffffff&line=0891b2&point=ffffff&area_color=1c1917&area=true&hide_border=true&custom_title=GitHub%20Commits%20Graph" alt="GitHub Commits Graph" /></a>
-
-<a href="https://github.com/mapl6" align="left"><img src="https://github-readme-stats.vercel.app/api/top-langs/?username=mapl6&langs_count=10&title_color=0891b2&text_color=ffffff&icon_color=0891b2&bg_color=1c1917&hide_border=true&locale=en&custom_title=Top%20%Languages" alt="Top Languages" /></a>
+<sub>This repository hosts my [portfolio site](https://mapl6.github.io) and my LaTeX CV (`cv/`). The CV PDF is rebuilt automatically by GitHub Actions on every push.</sub>
