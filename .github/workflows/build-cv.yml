@@ -21,16 +21,19 @@ jobs:
       - name: Compile LaTeX
         uses: xu-cheng/latex-action@v3
         with:
-          root_file: mahdicv.tex
+          # mahdicv.tex = designed CV, mahdi-amoozadeh-cv.tex = plain CV for job portals
+          root_file: |
+            mahdicv.tex
+            mahdi-amoozadeh-cv.tex
           working_directory: cv
           # fontawesome5, tcolorbox, cfr-lm need a full TeX Live
           scheme: full
 
-      - name: Place PDF in repo root
-        run: cp cv/mahdicv.pdf mahdicv.pdf
+      - name: Place PDFs in repo root
+        run: cp cv/mahdicv.pdf cv/mahdi-amoozadeh-cv.pdf .
 
       - name: Commit PDF
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
-          commit_message: "chore: rebuild CV PDF"
-          file_pattern: mahdicv.pdf
+          commit_message: "chore: rebuild CV PDFs"
+          file_pattern: mahdicv.pdf mahdi-amoozadeh-cv.pdf

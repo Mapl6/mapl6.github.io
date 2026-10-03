@@ -6,7 +6,7 @@ Right now I'm at Tavana, working on an e-commerce site that around 20,000 people
 
 Lately I've been learning NestJS so I can handle more of the backend myself.
 
-[CV (PDF)](./mahdicv.pdf) · [Portfolio](https://mapl6.github.io) · [mahdi.am6@gmail.com](mailto:mahdi.am6@gmail.com)
+[CV (PDF)](./mahdicv.pdf) · [CV, plain version](./mahdi-amoozadeh-cv.pdf) · [Portfolio](https://mapl6.github.io) · [mahdi.am6@gmail.com](mailto:mahdi.am6@gmail.com)
 
 ## Tools I use
 
@@ -42,4 +42,4 @@ Lately I've been learning NestJS so I can handle more of the backend myself.
   <img src="https://streak-stats.demolab.com/?user=mapl6&stroke=ffffff&background=1c1917&ring=0891b2&fire=0891b2&currStreakNum=ffffff&currStreakLabel=0891b2&sideNums=ffffff&sideLabels=ffffff&dates=ffffff&hide_border=true" alt="GitHub streak" />
 </p>
 
-<sub>This repo holds my [portfolio site](https://mapl6.github.io) and the LaTeX source of my CV (`cv/`). GitHub Actions rebuilds the PDF whenever the source changes.</sub>
+<sub>This repo holds my [portfolio site](https://mapl6.github.io) and the LaTeX source of my CV (`cv/`). GitHub Actions rebuilds both PDFs (`mahdicv.pdf` and the plain `mahdi-amoozadeh-cv.pdf`) whenever the source changes.</sub>
