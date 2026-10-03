@@ -1,6 +1,6 @@
 \documentclass[a4paper,10pt]{article}
 
-% Map glyphs to Unicode so the text can still be copied and parsed
+% Make every glyph map to real Unicode so ATS parsers can extract the text
 \ifdefined\pdfgentounicode
   \input{glyphtounicode}
   \pdfgentounicode=1
@@ -18,9 +18,7 @@
 \usepackage{tabularx}
 \usepackage{graphicx}
 \usepackage{dashrule}
-\usepackage{fontawesome}
 \usepackage[dvipsnames]{xcolor}
-\usepackage{etoolbox}
 \usepackage[hidelinks]{hyperref}
 
 % Colors from resume PDF
@@ -54,6 +52,8 @@
 \hypersetup{
   pdftitle={Mahdi Amoozadeh - Frontend Developer CV},
   pdfauthor={Mahdi Amoozadeh},
+  pdfsubject={Resume},
+  pdfkeywords={Frontend Developer, React, Next.js, TypeScript, JavaScript, Tailwind CSS, Redux, React Query},
   colorlinks=true,
   linkcolor=titleblue,
   filecolor=titleblue,
@@ -72,10 +72,8 @@
 }{}{0em}{\MakeUppercase}[\vspace{3pt}{\color{headingnavy}\titlerule[1.2pt]}\vspace{6pt}]
 \titlespacing*{\section}{0pt}{4pt}{0pt}
 
-\newcommand{\headergap}{\hspace{0.4em}}
-\newcommand{\headericon}[1]{\textcolor{titleblue}{\raisebox{-0.08em}{\fontsize{7.2pt}{7.2pt}\selectfont #1}}}
-\newcommand{\phoneicon}{\textcolor{titleblue}{\raisebox{-0.05em}{\fontsize{6pt}{6pt}\selectfont\faPhone}}}
-\newcommand{\metaicon}[1]{\textcolor{metagray}{\raisebox{-0.08em}{\fontsize{7pt}{7pt}\selectfont #1}}}
+% Plain-text separator (icons are unreadable to ATS parsers)
+\newcommand{\headersep}{\hspace{0.5em}\textcolor{titleblue}{\textbar}\hspace{0.5em}}
 
 \newcommand{\jobsep}{%
   \par\vspace{2.8mm}%
@@ -89,25 +87,15 @@
   \begin{tabular*}{\textwidth}{@{}l@{\extracolsep{\fill}}r@{}}
     {\companyfont\textcolor{titleblue}{#1}} &
     {\metafont\textcolor{metagray}{%
-      \metaicon{\faCalendar}\,#4
-      \hspace{1.15em}%
-      \metaicon{\faMapMarker}\,#2}}
+      #4\headersep #2}}
   \end{tabular*}%
 }
 
+% One plain line per category (no table) so ATS reads "Category: a, b, c"
 \newcommand{\resumeSubItem}[2]{%
-  \noindent\begin{tabularx}{\textwidth}{@{}p{3.3cm}@{\hspace{0.8em}}>{\raggedright\arraybackslash}X@{}}
-    {\skillcatfont\textcolor{titleblue}{#1}} & {\skilltagfont\color{bodygray}#2}
-  \end{tabularx}\par\vspace{1.6mm}%
+  \noindent\hangindent=1.5em\hangafter=1
+  {\skillcatfont\textcolor{titleblue}{#1:}}\hspace{0.5em}{\bodyfont\color{bodygray}#2}\par\vspace{1.4mm}%
 }
-
-\newcommand{\skillsep}{\hspace{1.15em}}
-\newcommand{\skilltag}[1]{\underline{#1}}
-
-% Turn a comma-separated skill list from cv-content.tex into underlined tags
-\newif\ifskillfirst
-\newcommand{\skilltagitem}[1]{\ifskillfirst\skillfirstfalse\else\skillsep\fi\skilltag{#1}}
-\newcommand{\skilllist}[1]{\skillfirsttrue\expandafter\forcsvlist\expandafter\skilltagitem\expandafter{#1}}
 
 \newcommand{\resumePOR}[3]{%
   \item[]
@@ -135,17 +123,13 @@
 
 % ---------- Header ----------
 \noindent{\namefont\color{headingnavy}\cvName}\\[3pt]
-{\rolefont\textcolor{titleblue}{\cvTitle}}\\[8pt]
+{\rolefont\textcolor{titleblue}{\cvRole}}\\[8pt]
 {\contactfont\color{bodygray}
-  \phoneicon\headergap \cvPhone
-  \hspace{1.25em}%
-  \headericon{\faEnvelope}\headergap \href{mailto:\cvEmail}{\textcolor{bodygray}{\cvEmail}}
-  \hspace{1.25em}%
-  \headericon{\faLinkedin}\headergap \href{\cvLinkedInUrl}{\textcolor{bodygray}{\cvLinkedInShort}}
-  \hspace{1.25em}%
-  \headericon{\faGithub}\headergap \href{\cvGithubUrl}{\textcolor{bodygray}{\cvGithubShort}}
-  \hspace{1.25em}%
-  \headericon{\faMapMarker}\headergap \cvLocation
+  \cvPhone\headersep
+  \href{mailto:\cvEmail}{\textcolor{bodygray}{\cvEmail}}\headersep
+  \href{\cvLinkedInUrl}{\textcolor{bodygray}{\cvLinkedInLabel}}\headersep
+  \href{\cvGithubUrl}{\textcolor{bodygray}{\cvGithubLabel}}\headersep
+  \cvLocation
 }
 
 \vspace{3mm}
@@ -158,7 +142,7 @@
 \setlength{\parskip}{0pt}
 
 % ---------- Experience ----------
-\section{Experience}
+\section{Work Experience}
 \resumeSubHeadingListStart
 
 \resumeSubheading
@@ -190,13 +174,13 @@
 
 % ---------- Skills ----------
 \section{Skills}
-\resumeSubItem{Languages}{\skilllist{\cvSkillLang}}
-\resumeSubItem{Frameworks}{\skilllist{\cvSkillFrameworks}}
-\resumeSubItem{State \& Data}{\skilllist{\cvSkillState}}
-\resumeSubItem{Styling \& UI}{\skilllist{\cvSkillUi}}
-\resumeSubItem{Libraries}{\skilllist{\cvSkillLibs}}
-\resumeSubItem{Tooling \& Workflow}{\skilllist{\cvSkillTooling}}
-\resumeSubItem{AI \& Agents}{\skilllist{\cvSkillAi}}
+\resumeSubItem{Languages}{\cvSkillLang}
+\resumeSubItem{Frameworks}{\cvSkillFrameworks}
+\resumeSubItem{State \& Data}{\cvSkillState}
+\resumeSubItem{Styling \& UI}{\cvSkillUi}
+\resumeSubItem{Libraries}{\cvSkillLibs}
+\resumeSubItem{Tooling \& Workflow}{\cvSkillTooling}
+\resumeSubItem{AI \& Agents}{\cvSkillAi}
 
 % ---------- Education ----------
 \section{Education}
@@ -221,7 +205,7 @@
 
 % ---------- Languages ----------
 \section{Languages}
-\textbf{\cvMotherTongue} --- \cvMotherTongueLevel \\[2pt]
-\textbf{English} --- \cvEnglishLevel{} (\cvEnglishRange)
+\textbf{\cvMotherTongue:} \cvMotherTongueLevel \\[2pt]
+\textbf{English:} \cvEnglishLevel{} (\cvEnglishRange)
 
 \end{document}

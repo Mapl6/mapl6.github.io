@@ -1,5 +1,11 @@
 \documentclass[a4paper,10pt]{article}
 
+% Make every glyph map to real Unicode so ATS parsers can extract the text
+\ifdefined\pdfgentounicode
+  \input{glyphtounicode}
+  \pdfgentounicode=1
+\fi
+
 % Packages
 \usepackage[T1]{fontenc}
 \usepackage[sfdefault]{inter}
@@ -12,7 +18,6 @@
 \usepackage{tabularx}
 \usepackage{graphicx}
 \usepackage{dashrule}
-\usepackage{fontawesome}
 \usepackage[dvipsnames]{xcolor}
 \usepackage[hidelinks]{hyperref}
 
@@ -45,6 +50,10 @@
 \setlength{\footskip}{5pt}
 
 \hypersetup{
+  pdftitle={Mahdi Amoozadeh - Frontend Developer CV},
+  pdfauthor={Mahdi Amoozadeh},
+  pdfsubject={Resume},
+  pdfkeywords={Frontend Developer, React, Next.js, TypeScript, JavaScript, Tailwind CSS, Redux, React Query},
   colorlinks=true,
   linkcolor=titleblue,
   filecolor=titleblue,
@@ -63,10 +72,8 @@
 }{}{0em}{\MakeUppercase}[\vspace{3pt}{\color{headingnavy}\titlerule[1.2pt]}\vspace{6pt}]
 \titlespacing*{\section}{0pt}{4pt}{0pt}
 
-\newcommand{\headergap}{\hspace{0.4em}}
-\newcommand{\headericon}[1]{\textcolor{titleblue}{\raisebox{-0.08em}{\fontsize{7.2pt}{7.2pt}\selectfont #1}}}
-\newcommand{\phoneicon}{\textcolor{titleblue}{\raisebox{-0.05em}{\fontsize{6pt}{6pt}\selectfont\faPhone}}}
-\newcommand{\metaicon}[1]{\textcolor{metagray}{\raisebox{-0.08em}{\fontsize{7pt}{7pt}\selectfont #1}}}
+% Plain-text separator (icons are unreadable to ATS parsers)
+\newcommand{\headersep}{\hspace{0.5em}\textcolor{titleblue}{\textbar}\hspace{0.5em}}
 
 \newcommand{\jobsep}{%
   \par\vspace{2.8mm}%
@@ -75,28 +82,23 @@
 }
 
 \newcommand{\resumeSubheading}[4]{%
-  \item[]
+    \item[]
   {\jobtitlefont\color{headingnavy}#3}\\[2pt]
   \begin{tabular*}{\textwidth}{@{}l@{\extracolsep{\fill}}r@{}}
     {\companyfont\textcolor{titleblue}{#1}} &
     {\metafont\textcolor{metagray}{%
-      \metaicon{\faCalendar}\,#4
-      \hspace{1.15em}%
-      \metaicon{\faMapMarker}\,#2}}
+      #4\headersep #2}}
   \end{tabular*}%
 }
 
+% One plain line per category (no table) so ATS reads "Category: a, b, c"
 \newcommand{\resumeSubItem}[2]{%
-  \noindent\begin{tabularx}{\textwidth}{@{}p{3.3cm}@{\hspace{0.8em}}>{\raggedright\arraybackslash}X@{}}
-    {\skillcatfont\textcolor{titleblue}{#1}} & {\skilltagfont\color{bodygray}#2}
-  \end{tabularx}\par\vspace{1.6mm}%
+  \noindent\hangindent=1.5em\hangafter=1
+  {\skillcatfont\textcolor{titleblue}{#1:}}\hspace{0.5em}{\bodyfont\color{bodygray}#2}\par\vspace{1.4mm}%
 }
 
-\newcommand{\skillsep}{\hspace{1.15em}}
-\newcommand{\skilltag}[1]{\underline{#1}}
-
 \newcommand{\resumePOR}[3]{%
-  \item[]
+    \item[]
   \textbf{#1}\hspace{0.3mm}#2\hfill\textit{\small #3}%
 }
 
@@ -104,34 +106,27 @@
 \renewcommand{\labelitemii}{\color{bodygray}\textbullet}
 
 \newcommand{\resumeSubHeadingListStart}{%
-  \begin{itemize}[leftmargin=0pt, label={}, itemsep=0pt, topsep=0pt, parsep=0pt]%
+    \begin{itemize}[leftmargin=0pt, label={}, itemsep=0pt, topsep=0pt, parsep=0pt]%
 }
 \newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
 
 \newcommand{\resumeItemListStart}{%
-  \begin{itemize}[leftmargin=1.4em, labelsep=0.6em, itemsep=1.1mm, topsep=2.2mm, parsep=0pt]%
+    \begin{itemize}[leftmargin=1.4em, labelsep=0.6em, itemsep=1.1mm, topsep=2.2mm, parsep=0pt]%
 }
 \newcommand{\resumeItemListEnd}{\end{itemize}}
-
-% Placeholder values: renders as normal text. Search for \mock to find and replace them.
-\newcommand{\mock}[1]{#1}
 
 \begin{document}
 \bodyfont
 
 % ---------- Header ----------
 \noindent{\namefont\color{headingnavy}Mahdi Amoozadeh}\\[3pt]
-{\rolefont\textcolor{titleblue}{Front-End Developer}}\\[8pt]
+{\rolefont\textcolor{titleblue}{Frontend Developer \textbar{} React, Next.js, TypeScript}}\\[8pt]
 {\contactfont\color{bodygray}
-  \phoneicon\headergap +98-9125090894
-  \hspace{1.25em}%
-  \headericon{\faEnvelope}\headergap \href{mailto:mahdi.am6@gmail.com}{\textcolor{bodygray}{mahdi.am6@gmail.com}}
-  \hspace{1.25em}%
-  \headericon{\faLinkedin}\headergap \href{https://ir.linkedin.com/in/mahdi-amoozadeh-445a58b4}{\textcolor{bodygray}{LinkedIn}}
-  \hspace{1.25em}%
-  \headericon{\faGithub}\headergap \href{https://github.com/Mapl6}{\textcolor{bodygray}{Mapl6}}
-  \hspace{1.25em}%
-  \headericon{\faMapMarker}\headergap Tehran, Iran
+  +98 912 509 0894\headersep
+  \href{mailto:mahdi.am6@gmail.com}{\textcolor{bodygray}{mahdi.am6@gmail.com}}\headersep
+  \href{https://www.linkedin.com/in/mahdi-amoozadeh-445a58b4}{\textcolor{bodygray}{linkedin.com/in/mahdi-amoozadeh-445a58b4}}\headersep
+  \href{https://github.com/Mapl6}{\textcolor{bodygray}{github.com/Mapl6}}\headersep
+  Tehran, Iran
 }
 
 \vspace{3mm}
@@ -140,26 +135,25 @@
 \section{Summary}
 \setlength{\parskip}{6pt}
 \color{bodygray}
-Frontend Developer with 4+ years of experience building production web applications with React, Next.js, TypeScript, and Tailwind CSS.
-Experienced in developing reusable UI systems, integrating REST APIs, managing application state with Redux and Zustand, and building responsive, maintainable interfaces.
-
-Currently working at Tavana, contributing to production applications in a collaborative development environment with a focus on performance, usability, and scalable frontend architecture.
+Frontend developer with 4+ years of experience building web apps in React, Next.js and TypeScript.
+At Tavana I work on an e-commerce platform used by 20,000+ people a day. I build and maintain our component library, handle data fetching and state with React Query, Redux Toolkit and Zustand, and work on page speed.
+Before that I built a medical imaging portal, an online exam platform and a coaching app at Bluprint, and took on freelance projects for small businesses.
 \setlength{\parskip}{0pt}
 
 % ---------- Experience ----------
-\section{Experience}
+\section{Work Experience}
 \resumeSubHeadingListStart
 
 \resumeSubheading
   {\href{https://tavanastore.ir/}{Tavana}}{Tehran, Iran}
   {Frontend Developer}{October 2024 -- Present}
   \resumeItemListStart
-    \item Develop and maintain Tavana's \mock{e-commerce platform} serving \textbf{20,000+ daily users}, built with Next.js (App Router), React, TypeScript, and Tailwind CSS.
-    \item Built \mock{40+} components for the internal UI library and design system --- inputs, form elements (React Hook Form + Zod), validation states, and error handling patterns --- documented in Storybook and reused across \mock{4} products.
-    \item Managed server state with React Query (TanStack) --- caching, pagination, and optimistic updates --- and client state with Redux Toolkit and Zustand, reducing redundant API calls by \mock{\textasciitilde35\%}.
-    \item Improved Core Web Vitals through SSR/SSG, code splitting, and image optimization, raising the Lighthouse performance score from \mock{62 to 91}.
-    \item Integrated Sentry for error monitoring and alerting, cutting the time to detect and fix production bugs by \mock{\textasciitilde40\%}.
-    \item Worked with backend and design teams (Figma) to deliver features end to end, reviewed pull requests, and maintained CI/CD pipelines for automated build and deployment.
+    \item Develop and maintain Tavana's e-commerce platform (Next.js App Router, React, TypeScript, Tailwind CSS), used by \textbf{20,000+ people every day}.
+    \item Built 40+ components for our internal UI library, including inputs and form elements with React Hook Form and Zod validation, documented in Storybook and used in 4 products.
+    \item Moved server data to React Query (caching, pagination, optimistic updates) and kept client state in Redux Toolkit and Zustand, which cut redundant API calls by about 35\%.
+    \item Raised the Lighthouse performance score from 62 to 91 and improved Core Web Vitals by rendering key pages with SSR/SSG, splitting bundles and optimizing images.
+    \item Set up Sentry error monitoring and alerts, so the team now finds and fixes production bugs about 40\% faster.
+    \item Work with backend developers and designers (Figma) on new features, review pull requests and maintain the CI/CD pipeline.
   \resumeItemListEnd
 
 \jobsep
@@ -168,13 +162,13 @@ Currently working at Tavana, contributing to production applications in a collab
   {\href{https://bluprint.ir/}{Bluprint}}{Tehran, Iran}
   {Frontend Developer}{October 2023 -- October 2024}
   \resumeItemListStart
-    \item Delivered features across three production projects using React, Redux, Zustand, and REST APIs:
+    \item Worked on three production projects using React, Redux, Zustand and REST APIs:
     \begin{itemize}[leftmargin=1.2em, label=\textbullet, labelsep=0.5em, itemsep=0.6mm, topsep=1mm, parsep=0pt]
-      \item \textbf{Pax Cast} --- Medical imaging platform. Built the patient portal for viewing images and reports and the service management panel used by 7 imaging centers.
-      \item \textbf{Marvel Quiz} --- Online exam platform. Built the multi-booklet exam flow with online answer sheets, exam purchasing, and question/PDF management for 600 students.
-      \item \textbf{One Coach} --- Training management platform. Built exercise management, video lessons, session scheduling, and progress tracking dashboards for \mock{300+} coaches and their trainees.
+      \item \textbf{Pax Cast} (medical imaging): built the patient portal for viewing scans and reports, and the service management panel used by 7 imaging centers.
+      \item \textbf{Marvel Quiz} (online exams): built the multi-booklet exam flow with online answer sheets, exam purchase, and question and PDF management, used by 600 students.
+      \item \textbf{One Coach} (training management): built exercise management, video lessons, session scheduling and progress dashboards for 300+ coaches and their trainees.
     \end{itemize}
-    \item Built a shared library of \mock{25+} responsive components reused across all three projects, cutting new-page development time by \mock{\textasciitilde30\%}.
+    \item Built a set of 25+ responsive components shared by all three projects, which made new pages about 30\% faster to build.
   \resumeItemListEnd
 
 \jobsep
@@ -183,28 +177,28 @@ Currently working at Tavana, contributing to production applications in a collab
   {Freelance}{Remote}
   {Frontend Developer}{2022 -- 2024}
   \resumeItemListStart
-    \item Built \mock{6+} web applications for clients using React, Next.js, and TypeScript, including an \mock{admin dashboard for a logistics company} and a \mock{booking website for a beauty clinic}.
-    \item Worked directly with clients from requirements to delivery, handling UI implementation, REST API integration, and deployment.
+    \item Built 6+ web apps for clients with React, Next.js and TypeScript, including an admin dashboard for a logistics company and a booking site for a beauty clinic.
+    \item Handled each project from the first requirements call to deployment: UI, REST API integration and hosting.
   \resumeItemListEnd
 
 \resumeSubHeadingListEnd
 
 % ---------- Skills ----------
 \section{Skills}
-\resumeSubItem{Languages}{\skilltag{TypeScript}\skillsep\skilltag{JavaScript (ES6+)}\skillsep\skilltag{HTML5}\skillsep\skilltag{CSS3}}
-\resumeSubItem{Frameworks}{\skilltag{React}\skillsep\skilltag{Next.js (App Router)}\skillsep\skilltag{SSR / SSG / ISR}}
-\resumeSubItem{State \& Data}{\skilltag{React Query (TanStack)}\skillsep\skilltag{Redux Toolkit}\skillsep\skilltag{Redux}\skillsep\skilltag{Zustand}\skillsep\skilltag{REST APIs}}
-\resumeSubItem{Styling \& UI}{\skilltag{Tailwind CSS}\skillsep\skilltag{Material UI}\skillsep\skilltag{HeroUI (NextUI)}\skillsep\skilltag{Framer Motion}\skillsep\skilltag{Responsive Design}\skillsep\skilltag{Design Systems}}
-\resumeSubItem{Libraries}{\skilltag{React Hook Form}\skillsep\skilltag{Zod}\skillsep\skilltag{Storybook}\skillsep\skilltag{i18next}\skillsep\skilltag{Swiper.js}}
-\resumeSubItem{Tooling \& Workflow}{\skilltag{Git}\skillsep\skilltag{GitHub}\skillsep\skilltag{GitLab}\skillsep\skilltag{CI/CD}\skillsep\skilltag{Sentry}\skillsep\skilltag{Figma}\skillsep\skilltag{Code Review}\skillsep\skilltag{Agile}}
-\resumeSubItem{AI \& Agents}{\skilltag{AI Coding Agents (Claude Code, Cursor)}\skillsep\skilltag{Agentic Workflows (Plan, Implement, Review)}\skillsep\skilltag{CLAUDE.md, Rules \& Custom Skills}\skillsep\skilltag{MCP (GitHub, Figma)}\skillsep\skilltag{AI Code Review}\skillsep\skilltag{Prompt Engineering}\skillsep\skilltag{AI-Assisted Development}\skillsep\skilltag{LLM API Integration (OpenAI, Anthropic)}}
+\resumeSubItem{Languages}{TypeScript, JavaScript (ES6+), HTML5, CSS3}
+\resumeSubItem{Frameworks}{React, Next.js (App Router), SSR, SSG, ISR}
+\resumeSubItem{State \& Data}{React Query (TanStack Query), Redux Toolkit, Redux, Zustand, REST APIs}
+\resumeSubItem{Styling \& UI}{Tailwind CSS, Material UI, HeroUI (NextUI), Framer Motion, Responsive Design, Design Systems}
+\resumeSubItem{Libraries}{React Hook Form, Zod, Storybook, i18next, Swiper.js}
+\resumeSubItem{Tooling \& Workflow}{Git, GitHub, GitLab, CI/CD, Sentry, Figma, Code Review, Agile}
+\resumeSubItem{AI \& Agents}{Claude Code, Cursor, MCP (GitHub, Figma), AI-assisted code review, OpenAI and Anthropic APIs}
 
 % ---------- Education ----------
 \section{Education}
 \resumeSubHeadingListStart
 \resumeSubheading
   {Azad University}{Tehran, Iran}
-  {Master's Degree in Software Engineering}{2023 -- Current}
+  {Master's Degree in Software Engineering}{2023 -- Present}
 \jobsep
 \resumeSubheading
   {Semnan University}{Semnan, Iran}
@@ -215,14 +209,14 @@ Currently working at Tavana, contributing to production applications in a collab
 \section{Certifications}
 \resumeSubHeadingListStart
 \resumePOR
-  {\href{https://quera.org/media/public/quera_certificate/0669e232806f46ea83cdae4217677549.jpg}{Quera Front-End Bootcamp}}
+  {\href{https://quera.org/media/public/quera_certificate/0669e232806f46ea83cdae4217677549.jpg}{Front-End Bootcamp, Quera}}
   {}
   {}
 \resumeSubHeadingListEnd
 
 % ---------- Languages ----------
 \section{Languages}
-\textbf{Persian} --- Native \\[2pt]
-\textbf{English} --- Intermediate (B1--B2)
+\textbf{Persian:} Native \\[2pt]
+\textbf{English:} Intermediate (B1--B2)
 
 \end{document}

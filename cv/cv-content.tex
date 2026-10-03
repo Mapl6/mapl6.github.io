@@ -2,26 +2,25 @@
 % CV CONTENT — edit this file only. Do not edit mahdicv.tex
 % ============================================================
 
-% Placeholder values: renders as normal text. Search for \mock to find and replace them.
-\newcommand{\mock}[1]{#1}
-
 % --- Header ---
 \newcommand{\cvName}{Mahdi Amoozadeh}
-\newcommand{\cvRole}{Front-End Developer}
-\newcommand{\cvPhone}{+98-9125090894}
+\newcommand{\cvTitle}{Frontend Developer}  % designed CV (mahdicv.tex)
+\newcommand{\cvRole}{Frontend Developer \textbar{} React, Next.js, TypeScript}  % ATS CV (mahdicv-ats.tex)
+\newcommand{\cvPhone}{+98 912 509 0894}
 \newcommand{\cvEmail}{mahdi.am6@gmail.com}
-\newcommand{\cvLinkedInUrl}{https://ir.linkedin.com/in/mahdi-amoozadeh-445a58b4}
-\newcommand{\cvLinkedInLabel}{LinkedIn}
+\newcommand{\cvLinkedInUrl}{https://www.linkedin.com/in/mahdi-amoozadeh-445a58b4}
+\newcommand{\cvLinkedInLabel}{linkedin.com/in/mahdi-amoozadeh-445a58b4}
+\newcommand{\cvLinkedInShort}{LinkedIn}
 \newcommand{\cvGithubUrl}{https://github.com/Mapl6}
-\newcommand{\cvGithubLabel}{Mapl6}
+\newcommand{\cvGithubLabel}{github.com/Mapl6}
+\newcommand{\cvGithubShort}{Mapl6}
 \newcommand{\cvLocation}{Tehran, Iran}
 
 % --- About ---
 \newcommand{\cvAbout}{%
-Frontend Developer with 4+ years of experience building production web applications with React, Next.js, TypeScript, and Tailwind CSS.
-Experienced in developing reusable UI systems, integrating REST APIs, managing application state with Redux and Zustand, and building responsive, maintainable interfaces.
-
-Currently working at Tavana, contributing to production applications in a collaborative development environment with a focus on performance, usability, and scalable frontend architecture.%
+Frontend developer with 4+ years of experience building web apps in React, Next.js and TypeScript.
+At Tavana I work on an e-commerce platform used by 20,000+ people a day. I build and maintain our component library, handle data fetching and state with React Query, Redux Toolkit and Zustand, and work on page speed.
+Before that I built a medical imaging portal, an online exam platform and a coaching app at Bluprint, and took on freelance projects for small businesses.%
 }
 
 % --- Experience: Tavana ---
@@ -31,12 +30,12 @@ Currently working at Tavana, contributing to production applications in a collab
 \newcommand{\cvTavanaTitle}{Frontend Developer}
 \newcommand{\cvTavanaDates}{October 2024 -- Present}
 \newcommand{\cvTavanaBullets}{%
-  \item Develop and maintain Tavana's \mock{e-commerce platform} serving \textbf{20,000+ daily users}, built with Next.js (App Router), React, TypeScript, and Tailwind CSS.
-  \item Built \mock{40+} components for the internal UI library and design system --- inputs, form elements (React Hook Form + Zod), validation states, and error handling patterns --- documented in Storybook and reused across \mock{4} products.
-  \item Managed server state with React Query (TanStack) --- caching, pagination, and optimistic updates --- and client state with Redux Toolkit and Zustand, reducing redundant API calls by \mock{\textasciitilde35\%}.
-  \item Improved Core Web Vitals through SSR/SSG, code splitting, and image optimization, raising the Lighthouse performance score from \mock{62 to 91}.
-  \item Integrated Sentry for error monitoring and alerting, cutting the time to detect and fix production bugs by \mock{\textasciitilde40\%}.
-  \item Worked with backend and design teams (Figma) to deliver features end to end, reviewed pull requests, and maintained CI/CD pipelines for automated build and deployment.%
+  \item Develop and maintain Tavana's e-commerce platform (Next.js App Router, React, TypeScript, Tailwind CSS), used by \textbf{20,000+ people every day}.
+  \item Built 40+ components for our internal UI library, including inputs and form elements with React Hook Form and Zod validation, documented in Storybook and used in 4 products.
+  \item Moved server data to React Query (caching, pagination, optimistic updates) and kept client state in Redux Toolkit and Zustand, which cut redundant API calls by about 35\%.
+  \item Raised the Lighthouse performance score from 62 to 91 and improved Core Web Vitals by rendering key pages with SSR/SSG, splitting bundles and optimizing images.
+  \item Set up Sentry error monitoring and alerts, so the team now finds and fixes production bugs about 40\% faster.
+  \item Work with backend developers and designers (Figma) on new features, review pull requests and maintain the CI/CD pipeline.%
 }
 
 % --- Experience: Bluprint ---
@@ -46,13 +45,13 @@ Currently working at Tavana, contributing to production applications in a collab
 \newcommand{\cvBluprintTitle}{Frontend Developer}
 \newcommand{\cvBluprintDates}{October 2023 -- October 2024}
 \newcommand{\cvBluprintBullets}{%
-  \item Delivered features across three production projects using React, Redux, Zustand, and REST APIs:
+  \item Worked on three production projects using React, Redux, Zustand and REST APIs:
   \begin{itemize}[leftmargin=1.2em, label=\textbullet, labelsep=0.5em, itemsep=0.6mm, topsep=1mm, parsep=0pt]
-    \item \textbf{Pax Cast} --- Medical imaging platform. Built the patient portal for viewing images and reports and the service management panel used by 7 imaging centers.
-    \item \textbf{Marvel Quiz} --- Online exam platform. Built the multi-booklet exam flow with online answer sheets, exam purchasing, and question/PDF management for 600 students.
-    \item \textbf{One Coach} --- Training management platform. Built exercise management, video lessons, session scheduling, and progress tracking dashboards for \mock{300+} coaches and their trainees.
+    \item \textbf{Pax Cast} (medical imaging): built the patient portal for viewing scans and reports, and the service management panel used by 7 imaging centers.
+    \item \textbf{Marvel Quiz} (online exams): built the multi-booklet exam flow with online answer sheets, exam purchase, and question and PDF management, used by 600 students.
+    \item \textbf{One Coach} (training management): built exercise management, video lessons, session scheduling and progress dashboards for 300+ coaches and their trainees.
   \end{itemize}
-  \item Built a shared library of \mock{25+} responsive components reused across all three projects, cutting new-page development time by \mock{\textasciitilde30\%}.%
+  \item Built a set of 25+ responsive components shared by all three projects, which made new pages about 30\% faster to build.%
 }
 
 % --- Freelance ---
@@ -61,15 +60,15 @@ Currently working at Tavana, contributing to production applications in a collab
 \newcommand{\cvFreelanceTitle}{Frontend Developer}
 \newcommand{\cvFreelanceDates}{2022 -- 2024}
 \newcommand{\cvFreelanceBullets}{%
-  \item Built \mock{6+} web applications for clients using React, Next.js, and TypeScript, including an \mock{admin dashboard for a logistics company} and a \mock{booking website for a beauty clinic}.
-  \item Worked directly with clients from requirements to delivery, handling UI implementation, REST API integration, and deployment.%
+  \item Built 6+ web apps for clients with React, Next.js and TypeScript, including an admin dashboard for a logistics company and a booking site for a beauty clinic.
+  \item Handled each project from the first requirements call to deployment: UI, REST API integration and hosting.%
 }
 
 % --- Education ---
 \newcommand{\cvEduOneSchool}{Azad University}
 \newcommand{\cvEduOneLocation}{Tehran, Iran}
 \newcommand{\cvEduOneDegree}{Master's Degree in Software Engineering}
-\newcommand{\cvEduOneDates}{2023 -- Current}
+\newcommand{\cvEduOneDates}{2023 -- Present}
 
 \newcommand{\cvEduTwoSchool}{Semnan University}
 \newcommand{\cvEduTwoLocation}{Semnan, Iran}
@@ -77,16 +76,18 @@ Currently working at Tavana, contributing to production applications in a collab
 \newcommand{\cvEduTwoDates}{2017 -- 2022}
 
 % --- Skills ---
-\newcommand{\cvSkillLang}{\skilltag{TypeScript}\skillsep\skilltag{JavaScript (ES6+)}\skillsep\skilltag{HTML5}\skillsep\skilltag{CSS3}}
-\newcommand{\cvSkillFrameworks}{\skilltag{React}\skillsep\skilltag{Next.js (App Router)}\skillsep\skilltag{SSR / SSG / ISR}}
-\newcommand{\cvSkillState}{\skilltag{React Query (TanStack)}\skillsep\skilltag{Redux Toolkit}\skillsep\skilltag{Redux}\skillsep\skilltag{Zustand}\skillsep\skilltag{REST APIs}}
-\newcommand{\cvSkillUi}{\skilltag{Tailwind CSS}\skillsep\skilltag{Material UI}\skillsep\skilltag{HeroUI (NextUI)}\skillsep\skilltag{Framer Motion}\skillsep\skilltag{Responsive Design}\skillsep\skilltag{Design Systems}}
-\newcommand{\cvSkillLibs}{\skilltag{React Hook Form}\skillsep\skilltag{Zod}\skillsep\skilltag{Storybook}\skillsep\skilltag{i18next}\skillsep\skilltag{Swiper.js}}
-\newcommand{\cvSkillTooling}{\skilltag{Git}\skillsep\skilltag{GitHub}\skillsep\skilltag{GitLab}\skillsep\skilltag{CI/CD}\skillsep\skilltag{Sentry}\skillsep\skilltag{Figma}\skillsep\skilltag{Code Review}\skillsep\skilltag{Agile}}
-\newcommand{\cvSkillAi}{\skilltag{AI Coding Agents (Claude Code, Cursor)}\skillsep\skilltag{Agentic Workflows (Plan, Implement, Review)}\skillsep\skilltag{CLAUDE.md, Rules \& Custom Skills}\skillsep\skilltag{MCP (GitHub, Figma)}\skillsep\skilltag{AI Code Review}\skillsep\skilltag{Prompt Engineering}\skillsep\skilltag{AI-Assisted Development}\skillsep\skilltag{LLM API Integration (OpenAI, Anthropic)}}
+% Comma-separated. The ATS CV prints them as-is, the designed CV turns each one into a tag.
+% Wrap an item in braces if it contains a comma.
+\newcommand{\cvSkillLang}{TypeScript, JavaScript (ES6+), HTML5, CSS3}
+\newcommand{\cvSkillFrameworks}{React, Next.js (App Router), SSR, SSG, ISR}
+\newcommand{\cvSkillState}{React Query (TanStack Query), Redux Toolkit, Redux, Zustand, REST APIs}
+\newcommand{\cvSkillUi}{Tailwind CSS, Material UI, HeroUI (NextUI), Framer Motion, Responsive Design, Design Systems}
+\newcommand{\cvSkillLibs}{React Hook Form, Zod, Storybook, i18next, Swiper.js}
+\newcommand{\cvSkillTooling}{Git, GitHub, GitLab, CI/CD, Sentry, Figma, Code Review, Agile}
+\newcommand{\cvSkillAi}{Claude Code, Cursor, {MCP (GitHub, Figma)}, AI-assisted code review, OpenAI and Anthropic APIs}
 
 % --- Certifications ---
-\newcommand{\cvCertName}{Quera Front-End Bootcamp}
+\newcommand{\cvCertName}{Front-End Bootcamp, Quera}
 \newcommand{\cvCertUrl}{https://quera.org/media/public/quera_certificate/0669e232806f46ea83cdae4217677549.jpg}
 
 % --- Languages ---
