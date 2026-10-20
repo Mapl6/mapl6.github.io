@@ -18,9 +18,8 @@
 
 % --- About ---
 \newcommand{\cvAbout}{%
-Frontend developer with 4+ years in React, Next.js and TypeScript, focused on performance and component libraries.
-At Tavana (20,000+ daily users) I took the Lighthouse score from 62 to 91 and built a 40+ component UI library used in 4 products.
-Earlier I built medical imaging, online exam and coaching apps at Bluprint.%
+Frontend developer, 4+ years with React, Next.js and TypeScript. Most of my work has been on page speed and component libraries.
+At Tavana (20,000+ daily users) I took our Lighthouse score from 62 to 91 and built a UI library of 40+ components that 4 of our products use.%
 }
 
 % --- Experience: Tavana ---
@@ -30,12 +29,12 @@ Earlier I built medical imaging, online exam and coaching apps at Bluprint.%
 \newcommand{\cvTavanaTitle}{Frontend Developer}
 \newcommand{\cvTavanaDates}{October 2024 -- October 2026}
 \newcommand{\cvTavanaBullets}{%
-  \item[] \href{\cvTavanaUrl}{\textbf{tavanastore.ir}} \textit{-- e-commerce platform (Next.js App Router, React, TypeScript, Tailwind CSS) with \textbf{20,000+ daily users}.}
-  \item Took the Lighthouse performance score \textbf{from 62 to 91} with SSR/SSG on key pages, bundle splitting and image optimization.
+  \item[] \href{\cvTavanaUrl}{\textbf{tavanastore.ir}}: e-commerce site with \textbf{20,000+ daily users}. Next.js App Router, React, TypeScript and Tailwind CSS.
+  \item Took our Lighthouse performance score \textbf{from 62 to 91} by moving key pages to SSR/SSG, splitting bundles and optimizing images.
   \item Built \textbf{40+ components} for our internal UI library, including form inputs with React Hook Form and Zod. They're documented in Storybook and used in 4 of our products.
   \item Moved server data to React Query and kept client state in Redux Toolkit and Zustand. Redundant API calls dropped by \textbf{about 35\%}.
   \item Set up Sentry with alerts. We fixed production bugs \textbf{about 40\% faster} after that.
-  \item Added lint, type-check and build checks to CI for every pull request, plus a preview deploy per PR for design and QA to review.%
+  \item Added CI checks (lint, types, build) on every pull request. Each PR also got its own preview deploy for design and QA.%
 }
 
 % --- Experience: Bluprint ---
@@ -45,14 +44,14 @@ Earlier I built medical imaging, online exam and coaching apps at Bluprint.%
 \newcommand{\cvBluprintTitle}{Frontend Developer}
 \newcommand{\cvBluprintDates}{October 2023 -- October 2024}
 \newcommand{\cvBluprintBullets}{%
-  \item[] \textit{Three production apps, all React with Redux, Zustand and REST APIs.}
-  \item Built \textbf{25+ responsive components} shared by the three apps, which cut the time to build a new page by \textbf{about 30\%}.
-  \item[] \textbf{Pax Cast} \textit{-- medical imaging portal for patients and \textbf{7 imaging centers}}
-  \item Built the patient scan viewer. Scans are large, so images load progressively and only when needed.
-  \item[] \textbf{Marvel Quiz} \textit{-- online exams with multiple booklets, used by \textbf{600 students}}
-  \item Built the exam flow with autosave. Answers are kept in the browser and synced to the server in the background, and a refresh or dropped connection doesn't lose anything.
-  \item[] \textbf{One Coach} \textit{-- training management for \textbf{300+ coaches} and their trainees}
-  \item Built session scheduling, with checks for overlapping bookings and time zone handling.%
+  \item[] Three production React apps using Redux, Zustand and REST APIs.
+  \item Made \textbf{25+ responsive components} that all three apps shared. New pages took \textbf{about 30\%} less time to build.
+  \item[] \textbf{Pax Cast}: medical imaging portal for patients and \textbf{7 imaging centers}.
+  \item Built the patient scan viewer. Scans were large, so I loaded images progressively and only when they were needed.
+  \item[] \textbf{Marvel Quiz}: online exams with multiple booklets, used by \textbf{600 students}.
+  \item Added autosave to the exam flow. Answers were saved in the browser and synced to the server in the background. Students didn't lose answers when they refreshed or lost connection.
+  \item[] \textbf{One Coach}: training management for \textbf{300+ coaches} and their trainees.
+  \item Wrote the session scheduling, including checks for overlapping bookings and time zone handling.%
 }
 
 % --- Freelance ---
@@ -61,8 +60,8 @@ Earlier I built medical imaging, online exam and coaching apps at Bluprint.%
 \newcommand{\cvFreelanceTitle}{Frontend Developer}
 \newcommand{\cvFreelanceDates}{2022 -- 2024}
 \newcommand{\cvFreelanceBullets}{%
-  \item Built \textbf{6+ web apps} for clients with React, Next.js and TypeScript, among them an admin dashboard for a logistics company and a booking site for a beauty clinic.
-  \item Ran each project on my own, from the first call with the client through UI, API integration and hosting.%
+  \item Built \textbf{6+ web apps} for clients with React, Next.js and TypeScript, including an admin dashboard for a logistics company and a booking site for a beauty clinic.
+  \item Ran each project on my own, from the first call with the client to hosting it.%
 }
 
 % --- Education ---
@@ -79,12 +78,13 @@ Earlier I built medical imaging, online exam and coaching apps at Bluprint.%
 % --- Skills ---
 % Comma-separated. The plain CV prints them as-is, the designed CV turns each one into a tag.
 % Wrap an item in braces if it contains a comma.
-\newcommand{\cvSkillLang}{TypeScript, JavaScript (ES6+)}
+\newcommand{\cvSkillLang}{TypeScript, JavaScript (ES6+), HTML, CSS}
 \newcommand{\cvSkillFrameworks}{React, Next.js (App Router)}
-\newcommand{\cvSkillState}{React Query (TanStack Query), Redux Toolkit}
-\newcommand{\cvSkillUi}{Tailwind CSS, Storybook}
+\newcommand{\cvSkillState}{React Query (TanStack Query), Redux Toolkit, Zustand, REST APIs}
+\newcommand{\cvSkillUi}{Tailwind CSS, Storybook, Responsive Design}
 \newcommand{\cvSkillLibs}{React Hook Form, Zod}
-\newcommand{\cvSkillTooling}{Git, Sentry}
+\newcommand{\cvSkillPerf}{SSR/SSG, Code Splitting, Lighthouse}
+\newcommand{\cvSkillTooling}{Git, CI/CD, Sentry}
 \newcommand{\cvSkillAi}{{LLM APIs (OpenAI, Anthropic)}, Tool Calling, MCP, RAG, Context Engineering, {AI Coding Agents (Claude Code, Cursor)}}
 
 % --- Certifications ---

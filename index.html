@@ -291,12 +291,13 @@ const profile = {
 };
 
 const skills = [
-    ['Languages', ['TypeScript', 'JavaScript (ES6+)']],
+    ['Languages', ['TypeScript', 'JavaScript (ES6+)', 'HTML', 'CSS']],
     ['Frameworks', ['React', 'Next.js (App Router)']],
-    ['State & Data', ['React Query (TanStack)', 'Redux Toolkit']],
-    ['Styling & UI', ['Tailwind CSS', 'Storybook']],
+    ['State & Data', ['React Query (TanStack)', 'Redux Toolkit', 'Zustand', 'REST APIs']],
+    ['Styling & UI', ['Tailwind CSS', 'Storybook', 'Responsive Design']],
     ['Libraries', ['React Hook Form', 'Zod']],
-    ['Tooling', ['Git', 'Sentry']],
+    ['Performance', ['SSR/SSG', 'Code Splitting', 'Lighthouse']],
+    ['Tooling', ['Git', 'CI/CD', 'Sentry']],
     ['AI & Agents', ['LLM APIs (OpenAI, Anthropic)', 'Tool Calling', 'MCP', 'RAG', 'Context Engineering', 'AI Coding Agents (Claude Code, Cursor)']],
 ];
 
@@ -305,22 +306,22 @@ const jobs = [
         company: 'Tavana', url: 'https://tavanastore.ir/', role: 'Frontend Developer',
         dates: 'Oct 2024 — Oct 2026', location: 'Tehran, Iran',
         points: [
-            'tavanastore.ir: e-commerce platform with 20,000+ daily users (Next.js, React, TypeScript, Tailwind CSS)',
-            'Built 40+ components for our internal UI library, documented in Storybook and used in 4 products',
+            'tavanastore.ir: e-commerce site with 20,000+ daily users. Next.js, React, TypeScript and Tailwind CSS',
+            'Took our Lighthouse performance score from 62 to 91 by moving key pages to SSR/SSG, splitting bundles and optimizing images',
+            'Built 40+ components for our internal UI library. They\'re documented in Storybook and used in 4 of our products',
             'Moved server data to React Query. Redundant API calls dropped by about 35%',
-            'Took the Lighthouse performance score from 62 to 91 with SSR/SSG, bundle splitting and image optimization',
             'Set up Sentry with alerts. We fixed production bugs about 40% faster after that',
-            'Added lint, type-check and build checks to CI for every PR, plus a preview deploy per PR for design and QA',
+            'Added CI checks (lint, types, build) on every pull request. Each PR also got its own preview deploy for design and QA',
         ],
     },
     {
         company: 'Bluprint', url: 'https://bluprint.ir/', role: 'Frontend Developer',
         dates: 'Oct 2023 — Oct 2024', location: 'Tehran, Iran',
         points: [
-            'Built 25+ responsive components shared by three apps, which cut the time to build a new page by about 30%',
-            'Pax Cast (medical imaging, 7 centers): built the patient scan viewer. Scans are large, so images load progressively and only when needed',
-            'Marvel Quiz (online exams, 600 students): built the exam flow with autosave. A refresh or dropped connection doesn\'t lose any answers',
-            'One Coach (300+ coaches): built session scheduling, with checks for overlapping bookings and time zone handling',
+            'Made 25+ responsive components that all three apps shared. New pages took about 30% less time to build',
+            'Pax Cast (medical imaging, 7 centers): built the patient scan viewer. Scans were large, so I loaded images progressively and only when needed',
+            'Marvel Quiz (online exams, 600 students): added autosave to the exam flow. Students didn\'t lose answers when they refreshed or lost connection',
+            'One Coach (300+ coaches): wrote the session scheduling, including checks for overlapping bookings and time zone handling',
         ],
     },
     {
@@ -328,7 +329,7 @@ const jobs = [
         dates: '2022 — 2024', location: 'Remote',
         points: [
             'Built 6+ web apps for clients with React, Next.js and TypeScript, including an admin dashboard and a booking site',
-            'Ran each project on my own, from the first call with the client through UI, API integration and hosting',
+            'Ran each project on my own, from the first call with the client to hosting it',
         ],
     },
 ];

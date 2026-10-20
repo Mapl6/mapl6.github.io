@@ -16,12 +16,13 @@ Lately I've been learning NestJS so I can handle more of the backend myself.
 
 | Area | Tools |
 | --- | --- |
-| **Core** | TypeScript, JavaScript (ES6+) |
+| **Core** | TypeScript, JavaScript (ES6+), HTML, CSS |
 | **Frameworks** | React, Next.js (App Router) |
-| **State & Data** | React Query (TanStack), Redux Toolkit |
-| **Styling & UI** | Tailwind CSS, Storybook |
+| **State & Data** | React Query (TanStack), Redux Toolkit, Zustand, REST APIs |
+| **Styling & UI** | Tailwind CSS, Storybook, Responsive Design |
 | **Forms** | React Hook Form, Zod |
-| **Tooling** | Git, Sentry |
+| **Performance** | SSR/SSG, Code Splitting, Lighthouse |
+| **Tooling** | Git, CI/CD, Sentry |
 | **AI** | LLM APIs (OpenAI, Anthropic), Tool Calling, MCP, RAG, Context Engineering, Claude Code, Cursor |
 
 ## Find me
