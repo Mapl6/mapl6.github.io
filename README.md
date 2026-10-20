@@ -2,7 +2,7 @@
 
 Frontend developer in Tehran. I mostly work with React, Next.js and TypeScript.
 
-Right now I'm at Tavana, working on an e-commerce site that around 20,000 people use every day. Before that I spent a year at Bluprint building a medical imaging portal, an online exam platform and a coaching app. I've also done freelance work for small businesses since 2022.
+Until October 2026 I was at Tavana, working on an e-commerce site that around 20,000 people use every day. Before that I spent a year at Bluprint building a medical imaging portal, an online exam platform and a coaching app. I've also done freelance work for small businesses since 2022.
 
 Lately I've been learning NestJS so I can handle more of the backend myself.
 
@@ -11,17 +11,18 @@ Lately I've been learning NestJS so I can handle more of the backend myself.
 ## Tools I use
 
 <p align="left">
-  <img src="https://skillicons.dev/icons?i=ts,js,html,css,react,nextjs,tailwind,redux,materialui,figma,git,github,gitlab,webpack,vscode&perline=15" alt="Tech stack icons" />
+  <img src="https://skillicons.dev/icons?i=ts,js,html,css,react,nextjs,tailwind,redux,figma,git,github,gitlab,webpack,vscode&perline=15" alt="Tech stack icons" />
 </p>
 
 | Area | Tools |
 | --- | --- |
-| **Core** | TypeScript, JavaScript (ES6+), HTML5, CSS3 |
-| **Frameworks** | React, Next.js (App Router, SSR, SSG, ISR) |
-| **State & Data** | React Query (TanStack), Redux Toolkit, Zustand, REST APIs |
-| **Styling & UI** | Tailwind CSS, Material UI, HeroUI (NextUI), Framer Motion, Storybook |
-| **Forms & i18n** | React Hook Form, Zod, i18next |
-| **Tooling** | Git, GitHub, GitLab, CI/CD, Sentry, Figma |
+| **Core** | TypeScript, JavaScript (ES6+) |
+| **Frameworks** | React, Next.js (App Router) |
+| **State & Data** | React Query (TanStack), Redux Toolkit |
+| **Styling & UI** | Tailwind CSS, Storybook |
+| **Forms** | React Hook Form, Zod |
+| **Tooling** | Git, Sentry |
+| **AI** | LLM APIs (OpenAI, Anthropic), Tool Calling, MCP, RAG, Context Engineering, Claude Code, Cursor |
 
 ## Find me
 

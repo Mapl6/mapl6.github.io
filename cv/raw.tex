@@ -135,9 +135,9 @@
 \section{Summary}
 \setlength{\parskip}{6pt}
 \color{bodygray}
-Frontend developer with 4+ years of experience building web apps in React, Next.js and TypeScript.
-At Tavana I work on an e-commerce platform used by 20,000+ people a day. I build and maintain our component library, handle data fetching and state with React Query, Redux Toolkit and Zustand, and work on page speed.
-Before that I built a medical imaging portal, an online exam platform and a coaching app at Bluprint, and took on freelance projects for small businesses.
+Frontend developer with 4+ years of experience in React, Next.js and TypeScript.
+Until October 2026 I was at Tavana, working on an e-commerce site with around 20,000 daily users. I built our component library, moved data fetching to React Query and got our Lighthouse score from 62 to 91.
+Before that I spent a year at Bluprint on a medical imaging portal, an online exam platform and a coaching app, and I've done freelance work for small businesses since 2022.
 \setlength{\parskip}{0pt}
 
 % ---------- Experience ----------
@@ -146,14 +146,14 @@ Before that I built a medical imaging portal, an online exam platform and a coac
 
 \resumeSubheading
   {\href{https://tavanastore.ir/}{Tavana}}{Tehran, Iran}
-  {Frontend Developer}{October 2024 -- Present}
+  {Frontend Developer}{October 2024 -- October 2026}
   \resumeItemListStart
-    \item Develop and maintain Tavana's e-commerce platform (Next.js App Router, React, TypeScript, Tailwind CSS), used by \textbf{20,000+ people every day}.
-    \item Built 40+ components for our internal UI library, including inputs and form elements with React Hook Form and Zod validation, documented in Storybook and used in 4 products.
-    \item Moved server data to React Query (caching, pagination, optimistic updates) and kept client state in Redux Toolkit and Zustand, which cut redundant API calls by about 35\%.
-    \item Raised the Lighthouse performance score from 62 to 91 and improved Core Web Vitals by rendering key pages with SSR/SSG, splitting bundles and optimizing images.
-    \item Set up Sentry error monitoring and alerts, so the team now finds and fixes production bugs about 40\% faster.
-    \item Work with backend developers and designers (Figma) on new features, review pull requests and maintain the CI/CD pipeline.
+    \item[] \href{https://tavanastore.ir/}{\textbf{tavanastore.ir}} \textit{-- e-commerce platform (Next.js App Router, React, TypeScript, Tailwind CSS) with \textbf{20,000+ daily users}.}
+    \item Built \textbf{40+ components} for our internal UI library, including form inputs with React Hook Form and Zod. They're documented in Storybook and used in 4 of our products.
+    \item Moved server data to React Query and kept client state in Redux Toolkit and Zustand. Redundant API calls dropped by \textbf{about 35\%}.
+    \item Took the Lighthouse performance score \textbf{from 62 to 91} with SSR/SSG on key pages, bundle splitting and image optimization.
+    \item Set up Sentry with alerts. We fixed production bugs \textbf{about 40\% faster} after that.
+    \item Added lint, type-check and build checks to CI for every pull request, plus a preview deploy per PR for design and QA to review.
   \resumeItemListEnd
 
 \jobsep
@@ -162,13 +162,14 @@ Before that I built a medical imaging portal, an online exam platform and a coac
   {\href{https://bluprint.ir/}{Bluprint}}{Tehran, Iran}
   {Frontend Developer}{October 2023 -- October 2024}
   \resumeItemListStart
-    \item Worked on three production projects using React, Redux, Zustand and REST APIs:
-    \begin{itemize}[leftmargin=1.2em, label=\textbullet, labelsep=0.5em, itemsep=0.6mm, topsep=1mm, parsep=0pt]
-      \item \textbf{Pax Cast} (medical imaging): built the patient portal for viewing scans and reports, and the service management panel used by 7 imaging centers.
-      \item \textbf{Marvel Quiz} (online exams): built the multi-booklet exam flow with online answer sheets, exam purchase, and question and PDF management, used by 600 students.
-      \item \textbf{One Coach} (training management): built exercise management, video lessons, session scheduling and progress dashboards for 300+ coaches and their trainees.
-    \end{itemize}
-    \item Built a set of 25+ responsive components shared by all three projects, which made new pages about 30\% faster to build.
+    \item[] \textit{Three production apps, all React with Redux, Zustand and REST APIs.}
+    \item Built \textbf{25+ responsive components} shared by the three apps, which cut the time to build a new page by \textbf{about 30\%}.
+    \item[] \textbf{Pax Cast} \textit{-- medical imaging portal for patients and \textbf{7 imaging centers}}
+    \item Built the patient scan viewer. Scans are large, so images load progressively and only when needed.
+    \item[] \textbf{Marvel Quiz} \textit{-- online exams with multiple booklets, used by \textbf{600 students}}
+    \item Built the exam flow with autosave. Answers are kept in the browser and synced to the server in the background, and a refresh or dropped connection doesn't lose anything.
+    \item[] \textbf{One Coach} \textit{-- training management for \textbf{300+ coaches} and their trainees}
+    \item Built session scheduling, with checks for overlapping bookings and time zone handling.
   \resumeItemListEnd
 
 \jobsep
@@ -177,21 +178,21 @@ Before that I built a medical imaging portal, an online exam platform and a coac
   {Freelance}{Remote}
   {Frontend Developer}{2022 -- 2024}
   \resumeItemListStart
-    \item Built 6+ web apps for clients with React, Next.js and TypeScript, including an admin dashboard for a logistics company and a booking site for a beauty clinic.
-    \item Handled each project from the first requirements call to deployment: UI, REST API integration and hosting.
+    \item Built \textbf{6+ web apps} for clients with React, Next.js and TypeScript, among them an admin dashboard for a logistics company and a booking site for a beauty clinic.
+    \item Ran each project on my own, from the first call with the client through UI, API integration and hosting.
   \resumeItemListEnd
 
 \resumeSubHeadingListEnd
 
 % ---------- Skills ----------
 \section{Skills}
-\resumeSubItem{Languages}{TypeScript, JavaScript (ES6+), HTML5, CSS3}
-\resumeSubItem{Frameworks}{React, Next.js (App Router), SSR, SSG, ISR}
-\resumeSubItem{State \& Data}{React Query (TanStack Query), Redux Toolkit, Redux, Zustand, REST APIs}
-\resumeSubItem{Styling \& UI}{Tailwind CSS, Material UI, HeroUI (NextUI), Framer Motion, Responsive Design, Design Systems}
-\resumeSubItem{Libraries}{React Hook Form, Zod, Storybook, i18next, Swiper.js}
-\resumeSubItem{Tooling \& Workflow}{Git, GitHub, GitLab, CI/CD, Sentry, Figma, Code Review, Agile}
-\resumeSubItem{AI \& Agents}{Claude Code, Cursor, MCP (GitHub, Figma), AI-assisted code review, OpenAI and Anthropic APIs}
+\resumeSubItem{Languages}{TypeScript, JavaScript (ES6+)}
+\resumeSubItem{Frameworks}{React, Next.js (App Router)}
+\resumeSubItem{State \& Data}{React Query (TanStack Query), Redux Toolkit}
+\resumeSubItem{Styling \& UI}{Tailwind CSS, Storybook}
+\resumeSubItem{Libraries}{React Hook Form, Zod}
+\resumeSubItem{Tooling \& Workflow}{Git, Sentry}
+\resumeSubItem{AI \& Agents}{LLM APIs (OpenAI, Anthropic), Tool Calling, MCP, RAG, Context Engineering, AI Coding Agents (Claude Code, Cursor)}
 
 % ---------- Education ----------
 \section{Education}
