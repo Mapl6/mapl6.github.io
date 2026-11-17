@@ -1,47 +1,36 @@
-# Hi, I'm Mahdi <img src="https://user-images.githubusercontent.com/18350557/176309783-0785949b-9127-417c-8b55-ab5a4333674e.gif" width="28" alt="waving hand" />
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-Frontend developer in Tehran. I mostly work with React, Next.js and TypeScript.
+## Getting Started
 
-Until October 2026 I was at Tavana, working on an e-commerce site that around 20,000 people use every day. Before that I spent a year at Bluprint building a medical imaging portal, an online exam platform and a coaching app. I've also done freelance work for small businesses since 2022.
+First, run the development server:
 
-Lately I've been learning NestJS so I can handle more of the backend myself.
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
+```
 
-[CV (PDF)](./mahdicv.pdf) · [CV, plain version](./mahdi-amoozadeh-cv.pdf) · [Portfolio](https://mapl6.github.io) · [mahdi.am6@gmail.com](mailto:mahdi.am6@gmail.com)
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-## Tools I use
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-<p align="left">
-  <img src="https://skillicons.dev/icons?i=ts,js,html,css,react,nextjs,tailwind,redux,figma,git,github,gitlab,webpack,vscode&perline=15" alt="Tech stack icons" />
-</p>
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-| Area | Tools |
-| --- | --- |
-| **Core** | TypeScript, JavaScript (ES6+), HTML, CSS |
-| **Frameworks** | React, Next.js (App Router) |
-| **State & Data** | React Query (TanStack), Redux Toolkit, Zustand, REST APIs |
-| **Styling & UI** | Tailwind CSS, Storybook, Responsive Design |
-| **Forms** | React Hook Form, Zod |
-| **Performance** | SSR/SSG, Code Splitting, Lighthouse |
-| **Tooling** | Git, CI/CD, Sentry |
-| **AI** | LLM APIs (OpenAI, Anthropic), Tool Calling, MCP, RAG, Context Engineering, Claude Code, Cursor |
+## Learn More
 
-## Find me
+To learn more about Next.js, take a look at the following resources:
 
-<p align="left">
-  <a href="https://www.linkedin.com/in/mahdi-amoozadeh"><img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" /></a>
-  <a href="https://github.com/Mapl6"><img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub" /></a>
-  <a href="mailto:mahdi.am6@gmail.com"><img src="https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white" alt="Email" /></a>
-</p>
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-## GitHub stats
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-<p align="left">
-  <img height="165" src="https://github-readme-stats.vercel.app/api?username=mapl6&show_icons=true&count_private=true&title_color=0891b2&text_color=ffffff&icon_color=0891b2&bg_color=1c1917&hide_border=true" alt="GitHub stats" />
-  <img height="165" src="https://github-readme-stats.vercel.app/api/top-langs/?username=mapl6&layout=compact&langs_count=8&title_color=0891b2&text_color=ffffff&bg_color=1c1917&hide_border=true" alt="Top languages" />
-</p>
+## Deploy on Vercel
 
-<p align="left">
-  <img src="https://streak-stats.demolab.com/?user=mapl6&stroke=ffffff&background=1c1917&ring=0891b2&fire=0891b2&currStreakNum=ffffff&currStreakLabel=0891b2&sideNums=ffffff&sideLabels=ffffff&dates=ffffff&hide_border=true" alt="GitHub streak" />
-</p>
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-<sub>This repo holds my [portfolio site](https://mapl6.github.io) and the LaTeX source of my CV (`cv/`). GitHub Actions rebuilds both PDFs (`mahdicv.pdf` and the plain `mahdi-amoozadeh-cv.pdf`) whenever the source changes.</sub>
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
